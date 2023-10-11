@@ -42,7 +42,7 @@ function getNextAvailableDate(disabledDateRanges) {
 
 export default function Extension() {
   // Set the metafield namespace and key you want to store data to on the order
-  const METAFIELD_NAMESPACE = "mackiecext";
+  const METAFIELD_NAMESPACE = "custom";
   const METAFIELD_KEY = "delivery_date";
 
   // Make X days into the future unselectable, here X=2
@@ -109,7 +109,7 @@ export default function Extension() {
         if (
           metafieldEntry.target.type === "product" &&
           metafieldEntry.target.id === product.id &&
-          metafieldEntry.metafield.namespace === "mackiecext" &&
+          metafieldEntry.metafield.namespace === "custom" &&
           metafieldEntry.metafield.key === "show_date_picker" &&
           metafieldEntry.metafield.value === "true"
         ) {

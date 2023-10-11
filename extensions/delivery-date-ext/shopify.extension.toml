@@ -34,10 +34,10 @@ api_access = true
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
 
 [[extensions.metafields]]
-namespace = "mackiecext"
+namespace = "custom"
 key = "show_date_picker"
 [[extensions.metafields]]
-namespace = "mackiecext"
+namespace = "custom"
 key = "delivery_date"
 
 # Defines settings that will be collected from merchants installing
