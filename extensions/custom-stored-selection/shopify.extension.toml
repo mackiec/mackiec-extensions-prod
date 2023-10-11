@@ -1,0 +1,93 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/api/checkout-extensions/checkout/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2023-07"
+
+[[extensions]]
+type = "ui_extension"
+name = "Custom Stored Selection"
+handle = "custom-stored-selection"
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/targets-overview
+[[extensions.targeting]]
+target = "purchase.checkout.block.render"
+module = "./src/Checkout.jsx"
+export = "checkoutBlock"
+
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+network_access = false
+
+# Loads metafields on checkout resources, including the cart,
+# products, customers, and more. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
+
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_other_key"
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
+
+[extensions.settings]
+  [[extensions.settings.fields]]
+  key = "title_1"
+  type = "single_line_text_field"
+  name = "Option One | Section Title"
+  description = "Enter a title for the section."
+  [[extensions.settings.fields]]
+  key = "description_1"
+  type = "multi_line_text_field"
+  name = "Option One | Section Content"
+  description = "Provide your text content."
+  [[extensions.settings.fields]]
+  key = "image_1"
+  type = "single_line_text_field"
+  name = "Option One | Image to Display"
+  description = "Provide an image URL to display."
+
+  [[extensions.settings.fields]]
+  key = "title_2"
+  type = "single_line_text_field"
+  name = "Option Two | Section Title"
+  description = "Enter a title for the section."
+  [[extensions.settings.fields]]
+  key = "description_2"
+  type = "multi_line_text_field"
+  name = "Option Two | Section Content"
+  description = "Provide your text content."
+  [[extensions.settings.fields]]
+  key = "image_2"
+  type = "single_line_text_field"
+  name = "Option Two | Image to Display"
+  description = "Provide an image URL to display."
+  
+  [[extensions.settings.fields]]
+  key = "title_3"
+  type = "single_line_text_field"
+  name = "Option Three | Section Title"
+  description = "Enter a title for the section."
+  [[extensions.settings.fields]]
+  key = "description_3"
+  type = "multi_line_text_field"
+  name = "Option Three | Section Content"
+  description = "Provide your text content."
+  [[extensions.settings.fields]]
+  key = "image_3"
+  type = "single_line_text_field"
+  name = "Option Three | Image to Display"
+  description = "Provide an image URL to display."
