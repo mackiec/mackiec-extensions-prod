@@ -23,16 +23,16 @@
   };
   var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
   var __objRest = (source, exclude) => {
-    var target2 = {};
+    var target = {};
     for (var prop in source)
       if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
-        target2[prop] = source[prop];
+        target[prop] = source[prop];
     if (source != null && __getOwnPropSymbols)
       for (var prop of __getOwnPropSymbols(source)) {
         if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
-          target2[prop] = source[prop];
+          target[prop] = source[prop];
       }
-    return target2;
+    return target;
   };
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -45,12 +45,12 @@
     }
     return to;
   };
-  var __toESM = (mod, isNodeMode, target2) => (target2 = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
     // If the importer is in node compatibility mode or this is not an ESM
     // file that has been converted to a CommonJS file using a Babel-
     // compatible transform (i.e. "__esModule" has not been set), then set
     // "default" to the CommonJS "module.exports" for node compatibility.
-    isNodeMode || !mod || !mod.__esModule ? __defProp(target2, "default", { value: mod, enumerable: true }) : target2,
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
     mod
   ));
   var __async = (__this, __arguments, generator) => {
@@ -119,9 +119,9 @@
           return false;
         }
       }
-      module.exports = shouldUseNative() ? Object.assign : function(target2, source) {
+      module.exports = shouldUseNative() ? Object.assign : function(target, source) {
         var from;
-        var to = toObject(target2);
+        var to = toObject(target);
         var symbols;
         for (var s = 1; s < arguments.length; s++) {
           from = Object(arguments[s]);
@@ -1174,7 +1174,7 @@
             }
             return dispatcher.useContext(Context, unstable_observedBits);
           }
-          function useState3(initialState) {
+          function useState2(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1186,7 +1186,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect3(create, deps) {
+          function useEffect2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1198,7 +1198,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
-          function useMemo4(create, deps) {
+          function useMemo2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useMemo(create, deps);
           }
@@ -1758,13 +1758,13 @@
           exports.useCallback = useCallback;
           exports.useContext = useContext3;
           exports.useDebugValue = useDebugValue;
-          exports.useEffect = useEffect3;
+          exports.useEffect = useEffect2;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useLayoutEffect = useLayoutEffect;
-          exports.useMemo = useMemo4;
+          exports.useMemo = useMemo2;
           exports.useReducer = useReducer;
           exports.useRef = useRef2;
-          exports.useState = useState3;
+          exports.useState = useState2;
           exports.version = ReactVersion;
         })();
       }
@@ -2621,7 +2621,7 @@
           var HostPortal = 4;
           var HostComponent = 5;
           var HostText = 6;
-          var Fragment2 = 7;
+          var Fragment = 7;
           var Mode = 8;
           var ContextConsumer = 9;
           var ContextProvider = 10;
@@ -6075,7 +6075,7 @@
               }
             }
             function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-              if (current2 === null || current2.tag !== Fragment2) {
+              if (current2 === null || current2.tag !== Fragment) {
                 var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
                 created.return = returnFiber;
                 return created;
@@ -6444,7 +6444,7 @@
               while (child !== null) {
                 if (child.key === key) {
                   switch (child.tag) {
-                    case Fragment2: {
+                    case Fragment: {
                       if (element.type === REACT_FRAGMENT_TYPE) {
                         deleteRemainingChildren(returnFiber, child.sibling);
                         var existing = useFiber(child, element.props.children);
@@ -10206,7 +10206,7 @@
                 var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
                 return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
               }
-              case Fragment2:
+              case Fragment:
                 return updateFragment(current2, workInProgress2, renderLanes2);
               case Mode:
                 return updateMode(current2, workInProgress2, renderLanes2);
@@ -10566,7 +10566,7 @@
               case SimpleMemoComponent:
               case FunctionComponent:
               case ForwardRef:
-              case Fragment2:
+              case Fragment:
               case Mode:
               case Profiler:
               case ContextConsumer:
@@ -12550,14 +12550,14 @@
             var _setupIntersectionObs = setupIntersectionObserver(instanceRoots, callback, options), disconnect = _setupIntersectionObs.disconnect, observe = _setupIntersectionObs.observe, unobserve = _setupIntersectionObs.unobserve;
             var commitHook = function() {
               var nextInstanceRoots = findAllNodes(hostRoot, selectors);
-              instanceRoots.forEach(function(target2) {
-                if (nextInstanceRoots.indexOf(target2) < 0) {
-                  unobserve(target2);
+              instanceRoots.forEach(function(target) {
+                if (nextInstanceRoots.indexOf(target) < 0) {
+                  unobserve(target);
                 }
               });
-              nextInstanceRoots.forEach(function(target2) {
-                if (instanceRoots.indexOf(target2) < 0) {
-                  observe(target2);
+              nextInstanceRoots.forEach(function(target) {
+                if (instanceRoots.indexOf(target) < 0) {
+                  observe(target);
                 }
               });
             };
@@ -15053,7 +15053,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             return fiber;
           }
           function createFiberFromFragment(elements, mode, lanes, key) {
-            var fiber = createFiber(Fragment2, elements, key, mode);
+            var fiber = createFiber(Fragment, elements, key, mode);
             fiber.lanes = lanes;
             return fiber;
           }
@@ -15132,45 +15132,45 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             };
             return fiber;
           }
-          function assignFiberPropertiesInDEV(target2, source) {
-            if (target2 === null) {
-              target2 = createFiber(IndeterminateComponent, null, null, NoMode);
+          function assignFiberPropertiesInDEV(target, source) {
+            if (target === null) {
+              target = createFiber(IndeterminateComponent, null, null, NoMode);
             }
-            target2.tag = source.tag;
-            target2.key = source.key;
-            target2.elementType = source.elementType;
-            target2.type = source.type;
-            target2.stateNode = source.stateNode;
-            target2.return = source.return;
-            target2.child = source.child;
-            target2.sibling = source.sibling;
-            target2.index = source.index;
-            target2.ref = source.ref;
-            target2.pendingProps = source.pendingProps;
-            target2.memoizedProps = source.memoizedProps;
-            target2.updateQueue = source.updateQueue;
-            target2.memoizedState = source.memoizedState;
-            target2.dependencies = source.dependencies;
-            target2.mode = source.mode;
-            target2.flags = source.flags;
-            target2.nextEffect = source.nextEffect;
-            target2.firstEffect = source.firstEffect;
-            target2.lastEffect = source.lastEffect;
-            target2.lanes = source.lanes;
-            target2.childLanes = source.childLanes;
-            target2.alternate = source.alternate;
+            target.tag = source.tag;
+            target.key = source.key;
+            target.elementType = source.elementType;
+            target.type = source.type;
+            target.stateNode = source.stateNode;
+            target.return = source.return;
+            target.child = source.child;
+            target.sibling = source.sibling;
+            target.index = source.index;
+            target.ref = source.ref;
+            target.pendingProps = source.pendingProps;
+            target.memoizedProps = source.memoizedProps;
+            target.updateQueue = source.updateQueue;
+            target.memoizedState = source.memoizedState;
+            target.dependencies = source.dependencies;
+            target.mode = source.mode;
+            target.flags = source.flags;
+            target.nextEffect = source.nextEffect;
+            target.firstEffect = source.firstEffect;
+            target.lastEffect = source.lastEffect;
+            target.lanes = source.lanes;
+            target.childLanes = source.childLanes;
+            target.alternate = source.alternate;
             {
-              target2.actualDuration = source.actualDuration;
-              target2.actualStartTime = source.actualStartTime;
-              target2.selfBaseDuration = source.selfBaseDuration;
-              target2.treeBaseDuration = source.treeBaseDuration;
+              target.actualDuration = source.actualDuration;
+              target.actualStartTime = source.actualStartTime;
+              target.selfBaseDuration = source.selfBaseDuration;
+              target.treeBaseDuration = source.treeBaseDuration;
             }
-            target2._debugID = source._debugID;
-            target2._debugSource = source._debugSource;
-            target2._debugOwner = source._debugOwner;
-            target2._debugNeedsRemount = source._debugNeedsRemount;
-            target2._debugHookTypes = source._debugHookTypes;
-            return target2;
+            target._debugID = source._debugID;
+            target._debugSource = source._debugSource;
+            target._debugOwner = source._debugOwner;
+            target._debugNeedsRemount = source._debugNeedsRemount;
+            target._debugHookTypes = source._debugHookTypes;
+            return target;
           }
           function FiberRootNode(containerInfo, tag, hydrate) {
             this.tag = tag;
@@ -16551,9 +16551,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             }
           }
           var jsx5 = jsxWithValidationDynamic;
-          var jsxs2 = jsxWithValidationStatic;
+          var jsxs = jsxWithValidationStatic;
           exports.jsx = jsx5;
-          exports.jsxs = jsxs2;
+          exports.jsxs = jsxs;
         })();
       }
     }
@@ -16571,8 +16571,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
   });
 
-  // extensions/delivery-date-ext/src/Checkout.jsx
-  var import_react19 = __toESM(require_react());
+  // extensions/custom-banner/src/Checkout.jsx
+  var import_react11 = __toESM(require_react());
 
   // node_modules/@remote-ui/core/build/esm/component.mjs
   function createRemoteComponent(componentType) {
@@ -17171,7 +17171,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
   function createExtensionRegistrationFunction() {
-    const extensionWrapper = (target2, implementation) => {
+    const extensionWrapper = (target, implementation) => {
       var _shopify;
       function extension2(...args) {
         return __async(this, null, function* () {
@@ -17194,7 +17194,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           return renderResult;
         });
       }
-      (_shopify = globalThis.shopify) === null || _shopify === void 0 ? void 0 : _shopify.extend(target2, extension2);
+      (_shopify = globalThis.shopify) === null || _shopify === void 0 ? void 0 : _shopify.extend(target, extension2);
       return extension2;
     };
     return extensionWrapper;
@@ -17206,36 +17206,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Banner/Banner.mjs
   var Banner = createRemoteComponent("Banner");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockSpacer/BlockSpacer.mjs
-  var BlockSpacer = createRemoteComponent("BlockSpacer");
-
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Checkbox/Checkbox.mjs
-  var Checkbox = createRemoteComponent("Checkbox");
-
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/DatePicker/DatePicker.mjs
-  var Day;
-  (function(Day2) {
-    Day2[Day2["Sunday"] = 0] = "Sunday";
-    Day2[Day2["Monday"] = 1] = "Monday";
-    Day2[Day2["Tuesday"] = 2] = "Tuesday";
-    Day2[Day2["Wednesday"] = 3] = "Wednesday";
-    Day2[Day2["Thursday"] = 4] = "Thursday";
-    Day2[Day2["Friday"] = 5] = "Friday";
-    Day2[Day2["Saturday"] = 6] = "Saturday";
-  })(Day || (Day = {}));
-  var DatePicker = createRemoteComponent("DatePicker");
-
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Icon/Icon.mjs
-  var Icon = createRemoteComponent("Icon");
-
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/InlineLayout/InlineLayout.mjs
-  var InlineLayout = createRemoteComponent("InlineLayout");
-
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
-  var Text = createRemoteComponent("Text");
-
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
-  var View = createRemoteComponent("View");
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/TextBlock/TextBlock.mjs
+  var TextBlock = createRemoteComponent("TextBlock");
 
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react5 = __toESM(require_react(), 1);
@@ -17484,8 +17456,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
-  function reactExtension(target2, render3) {
-    return extension(target2, (root, api) => __async(this, null, function* () {
+  function reactExtension(target, render3) {
+    return extension(target, (root, api) => __async(this, null, function* () {
       const element = yield render3(api);
       yield new Promise((resolve, reject) => {
         try {
@@ -17534,29 +17506,11 @@ ${errorInfo.componentStack}`);
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Banner/Banner.mjs
   var Banner2 = createRemoteReactComponent(Banner);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockSpacer/BlockSpacer.mjs
-  var BlockSpacer2 = createRemoteReactComponent(BlockSpacer);
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Checkbox/Checkbox.mjs
-  var Checkbox2 = createRemoteReactComponent(Checkbox);
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/DatePicker/DatePicker.mjs
-  var DatePicker2 = createRemoteReactComponent(DatePicker);
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Icon/Icon.mjs
-  var Icon2 = createRemoteReactComponent(Icon);
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/InlineLayout/InlineLayout.mjs
-  var InlineLayout2 = createRemoteReactComponent(InlineLayout);
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
-  var Text2 = createRemoteReactComponent(Text);
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/View/View.mjs
-  var View2 = createRemoteReactComponent(View);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/TextBlock/TextBlock.mjs
+  var TextBlock2 = createRemoteReactComponent(TextBlock);
 
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
-  var import_react15 = __toESM(require_react(), 1);
+  var import_react9 = __toESM(require_react(), 1);
 
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
   var CheckoutUIExtensionError = class extends Error {
@@ -17565,16 +17519,10 @@ ${errorInfo.componentStack}`);
       this.name = "CheckoutUIExtensionError";
     }
   };
-  var ExtensionHasNoMethodError = class extends Error {
-    constructor(method, target2) {
-      super(`Cannot call '${method}()' on target '${target2}'. The corresponding property was not found on the API.`);
-      this.name = "ExtensionHasNoMethodError";
-    }
-  };
 
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
   function useApi(_target) {
-    const api = (0, import_react15.useContext)(ExtensionApiContext);
+    const api = (0, import_react9.useContext)(ExtensionApiContext);
     if (api == null) {
       throw new CheckoutUIExtensionError("You can only call this hook when running as a UI extension.");
     }
@@ -17582,10 +17530,10 @@ ${errorInfo.componentStack}`);
   }
 
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/subscription.mjs
-  var import_react16 = __toESM(require_react(), 1);
+  var import_react10 = __toESM(require_react(), 1);
   function useSubscription(subscription) {
-    const [, setValue] = (0, import_react16.useState)(subscription.current);
-    (0, import_react16.useEffect)(() => {
+    const [, setValue] = (0, import_react10.useState)(subscription.current);
+    (0, import_react10.useEffect)(() => {
       let didUnsubscribe = false;
       const checkForUpdates = (newValue) => {
         if (didUnsubscribe) {
@@ -17603,195 +17551,22 @@ ${errorInfo.componentStack}`);
     return subscription.current;
   }
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/metafields.mjs
-  var import_react17 = __toESM(require_react(), 1);
-  function useMetafields(filters) {
-    const metaFields = useSubscription(useApi().metafields);
-    return (0, import_react17.useMemo)(() => {
-      if (filters) {
-        const {
-          namespace,
-          key
-        } = filters;
-        if (!namespace) {
-          throw new CheckoutUIExtensionError("You must pass in a namespace with a key");
-        }
-        const filteredResults = metaFields.filter((metafield) => metafield.namespace === namespace && (!key || metafield.key === key));
-        return filteredResults;
-      }
-      return metaFields;
-    }, [filters, metaFields]);
-  }
-  function useApplyMetafieldsChange() {
-    const api = useApi();
-    if ("applyMetafieldChange" in api) {
-      return api.applyMetafieldChange;
-    }
-    throw new ExtensionHasNoMethodError("applyMetafieldChange", api.extension.target);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
+  function useSettings() {
+    const settings = useSubscription(useApi().settings);
+    return settings;
   }
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/metafield.mjs
-  function useMetafield(filters) {
-    const {
-      namespace,
-      key
-    } = filters;
-    if (!namespace || !key) {
-      throw new CheckoutUIExtensionError("You must pass in both a namespace and key");
-    }
-    const metafields = useMetafields({
-      namespace,
-      key
-    });
-    return metafields.length ? metafields[0] : void 0;
-  }
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/cart-lines.mjs
-  function useCartLines() {
-    const {
-      lines
-    } = useApi();
-    return useSubscription(lines);
-  }
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/app-metafields.mjs
-  var import_react18 = __toESM(require_react(), 1);
-  function useAppMetafields(filters = {}) {
-    const appMetafields = useSubscription(useApi().appMetafields);
-    return (0, import_react18.useMemo)(() => {
-      if (filters.key && !filters.namespace) {
-        throw new CheckoutUIExtensionError("You must pass in a namespace with a key");
-      }
-      const filterKeys = Object.keys(filters);
-      if (filterKeys.length) {
-        return appMetafields.filter((app) => {
-          return filterKeys.every((key) => {
-            if (key === "id" || key === "type") {
-              return app.target[key] === filters[key];
-            }
-            return app.metafield[key] === filters[key];
-          });
-        });
-      }
-      return appMetafields;
-    }, [filters, appMetafields]);
-  }
-
-  // extensions/delivery-date-ext/src/Checkout.jsx
+  // extensions/custom-banner/src/Checkout.jsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  reactExtension("purchase.checkout.shipping-option-list.render-after", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {}));
-  function formatDate(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  }
-  function getNextAvailableDate(disabledDateRanges) {
-    const lastDisabledDate = disabledDateRanges.reduce((maxDate, range) => {
-      const endDate = new Date(range.end);
-      return endDate > maxDate ? endDate : maxDate;
-    }, new Date(disabledDateRanges[0].end));
-    const nextAvailableDate = new Date(lastDisabledDate);
-    nextAvailableDate.setDate(nextAvailableDate.getDate() + 2);
-    return formatDate(nextAvailableDate);
-  }
-  function Extension() {
-    const METAFIELD_NAMESPACE = "mackiecext";
-    const METAFIELD_KEY = "delivery_date";
-    const currentDate = /* @__PURE__ */ new Date();
-    const twoDaysFromNow = new Date(currentDate);
-    twoDaysFromNow.setDate(currentDate.getDate() + 2);
-    const disableDateRanges = [
-      {
-        start: "0001-01-01",
-        // Minimum possible date
-        end: formatDate(twoDaysFromNow)
-      }
-    ];
-    const initialSelectedDate = getNextAvailableDate(disableDateRanges);
-    const [selectedDate, setSelectedDate] = (0, import_react19.useState)(initialSelectedDate);
-    const [showDatePicker, setShowDatePicker] = (0, import_react19.useState)(false);
-    const [hasShowDatePickerMetafield, setHasShowDatePickerMetafield] = (0, import_react19.useState)("false");
-    const cartLines = useCartLines();
-    const appMetafields = useAppMetafields();
-    const updateMetafield = useApplyMetafieldsChange();
-    const requestedShippingDateMetafield = useMetafield({
-      namespace: METAFIELD_NAMESPACE,
-      key: METAFIELD_KEY
-    });
-    const handleCheckboxChange = (isChecked) => {
-      setShowDatePicker(isChecked);
-      if (!isChecked) {
-        updateMetafield({
-          type: "removeMetafield",
-          namespace: METAFIELD_NAMESPACE,
-          key: METAFIELD_KEY
-        });
-      }
-    };
-    const handleDateChange = (newSelectedDate) => {
-      setSelectedDate(newSelectedDate);
-      if (showDatePicker) {
-        updateMetafield({
-          type: "updateMetafield",
-          namespace: METAFIELD_NAMESPACE,
-          key: METAFIELD_KEY,
-          valueType: "string",
-          value: newSelectedDate
-        });
-      }
-    };
-    (0, import_react19.useEffect)(() => {
-      for (const cartLine of cartLines) {
-        const product = cartLine.merchandise.product;
-        product.id = String(product.id.match(/(\d+)$/)[0]);
-        for (const metafieldEntry of appMetafields) {
-          if (metafieldEntry.target.type === "product" && metafieldEntry.target.id === product.id && metafieldEntry.metafield.namespace === "mackiecext" && metafieldEntry.metafield.key === "show_date_picker" && metafieldEntry.metafield.value === "true") {
-            setHasShowDatePickerMetafield("true");
-            break;
-          }
-        }
-        if (hasShowDatePickerMetafield === "true") {
-          break;
-        }
-      }
-    }, [cartLines, appMetafields, hasShowDatePickerMetafield]);
-    const isExpressSelected = () => {
-      var _a, _b;
-      if (target !== "purchase.checkout.shipping-option-list.render-after" || !deliveryGroups) {
-        return false;
-      }
-      const expressHandle = (_a = deliveryGroups[0].deliveryOptions.find(
-        (method) => method.title === "Express"
-      )) == null ? void 0 : _a.handle;
-      return expressHandle === ((_b = deliveryGroups[0].selectedDeliveryOption) == null ? void 0 : _b.handle) ? true : false;
-    };
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-      hasShowDatePickerMetafield === "true" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Banner2, { status: "info", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { blockAlignment: "center", spacing: "small100", columns: ["auto", "fill"], children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: "truck", appearance: "monochrome" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: "Not going to be at home?" })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-          Checkbox2,
-          {
-            id: "showDatePicker",
-            name: "showDatePicker",
-            onChange: handleCheckboxChange,
-            children: "Yes - I'll choose a delivery date."
-          }
-        )
-      ] }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
-      hasShowDatePickerMetafield === "true" && showDatePicker && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-        DatePicker2,
-        {
-          selected: selectedDate,
-          disabled: disableDateRanges,
-          onChange: handleDateChange
-        }
-      )
-    ] });
+  var checkoutBlock = reactExtension("purchase.checkout.block.render", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(App, {}));
+  var deliveryAddress = reactExtension("purchase.checkout.delivery-address.render-before", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(App, {}));
+  function App() {
+    const { title: merchantTitle, description: merchantDescription, collapsible: setCollapsible, status: merchantStatus } = useSettings();
+    const status = merchantStatus != null ? merchantStatus : "info";
+    const title = merchantTitle != null ? merchantTitle : "Demo Custom Banner";
+    const description = merchantDescription != null ? merchantDescription : "This is an optional description.";
+    const collapsible = setCollapsible != null ? setCollapsible : true;
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Banner2, { title, status, collapsible, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextBlock2, { children: description }) });
   }
 })();

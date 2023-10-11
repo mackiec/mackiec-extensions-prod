@@ -1,0 +1,27 @@
+api_version = "2023-10"
+
+[[extensions]]
+type = "ui_extension"
+name = "Cart Line Item Details"
+handle = "line-item-details"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.cart-line-item.render-after"
+
+[[extensions.metafields]]
+namespace = "custom"
+key = "product_data"
+
+[extensions.capabilities]
+api_access = true
+network_access = false
+
+[extensions.settings]
+[[extensions.settings.fields]]
+  key = "style"
+  type = "single_line_text_field"
+  name = "Content Appearance"
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+    value = "[\"accent\", \"subdued\", \"info\", \"warning\", \"critical\", \"monochrome\"]"
