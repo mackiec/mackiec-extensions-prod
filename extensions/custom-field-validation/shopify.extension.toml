@@ -1,0 +1,57 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/api/checkout-extensions/checkout/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2023-07"
+
+[[extensions]]
+type = "ui_extension"
+name = "Custom Field Validation | VAT or Age"
+handle = "custom-field-validation"
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/targets-overview
+[[extensions.targeting]]
+target = "purchase.checkout.block.render"
+module = "./src/Checkout.jsx"
+[extensions.capabilities]
+block_progress = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+network_access = true
+
+# Loads metafields on checkout resources, including the cart,
+# products, customers, and more. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
+
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_other_key"
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "fieldTitle"
+type = "single_line_text_field"
+name = "Field Heading"
+description = "Specify the title of the field input."
+[[extensions.settings.fields]]
+key = "showVatNumberField"
+type = "boolean"
+name = "Show VAT Number Field"
+description = "Choose whether to show a VAT number field instead of the age field."
+[[extensions.settings.fields]]
+key = "ageTarget"
+type = "single_line_text_field"
+name = "Target Age"
+description = "Optional: Enter an Age at which to block checkout progress. Default state is 18."
