@@ -1,0 +1,31 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/api/checkout-extensions/checkout/configuration
+
+api_version = "2023-07"
+
+[[extensions]]
+name = "Delivery Instructions"
+type = "ui_extension"
+handle = "custom-delivery-note"
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.shipping-option-list.render-after"
+
+# [[extensions.metafields]]
+# namespace = "my-namespace"
+# key = "my-key"
+# [[extensions.metafields]]
+# namespace = "my-namespace"
+# key = "my-other-key"
+
+[extensions.capabilities]
+api_access = true
+network_access = true
+block_progress = true
+
+# [extensions.settings]
+#   [[extensions.settings.fields]]
+#   key = "banner_title"
+#   type = "single_line_text_field"
+#   name = "Banner title"
+#   description = "Enter a title for the banner"
