@@ -20,13 +20,13 @@ function App() {
   // Set a default status for the banner if a merchant didn't configure the banner in the checkout editor
   const status = merchantStatus ?? 'info';
   const title = merchantTitle ?? 'Demo Custom Banner';
-  const description = merchantDescription ?? 'This is an optional description.';
+  const description = merchantDescription ?? null;
   const collapsible = setCollapsible ?? true;
 
   // Render the banner
   return (
     <Banner title={title} status={status} collapsible={collapsible}>
-      <TextBlock>{description}</TextBlock>
+      {description && <TextBlock>{description}</TextBlock>}
     </Banner>
   );
 }
