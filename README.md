@@ -1,6 +1,6 @@
 # Demo Application - Shopify Checkout Extensibility
 
-This is a personal project that combines multiple Checkout Extensions into a single app, some are boilerplate code (eg. a custom banner), while some are more featured (eg. a multi-sectioned checkbox section that expands content and can block progress.)
+This is a personal project that combines multiple Checkout Extensions into a single app, some are boilerplate code from the public Tutorials (eg. a custom banner), while some are more featured (eg. a VAT custom field that features 9-digit validation that blocks checkout progress.)
 
 ## Getting started
 
