@@ -17,6 +17,10 @@ handle = "custom-content-block"
 target = "purchase.checkout.block.render"
 module = "./src/Checkout.jsx"
 export = "checkoutBlock"
+[[extensions.targeting]]
+target = "purchase.checkout.cart-line-item.render-after"
+module = "./src/Checkout.jsx"
+export = "checkoutBlock"
 
 [extensions.capabilities]
 # Gives your extension access to directly query Shopify’s storefront API.
@@ -33,11 +37,26 @@ network_access = false
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
 
 # [[extensions.metafields]]
-# namespace = "my_namespace"
-# key = "my_key"
+# namespace = "descriptors"
+# key = "care_guide"
 # [[extensions.metafields]]
-# namespace = "my_namespace"
-# key = "my_other_key"
+# namespace = "descriptors"
+# key = "subtitle"
+# [[extensions.metafields]]
+# namespace = "facts"
+# key = "isbn"
+# [[extensions.metafields]]
+# # namespace = "facts"
+key = "upc"
+# [[extensions.metafields]]
+# namespace = "facts"
+# key = "ean"
+# [[extensions.metafields]]
+# namespace = "reviews"
+# key = "rating"
+# [[extensions.metafields]]
+# namespace = "reviews"
+# key = "rating_count"
 
 # Defines settings that will be collected from merchants installing
 # your extension. Learn more:
@@ -59,4 +78,3 @@ network_access = false
   type = "single_line_text_field"
   name = "Image to Display"
   description = "Provide an image URL to display."
-

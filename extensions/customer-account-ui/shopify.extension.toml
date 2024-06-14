@@ -1,0 +1,13 @@
+api_version = "unstable"
+
+[[extensions]]
+type = "ui_extension"
+name = "customer-account-wishlist-react"
+handle = "wishlist-extension-react"
+
+[[extensions.targeting]]
+module = "./src/FullPageExtension.tsx"
+target = "customer-account.page.render"
+
+[extensions.capabilities]
+api_access = true

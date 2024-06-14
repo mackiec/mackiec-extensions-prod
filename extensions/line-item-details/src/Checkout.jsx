@@ -4,6 +4,7 @@ import {
   reactExtension,
   BlockStack,
   BlockSpacer,
+  Text,
   TextBlock,
   useCartLineTarget,
   View,

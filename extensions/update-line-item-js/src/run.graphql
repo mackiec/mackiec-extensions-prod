@@ -1,0 +1,33 @@
+query RunInput {
+  cart {
+    lines {
+      id
+      cost {
+        amountPerQuantity {
+          amount
+          currencyCode
+        }
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+          title
+          product {
+            metafield(namespace: "custom", key: "member_price") {
+              value
+            }
+          }
+        }
+      }
+    }
+    buyerIdentity {
+      customer {
+        metafield(namespace: "membership", key: "validity") {
+          value
+        }
+      }
+    }
+  }
+  presentmentCurrencyRate
+}
