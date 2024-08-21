@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "98db8bd7e0cfaf648c0305ca50afc397"
+client_id = "f58a1db358d99f0cececb7403454791e"
 name = "extensions-dev"
-application_url = "https://mackiec-extension--development.gadget.app/shopify/install"
+application_url = "https://mackiec-extension.gadget.app/shopify/install"
 embedded = true
 
 [build]
@@ -15,7 +15,7 @@ use_legacy_install_flow = true
 
 [auth]
 redirect_urls = [
-  "https://mackiec-extension--development.gadget.app/api/connections/auth/shopify/callback"
+  "https://mackiec-extension.gadget.app/api/connections/auth/shopify/callback"
 ]
 
 [webhooks]
