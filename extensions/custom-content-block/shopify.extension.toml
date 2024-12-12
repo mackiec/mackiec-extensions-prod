@@ -37,44 +37,55 @@ network_access = false
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
 
 # [[extensions.metafields]]
-# namespace = "descriptors"
-# key = "care_guide"
-# [[extensions.metafields]]
-# namespace = "descriptors"
-# key = "subtitle"
-# [[extensions.metafields]]
-# namespace = "facts"
-# key = "isbn"
-# [[extensions.metafields]]
-# # namespace = "facts"
-key = "upc"
-# [[extensions.metafields]]
-# namespace = "facts"
-# key = "ean"
-# [[extensions.metafields]]
-# namespace = "reviews"
-# key = "rating"
-# [[extensions.metafields]]
-# namespace = "reviews"
-# key = "rating_count"
+# namespace = "custom"
+# key = "defintion"
 
 # Defines settings that will be collected from merchants installing
 # your extension. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
 
 [extensions.settings]
-  [[extensions.settings.fields]]
-  key = "title"
-  type = "single_line_text_field"
-  name = "Section Title"
-  description = "Enter a title for the section."
-  [[extensions.settings.fields]]
-  key = "description"
-  type = "multi_line_text_field"
-  name = "Section Content"
-  description = "Provide your text content."
-  [[extensions.settings.fields]]
-  key = "image"
-  type = "single_line_text_field"
-  name = "Image to Display"
-  description = "Provide an image URL to display."
+
+[[extensions.settings.fields]]
+key = "is_collapsible"
+type = "boolean"
+name = "Is Collapsible"
+description = "Determine if the component can be collapsed."
+
+[[extensions.settings.fields]]
+key = "title"
+type = "single_line_text_field"
+name = "Section Title"
+description = "Enter a title for the section."
+
+[[extensions.settings.fields]]
+key = "title_size"
+type = "single_line_text_field"
+name = "Title Sizing"
+description = "Choose a size for the title."
+
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["extraSmall", "small", "base", "large", "extraLarge", "medium"]'
+
+[[extensions.settings.fields]]
+key = "description"
+type = "multi_line_text_field"
+name = "Section Content"
+description = "Provide your text content."
+
+[[extensions.settings.fields]]
+key = "image"
+type = "single_line_text_field"
+name = "Image to Display"
+description = "Provide an image URL to display."
+
+[[extensions.settings.fields]]
+key = "icon"
+type = "single_line_text_field"
+name = "Icon Selection"
+description = "Select an icon to display."
+
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["arrowLeft", "arrowRight", "arrowUp", "arrowUpRight", "arrowDown", "bag", "bullet", "calendar", "camera", "caretDown", "cart", "cashDollar", "categories", "checkmark", "chevronLeft", "chevronRight", "chevronUp", "chevronDown", "clock", "close", "creditCard", "critical", "delete", "delivered", "delivery", "disabled", "discount", "email", "error", "errorFill", "external", "filter", "geolocation", "gift", "giftFill", "grid", "hamburger", "hollowCircle", "horizontalDots", "image", "info", "infoFill", "list", "lock", "magnify", "map", "marker", "minus", "mobile", "note", "orderBox", "pen", "plus", "profile", "question", "questionFill", "reorder", "return", "savings", "settings", "star", "starFill", "starHalf", "store", "success", "truck", "upload", "verticalDots", "warning", "warningFill"]'

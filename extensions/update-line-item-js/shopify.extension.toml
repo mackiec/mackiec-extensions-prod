@@ -2,8 +2,8 @@ api_version = "2024-07"
 
 [[extensions]]
 handle = "update-line-item-demo"
-name = "t:name"
-description = "t:description"
+name = "Membership Pricing Function"
+description = "Pulls a secondary product price from custom.member_price metafield and uses it to update line item price"
 type = "function"
 
   [[extensions.targeting]]
