@@ -15,12 +15,10 @@ api_access = true
 block_progress = true
 network_access = false
 
-# [[extensions.metafields]]
-# namespace = "my_namespace"
-# key = "my_key"
-# [[extensions.metafields]]
-# namespace = "my_namespace"
-# key = "my_other_key"
+[[extensions.metafields]]
+namespace = "custom"
+key = "selected_option_title"
+
 
 [extensions.settings]
   [[extensions.settings.fields]]

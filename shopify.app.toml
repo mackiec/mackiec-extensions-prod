@@ -1,21 +1,22 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "f58a1db358d99f0cececb7403454791e"
-name = "extensions-dev"
-application_url = "https://mackiec-extension.gadget.app/shopify/install"
-embedded = true
+name = "[DEMO] Checkout Extensions"
+application_url = "https://shopify.dev/apps/default-app-home"
+embedded = false
 
 [build]
 dev_store_url = "mackiec-checkout-dev.myshopify.com"
+include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products, write_discounts"
+scopes = "write_discounts,write_products"
 use_legacy_install_flow = true
 
 [auth]
 redirect_urls = [
-  "https://mackiec-extension.gadget.app/api/connections/auth/shopify/callback"
+  "https://admin.shopify.com/"
 ]
 
 [webhooks]

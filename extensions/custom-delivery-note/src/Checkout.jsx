@@ -42,9 +42,17 @@ function App() {
   // Check if 'address2' is provided in the Shipping Address form
   const hasAddress2 = shippingAddress && shippingAddress.address2;
 
-  // Set a function to handle the Checkbox component's onChange event
-  const handleChange = () => {
-    setChecked(!checked);
+// Handle when the checkbox is checked. 
+  // If the checkbox is unchecked by the buyer, unset (delete) the metafield
+  const handleCheckboxChange = (isChecked) => {
+    setChecked(isChecked);
+    if (!isChecked) {
+      updateMetafield({
+        type: "removeMetafield",
+        namespace: METAFIELD_NAMESPACE,
+        key: METAFIELD_KEY,
+      });
+    }
   };
 
   // Render the extension components
@@ -60,7 +68,7 @@ function App() {
               </Text>
             </InlineLayout>
             <BlockSpacer spacing="loose" />
-            <Checkbox checked={checked} onChange={handleChange}>
+            <Checkbox checked={checked} onChange={handleCheckboxChange}>
               <Text>Yes, please see details:</Text>
             </Checkbox>
             

@@ -10,6 +10,7 @@ import {
   View,
   Image,
   Checkbox,
+  useApplyMetafieldsChange,
 } from "@shopify/ui-extensions-react/checkout";
 
 // Set the entry points for the extension
@@ -30,7 +31,7 @@ function App() {
     image_3: merchantImage3
   } = useSettings();
 
-  // Set a default status for the banner if a merchant didn't configure the banner in the checkout editor
+  // Set default titles and descriptions if not provided by the merchant
   const title1 = merchantTitle1 ?? 'Custom Title 1';
   const description1 = merchantDescription1 ?? 'Custom Content 1';
   const title2 = merchantTitle2 ?? 'Custom Title 2';
@@ -39,9 +40,38 @@ function App() {
   const description3 = merchantDescription3 ?? 'Custom Content 3';
 
   // State to control the checked state of the checkboxes
-  const [checked1, setChecked1] = useState(false);
-  const [checked2, setChecked2] = useState(false);
-  const [checked3, setChecked3] = useState(false);
+  const [selectedTitle, setSelectedTitle] = useState(null);
+
+  // Metafield configuration
+  const METAFIELD_NAMESPACE = "custom";
+  const METAFIELD_KEY = "selected_option_title";
+  const updateMetafield = useApplyMetafieldsChange();
+
+  // Function to handle checkbox changes
+  const handleCheckboxChange = (newChecked, title) => {
+    if (newChecked) {
+      // Update the metafield with the selected title
+      updateMetafield({
+        type: "updateMetafield",
+        namespace: METAFIELD_NAMESPACE,
+        key: METAFIELD_KEY,
+        valueType: "string",
+        value: title,
+      });
+      setSelectedTitle(title); // Set the currently selected title
+    } else {
+      // If the checkbox is unchecked, remove the metafield
+      updateMetafield({
+        type: "removeMetafield",
+        namespace: METAFIELD_NAMESPACE,
+        key: METAFIELD_KEY,
+      });
+      // If the current title matches the unchecked title, reset the selected title
+      if (selectedTitle === title) {
+        setSelectedTitle(null);
+      }
+    }
+  };
 
   // Split the descriptions into lines
   const descriptionLines1 = description1.split('\n');
@@ -53,19 +83,17 @@ function App() {
     <BlockStack spacing="base">
       <View border="base" padding="base" cornerRadius="base">
         <InlineLayout blockAlignment="start" spacing="base" columns={['auto', 'fill', 'auto']}>
-          <Checkbox checked={checked1} onChange={(newChecked) => {
-            setChecked1(newChecked);
-            if (newChecked) {
-              setChecked2(false);
-              setChecked3(false);
-            }
-          }} label="" />
+          <Checkbox 
+            checked={selectedTitle === title1} 
+            onChange={(newChecked) => handleCheckboxChange(newChecked, title1)} 
+            label="" 
+          />
           <Text size="medium" emphasis="bold" appearance="interactive">
             {title1}
           </Text>
         </InlineLayout>
-        {checked1 && (
-          <Disclosure open={checked1}>
+        {selectedTitle === title1 && (
+          <Disclosure open={selectedTitle === title1}>
             <View id="content" padding="base">
               <BlockStack spacing="tight">
                 {descriptionLines1.map((line, index) => (
@@ -82,19 +110,17 @@ function App() {
       {merchantTitle2 && merchantDescription2 && (
         <View border="base" padding="base" cornerRadius="base">
           <InlineLayout blockAlignment="start" spacing="base" columns={['auto', 'fill', 'auto']}>
-            <Checkbox checked={checked2} onChange={(newChecked) => {
-              setChecked2(newChecked);
-              if (newChecked) {
-                setChecked1(false);
-                setChecked3(false);
-              }
-            }} label="" />
+            <Checkbox 
+              checked={selectedTitle === title2} 
+              onChange={(newChecked) => handleCheckboxChange(newChecked, title2)} 
+              label="" 
+            />
             <Text size="medium" emphasis="bold" appearance="interactive">
               {title2}
             </Text>
           </InlineLayout>
-          {checked2 && (
-            <Disclosure open={checked2}>
+          {selectedTitle === title2 && (
+            <Disclosure open={selectedTitle === title2}>
               <View id="content" padding="base">
                 <BlockStack spacing="tight">
                   {descriptionLines2.map((line, index) => (
@@ -112,19 +138,17 @@ function App() {
       {merchantTitle3 && merchantDescription3 && (
         <View border="base" padding="base" cornerRadius="base">
           <InlineLayout blockAlignment="start" spacing="base" columns={['auto', 'fill', 'auto']}>
-            <Checkbox checked={checked3} onChange={(newChecked) => {
-              setChecked3(newChecked);
-              if (newChecked) {
-                setChecked1(false);
-                setChecked2(false);
-              }
-            }} label="" />
+            <Checkbox 
+              checked={selectedTitle === title3} 
+              onChange={(newChecked) => handleCheckboxChange(newChecked, title3)} 
+              label="" 
+            />
             <Text size="medium" emphasis="bold" appearance="interactive">
               {title3}
             </Text>
           </InlineLayout>
-          {checked3 && (
-            <Disclosure open={checked3}>
+          {selectedTitle === title3 && (
+            <Disclosure open={selectedTitle === title3}>
               <View id="content" padding="base">
                 <BlockStack spacing="tight">
                   {descriptionLines3.map((line, index) => (
