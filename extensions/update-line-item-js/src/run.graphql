@@ -2,6 +2,7 @@ query RunInput {
   cart {
     lines {
       id
+      quantity
       cost {
         amountPerQuantity {
           amount
@@ -20,14 +21,17 @@ query RunInput {
           }
         }
       }
+      attribute(key: "added_customisation") {
+      value
     }
+  }
     buyerIdentity {
-      customer {
-        metafield(namespace: "membership", key: "validity") {
-          value
-        }
+    customer {
+      metafield(namespace: "membership", key: "validity") {
+        value
       }
     }
   }
+    }
   presentmentCurrencyRate
 }

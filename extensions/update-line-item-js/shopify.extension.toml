@@ -1,9 +1,9 @@
 api_version = "2024-07"
 
 [[extensions]]
-handle = "update-line-item-demo"
-name = "Membership Pricing Function"
-description = "Pulls a secondary product price from custom.member_price metafield and uses it to update line item price"
+handle = "update-line-item"
+name = "Membership & Customiser Cart Transform"
+description = "Updates line item prices based on either customisation or membership price"
 type = "function"
 
   [[extensions.targeting]]
@@ -23,8 +23,8 @@ type = "function"
   namespace = "custom"
   key = "member_price"
   [[extensions.metafields]]
-  namespace = "member"
-  key = "active"
+  namespace = "membership"
+  key = "validity"
 
 
 

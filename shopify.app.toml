@@ -15,9 +15,7 @@ scopes = "write_discounts,write_products"
 use_legacy_install_flow = true
 
 [auth]
-redirect_urls = [
-  "https://admin.shopify.com/"
-]
+redirect_urls = [ "https://admin.shopify.com/" ]
 
 [webhooks]
 api_version = "2024-07"

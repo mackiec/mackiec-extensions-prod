@@ -14,67 +14,98 @@ const NO_CHANGES = {
 };
 
 /**
+ * Combined cart transform function
  * @param {RunInput} input
  * @returns {FunctionRunResult}
  */
 export function run(input) {
-  // Check if the customer's membership is active
-  // @ts-ignore
-  const isMemberActive = input.cart.buyerIdentity.customer.metafield && input.cart.buyerIdentity.customer.metafield.value === 'true';
-
   const operations = input.cart.lines.reduce(
     /** @param {CartOperation[]} acc */
     (acc, cartLine) => {
-      // @ts-ignore
-      const presentmentCurrencyRate = input.presentmentCurrencyRate; // Declare the presentmentCurrencyRate variable
+      const buyerIdentity = input.cart.buyerIdentity;
+      const isMemberActive = buyerIdentity && buyerIdentity.customer && buyerIdentity.customer.metafield && buyerIdentity.customer.metafield.value === 'true';
+      const isCustomised = cartLine.attribute?.value === 'true';
+      const presentmentCurrencyRate = input.presentmentCurrencyRate;
 
-      // If the customer's membership is not active, prevent the price of the cart from being updated
-      if (!isMemberActive) {
-        return acc;
+      let finalPrice = null;
+
+      // Determine the base price based on membership
+      if (isMemberActive) {
+        finalPrice = getMemberPrice(cartLine, presentmentCurrencyRate);
+      } else {
+        finalPrice = getOriginalPrice(cartLine);
       }
 
-      const updateOperation = optionallyBuildUpdateOperation(
-        cartLine,
-        presentmentCurrencyRate
-      );
+      // If the base price is determined, apply markup if needed
+      if (finalPrice !== null) {
+        if (isCustomised) {
+          finalPrice = applyMarkup(finalPrice, 0.10); // Apply 10% markup
+        }
 
-      if (updateOperation) {
-        return [...acc, { update: updateOperation }];
+        acc.push({
+          update: {
+            cartLineId: cartLine.id,
+            price: {
+              adjustment: {
+                fixedPricePerUnit: {
+                  amount: finalPrice.toFixed(2) // Format to 2 decimal places
+                }
+              }
+            }
+          }
+        });
       }
 
-      return acc;
+      return acc; // Return accumulated operations
     },
-    []
+    /** @type {CartOperation[]} */ ([]),
   );
 
   return operations.length > 0 ? { operations } : NO_CHANGES;
-};
+}
 
 /**
+ * Get the member price based on the product metafield
  * @param {RunInput['cart']['lines'][number]} cartLine
  * @param {RunInput} presentmentCurrencyRate
+ * @returns {number | null}
  */
-function optionallyBuildUpdateOperation(
-  { id: cartLineId, merchandise },
-  presentmentCurrencyRate
-) {
+function getMemberPrice(cartLine, presentmentCurrencyRate) {
+  const { merchandise } = cartLine;
+
   if (
     merchandise.__typename === "ProductVariant" &&
     merchandise.product &&
     merchandise.product.metafield &&
     merchandise.product.metafield.value
   ) {
-    return {
-      cartLineId,
-      price: {
-        adjustment: {
-          fixedPricePerUnit: {
-            amount: Number(merchandise.product.metafield.value) * Number(presentmentCurrencyRate)
-          }
-        }
-      }
-    };
+    return Number(merchandise.product.metafield.value) * Number(presentmentCurrencyRate);
   }
 
   return null;
+}
+
+/**
+ * Get the original price from the cart line
+ * @param {RunInput['cart']['lines'][number]} cartLine
+ * @returns {number | null}
+ */
+function getOriginalPrice(cartLine) {
+  const { cost: { amountPerQuantity } } = cartLine;
+
+  if (amountPerQuantity) {
+    return Number(amountPerQuantity.amount);
+  }
+
+  return null;
+}
+
+/**
+ * Apply a markup to the given price
+ * @param {number} price
+ * @param {number} markupPercentage
+ * @returns {number}
+ */
+function applyMarkup(price, markupPercentage) {
+  return price * (1 + markupPercentage);
 }
