@@ -13,6 +13,7 @@ import {
   Icon,
   View,
   useShippingAddress,
+  useSettings,
 } from "@shopify/ui-extensions-react/checkout";
 
 // Set the entry point for the extension
@@ -21,6 +22,24 @@ export default reactExtension("purchase.checkout.shipping-option-list.render-aft
 });
 
 function App() {
+  // Use the merchant-defined settings to retrieve the extension's content
+  const {
+    title: merchantTitle,
+    description: merchantDescription,
+    banner_status: merchantBannerStatus,
+    icon: merchantIcon,
+    checkbox_text: merchantCheckboxText,
+    text_field_label: merchantTextFieldLabel,
+  } = useSettings();
+
+  // Set default values
+  const title = merchantTitle ?? "Add Delivery Instructions?";
+  const description = merchantDescription ?? "Provide special instructions for delivery";
+  const bannerStatus = merchantBannerStatus ?? "info";
+  const iconSource = merchantIcon ?? "note";
+  const checkboxText = merchantCheckboxText ?? "Yes, please see details:";
+  const textFieldLabel = merchantTextFieldLabel ?? "Add Your Delivery Instructions";
+
   // Set up the checkbox state
   const [checked, setChecked] = useState(false);
 
@@ -47,10 +66,10 @@ function App() {
   const handleCheckboxChange = (isChecked) => {
     setChecked(isChecked);
     if (!isChecked) {
-      updateMetafield({
+      applyMetafieldsChange({
         type: "removeMetafield",
-        namespace: METAFIELD_NAMESPACE,
-        key: METAFIELD_KEY,
+        namespace: metafieldNamespace,
+        key: metafieldKey,
       });
     }
   };
@@ -60,23 +79,23 @@ function App() {
     <BlockStack>
       {hasAddress2 && (
         <View maxInlineSize={700}>
-          <Banner status="info">
+          <Banner status={bannerStatus}>
             <InlineLayout blockAlignment="center" spacing="small100" columns={['auto', 'fill']}> 
-              <Icon source="note" appearance="monochrome"></Icon>
+              <Icon source={iconSource} appearance="monochrome"></Icon>
               <Text size="medium" appearance="accent" emphasis="bold">
-                Add Delivery Instructions?
+                {title}
               </Text>
             </InlineLayout>
             <BlockSpacer spacing="loose" />
             <Checkbox checked={checked} onChange={handleCheckboxChange}>
-              <Text>Yes, please see details:</Text>
+              <Text>{checkboxText}</Text>
             </Checkbox>
             
             {checked && (
               <>
                 <BlockSpacer spacing="loose" />
                 <TextField
-                  label="Add Your Delivery Instructions"
+                  label={textFieldLabel}
                   multiline={3}
                   onChange={(value) => {
                     // Apply the change to the metafield

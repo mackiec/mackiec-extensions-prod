@@ -13,6 +13,7 @@ import {
   Banner,
   useCartLines,
   useAppMetafields,
+  useSettings,
 } from "@shopify/ui-extensions-react/checkout";
 
 // Define that the extension should be rendeerd in the ShippingMethods page, after the methods
@@ -41,6 +42,20 @@ function getNextAvailableDate(disabledDateRanges) {
 }
 
 export default function Extension() {
+  // Use the merchant-defined settings to retrieve the extension's content
+  const {
+    title: merchantTitle,
+    description: merchantDescription,
+    banner_status: merchantBannerStatus,
+    icon: merchantIcon,
+  } = useSettings();
+
+  // Set default values
+  const title = merchantTitle ?? "Not going to be at home?";
+  const description = merchantDescription ?? "Yes - I'll choose a delivery date.";
+  const bannerStatus = merchantBannerStatus ?? "info";
+  const iconSource = merchantIcon ?? "truck";
+
   // Set the metafield namespace and key you want to store data to on the order
   const METAFIELD_NAMESPACE = "custom";
   const METAFIELD_KEY = "delivery_date";
@@ -147,11 +162,11 @@ export default function Extension() {
       {hasShowDatePickerMetafield === "true" && (
         <>
           <View maxInlineSize={700}>
-          <Banner status="info">
+          <Banner status={bannerStatus}>
           <InlineLayout blockAlignment="center" spacing="small100" columns={['auto', 'fill']}> 
-          <Icon source="truck" appearance="monochrome"></Icon>
+          <Icon source={iconSource} appearance="monochrome"></Icon>
           <Text size="medium" appearance="accent" emphasis="bold">
-            Not going to be at home?
+            {title}
           </Text>
           </InlineLayout>
           <BlockSpacer spacing="loose" />
@@ -160,7 +175,7 @@ export default function Extension() {
             name="showDatePicker"
             onChange={handleCheckboxChange}
           >
-            Yes - I'll choose a delivery date.
+            {description}
           </Checkbox>
           </Banner>
           </View>
