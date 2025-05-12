@@ -14,6 +14,7 @@ import {
   useCartLines,
   useAppMetafields,
   useSettings,
+  BlockStack,
 } from "@shopify/ui-extensions-react/checkout";
 
 // Define that the extension should be rendeerd in the ShippingMethods page, after the methods

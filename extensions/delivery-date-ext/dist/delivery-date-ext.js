@@ -19126,11 +19126,11 @@
   // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Banner/Banner.mjs
-  var Banner = createRemoteComponent("Banner");
-
   // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockSpacer/BlockSpacer.mjs
   var BlockSpacer = createRemoteComponent("BlockSpacer");
+
+  // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  var BlockStack = createRemoteComponent("BlockStack");
 
   // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Checkbox/Checkbox.mjs
   var Checkbox = createRemoteComponent("Checkbox");
@@ -19478,11 +19478,11 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Banner/Banner.mjs
-  var Banner2 = createRemoteReactComponent(Banner);
-
   // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockSpacer/BlockSpacer.mjs
   var BlockSpacer2 = createRemoteReactComponent(BlockSpacer);
+
+  // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  var BlockStack2 = createRemoteReactComponent(BlockStack);
 
   // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Checkbox/Checkbox.mjs
   var Checkbox2 = createRemoteReactComponent(Checkbox);
@@ -19730,12 +19730,11 @@ ${errorInfo.componentStack}`);
       return expressHandle === ((_b = deliveryGroups[0].selectedDeliveryOption) == null ? void 0 : _b.handle) ? true : false;
     };
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-      hasShowDatePickerMetafield === "true" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Banner2, { status: bannerStatus, children: [
+      hasShowDatePickerMetafield === "true" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, background: bannerStatus === "info" ? "subdued" : void 0, padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "loose", children: [
         /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { blockAlignment: "center", spacing: "small100", columns: ["auto", "fill"], children: [
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: iconSource, appearance: "monochrome" }),
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: title })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           Checkbox2,
           {
@@ -19745,7 +19744,7 @@ ${errorInfo.componentStack}`);
             children: description
           }
         )
-      ] }) }) }),
+      ] }) }) }) }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
       hasShowDatePickerMetafield === "true" && showDatePicker && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
         DatePicker2,
