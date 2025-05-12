@@ -28,10 +28,14 @@ function Extension() {
   const instructions = useInstructions();
   const applyCartLinesChange = useApplyCartLinesChange();
   const cartLine = useCartLineTarget();
-  const { text_appearance: merchantTextAppearance } = useSettings();
+  const { 
+    text_appearance: merchantTextAppearance,
+    checkbox_text: merchantCheckboxText
+  } = useSettings();
   
-  // Set default value
+  // Set default values
   const textAppearance = merchantTextAppearance ?? "subdued";
+  const checkboxText = merchantCheckboxText ?? "Yes, add custom embroidery for small fee.";
 
   // 2. Check instructions for feature availability, see https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions for details
   if (!instructions.attributes.canUpdateAttributes) {
@@ -101,7 +105,7 @@ function Extension() {
     <BlockStack padding={"base"}>
       <View>
         <Checkbox onChange={onCheckboxChange} checked={isChecked}>
-          <Text size="small">Yes, add custom embroidery for small fee.</Text>
+          <Text size="small">{checkboxText}</Text>
         </Checkbox>
       </View>
       {isChecked && (
