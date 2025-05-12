@@ -30,6 +30,9 @@ function App() {
     icon: merchantIcon,
     checkbox_text: merchantCheckboxText,
     text_field_label: merchantTextFieldLabel,
+    background_appearance: merchantBackgroundAppearance,
+    icon_appearance: merchantIconAppearance,
+    text_appearance: merchantTextAppearance,
   } = useSettings();
 
   // Set default values
@@ -39,6 +42,9 @@ function App() {
   const iconSource = merchantIcon ?? "note";
   const checkboxText = merchantCheckboxText ?? "Yes, please see details:";
   const textFieldLabel = merchantTextFieldLabel ?? "Add Your Delivery Instructions";
+  const backgroundAppearance = merchantBackgroundAppearance ?? "subdued";
+  const iconAppearance = merchantIconAppearance ?? "monochrome";
+  const textAppearance = merchantTextAppearance ?? "accent";
 
   // Set up the checkbox state
   const [checked, setChecked] = useState(false);
@@ -78,11 +84,11 @@ function App() {
   return (
     <BlockStack>
       {hasAddress2 && (
-        <View maxInlineSize={700} background={bannerStatus === "info" ? "subdued" : undefined} padding="base">
+        <View maxInlineSize={700} background={bannerStatus === "info" ? backgroundAppearance : undefined} padding="base">
           <BlockStack spacing="loose">
             <InlineLayout blockAlignment="center" spacing="small100" columns={['auto', 'fill']}> 
-              <Icon source={iconSource} appearance="monochrome"></Icon>
-              <Text size="medium" appearance="accent" emphasis="bold">
+              <Icon source={iconSource} appearance={iconAppearance}></Icon>
+              <Text size="medium" appearance={textAppearance} emphasis="bold">
                 {title}
               </Text>
             </InlineLayout>

@@ -19564,25 +19564,28 @@ ${errorInfo.componentStack}`);
   function App() {
     const {
       title: merchantTitle,
-      description: merchantDescription,
+      content: merchantContent,
       image: merchantImage,
       icon: merchantIcon,
       is_collapsible,
-      title_size
+      title_size: merchantTitleSize,
+      icon_appearance: merchantIconAppearance
     } = useSettings();
-    const title = merchantTitle != null ? merchantTitle : "Custom Title";
-    const description = merchantDescription != null ? merchantDescription : "Add an additional description";
-    const icon = merchantIcon != null ? merchantIcon : "note";
+    const title = merchantTitle != null ? merchantTitle : "Important Information";
+    const description = merchantContent != null ? merchantContent : "This is some important information about your order.";
+    const icon = merchantIcon != null ? merchantIcon : "info";
+    const titleSize = merchantTitleSize != null ? merchantTitleSize : "medium";
+    const iconAppearance = merchantIconAppearance != null ? merchantIconAppearance : "accent";
     const [openIds, setOpenIds] = (0, import_react19.useState)([]);
     const descriptionLines = description.split("\n");
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(View2, { border: "base", padding: "base", cornerRadius: "base", children: [
       is_collapsible && // Only render Disclosure if collapsible
       /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Disclosure2, { onToggle: (open) => setOpenIds(open), children: [
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Pressable2, { toggles: "content", padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { blockAlignment: "start", spacing: "base", columns: ["auto", "fill", "auto"], children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: icon, appearance: "accent" }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: icon, appearance: iconAppearance }),
           " ",
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: title_size, emphasis: "bold", children: title }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: openIds.includes("content") ? "chevronUp" : "chevronDown", appearance: "accent" })
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: titleSize, emphasis: "bold", children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: openIds.includes("content") ? "chevronUp" : "chevronDown", appearance: iconAppearance })
         ] }) }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { id: "content", padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "loose", children: [
           descriptionLines.map((line, index) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextBlock2, { size: "base", children: line }, index)),
@@ -19591,7 +19594,7 @@ ${errorInfo.componentStack}`);
       ] }),
       !is_collapsible && // Render content directly if not collapsible
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "loose", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: title_size, emphasis: "bold", children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: titleSize, emphasis: "bold", children: title }),
         descriptionLines.map((line, index) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextBlock2, { size: "base", children: line }, index)),
         merchantImage && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Image2, { source: merchantImage })
       ] }) })

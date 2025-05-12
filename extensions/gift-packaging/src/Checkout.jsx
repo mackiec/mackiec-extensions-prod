@@ -33,6 +33,10 @@ function App() {
     section_title: merchantSectionTitle,
     section_prompt: merchantSectionPrompt,
     text_field_desc: merchantTextFieldDescription,
+    background_appearance: merchantBackgroundAppearance,
+    icon_appearance: merchantIconAppearance,
+    text_appearance: merchantTextAppearance,
+    choice_text_appearance: merchantChoiceTextAppearance,
   } = useSettings();
 
   const OptionOne = merchantOptionOne ?? 'Option One';
@@ -41,6 +45,10 @@ function App() {
   const section_title = merchantSectionTitle ?? 'Section Title';
   const section_prompt = merchantSectionPrompt ?? 'Section Prompt';
   const text_field_desc = merchantTextFieldDescription ?? 'Text Field Description';
+  const backgroundAppearance = merchantBackgroundAppearance ?? "subdued";
+  const iconAppearance = merchantIconAppearance ?? "monochrome";
+  const textAppearance = merchantTextAppearance ?? "accent";
+  const choiceTextAppearance = merchantChoiceTextAppearance ?? "accent";
 
   // Define placeholder images
   const placeholderImageSilver = "https://cdn.shopify.com/s/files/1/0669/6809/2894/files/360_F_655298366_WfWIlJ1VKXesygLrYluFbDL6EdbdpuE1.png?v=1743699033"; // Placeholder for silver packaging
@@ -127,10 +135,10 @@ function App() {
   // Render the extension components
   return (
     <BlockStack>
-      <View maxInlineSize={700} background="subdued" padding="loose">
+      <View maxInlineSize={700} background={backgroundAppearance} padding="loose">
         <InlineLayout blockAlignment="center" spacing="small100" columns={['auto', 'fill']}> 
-          <Icon source="note" appearance="monochrome"></Icon>
-          <Text size="medium" appearance="accent" emphasis="bold">
+          <Icon source="note" appearance={iconAppearance}></Icon>
+          <Text size="medium" appearance={textAppearance} emphasis="bold">
             {section_title}
           </Text>
         </InlineLayout>
@@ -180,7 +188,7 @@ function App() {
               value={giftMessage?.value}
             />
             <BlockSpacer spacing="loose" />
-            <Text size="medium" appearance="accent" emphasis="bold">
+            <Text size="medium" appearance={choiceTextAppearance} emphasis="bold">
               {choice_title}
             </Text>
             <BlockSpacer spacing="loose" />

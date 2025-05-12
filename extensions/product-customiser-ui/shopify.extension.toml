@@ -14,3 +14,13 @@ type = "ui_extension"
 module = "./src/Checkout.jsx"
 target = "purchase.checkout.cart-line-item.render-after"
 
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "text_appearance"
+type = "single_line_text_field"
+name = "Text Appearance"
+description = "Choose the text appearance"
+default = "subdued"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"

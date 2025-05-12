@@ -92,3 +92,42 @@ type = "single_line_text_field"
 name = "Choice Title"
 description = "Provide an option selection prompt."
 
+[[extensions.settings.fields]]
+key = "background_appearance"
+type = "single_line_text_field"
+name = "Background Appearance"
+description = "Choose the background appearance"
+default = "subdued"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"transparent\", \"base\", \"subdued\"]"
+
+[[extensions.settings.fields]]
+key = "icon_appearance"
+type = "single_line_text_field"
+name = "Icon Appearance"
+description = "Choose the icon appearance"
+default = "monochrome"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
+
+[[extensions.settings.fields]]
+key = "text_appearance"
+type = "single_line_text_field"
+name = "Text Appearance"
+description = "Choose the text appearance"
+default = "accent"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
+
+[[extensions.settings.fields]]
+key = "choice_text_appearance"
+type = "single_line_text_field"
+name = "Choice Text Appearance"
+description = "Choose the appearance for the choice title text"
+default = "accent"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"

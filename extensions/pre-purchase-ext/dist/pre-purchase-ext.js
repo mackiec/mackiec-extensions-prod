@@ -19599,6 +19599,12 @@ ${errorInfo.componentStack}`);
     }, [filters, appMetafields]);
   }
 
+  // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
+  function useSettings() {
+    const settings = useSubscription(useApi().settings);
+    return settings;
+  }
+
   // extensions/pre-purchase-ext/src/Checkout.jsx
   var import_react21 = __toESM(require_react());
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
@@ -19607,6 +19613,8 @@ ${errorInfo.componentStack}`);
     var _a, _b;
     const { query, i18n } = useApi();
     const applyCartLinesChange = useApplyCartLinesChange();
+    const { text_appearance: merchantTextAppearance } = useSettings();
+    const textAppearance = merchantTextAppearance != null ? merchantTextAppearance : "subdued";
     const [prePurchaseProduct] = useAppMetafields();
     const [product, setProduct] = (0, import_react21.useState)(null);
     const [loading, setLoading] = (0, import_react21.useState)(false);
@@ -19688,7 +19696,7 @@ ${errorInfo.componentStack}`);
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Image2, { border: "base", borderWidth: "base", borderRadius: "loose", source: imageUrl, description: title, aspectRatio: 1 }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "none", children: [
               /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", emphasis: "strong", children: title }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { appearance: "subdued", children: renderPrice })
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { appearance: textAppearance, children: renderPrice })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
               Button2,

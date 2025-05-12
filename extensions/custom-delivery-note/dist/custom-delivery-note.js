@@ -19622,7 +19622,10 @@ ${errorInfo.componentStack}`);
       banner_status: merchantBannerStatus,
       icon: merchantIcon,
       checkbox_text: merchantCheckboxText,
-      text_field_label: merchantTextFieldLabel
+      text_field_label: merchantTextFieldLabel,
+      background_appearance: merchantBackgroundAppearance,
+      icon_appearance: merchantIconAppearance,
+      text_appearance: merchantTextAppearance
     } = useSettings();
     const title = merchantTitle != null ? merchantTitle : "Add Delivery Instructions?";
     const description = merchantDescription != null ? merchantDescription : "Provide special instructions for delivery";
@@ -19630,6 +19633,9 @@ ${errorInfo.componentStack}`);
     const iconSource = merchantIcon != null ? merchantIcon : "note";
     const checkboxText = merchantCheckboxText != null ? merchantCheckboxText : "Yes, please see details:";
     const textFieldLabel = merchantTextFieldLabel != null ? merchantTextFieldLabel : "Add Your Delivery Instructions";
+    const backgroundAppearance = merchantBackgroundAppearance != null ? merchantBackgroundAppearance : "subdued";
+    const iconAppearance = merchantIconAppearance != null ? merchantIconAppearance : "monochrome";
+    const textAppearance = merchantTextAppearance != null ? merchantTextAppearance : "accent";
     const [checked, setChecked] = (0, import_react18.useState)(false);
     const metafieldNamespace = "custom";
     const metafieldKey = "delivery_instructions";
@@ -19650,10 +19656,10 @@ ${errorInfo.componentStack}`);
         });
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: hasAddress2 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, background: bannerStatus === "info" ? "subdued" : void 0, padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "loose", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: hasAddress2 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, background: bannerStatus === "info" ? backgroundAppearance : void 0, padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "loose", children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { blockAlignment: "center", spacing: "small100", columns: ["auto", "fill"], children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: iconSource, appearance: "monochrome" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: title })
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: iconSource, appearance: iconAppearance }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: textAppearance, emphasis: "bold", children: title })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Checkbox2, { checked, onChange: handleCheckboxChange, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: checkboxText }) }),
       checked && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(

@@ -19596,6 +19596,12 @@ ${errorInfo.componentStack}`);
     return translate;
   }
 
+  // extensions/product-customiser-ui/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
+  function useSettings() {
+    const settings = useSubscription(useApi().settings);
+    return settings;
+  }
+
   // extensions/product-customiser-ui/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/instructions.mjs
   function useInstructions() {
     return useSubscription(useApi().instructions);
@@ -19611,6 +19617,8 @@ ${errorInfo.componentStack}`);
     const instructions = useInstructions();
     const applyCartLinesChange = useApplyCartLinesChange();
     const cartLine = useCartLineTarget();
+    const { text_appearance: merchantTextAppearance } = useSettings();
+    const textAppearance = merchantTextAppearance != null ? merchantTextAppearance : "subdued";
     if (!instructions.attributes.canUpdateAttributes) {
       return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Banner2, { title: "product-customiser-ui", status: "warning", children: translate("attributeChangesAreNotSupported") });
     }
@@ -19653,9 +19661,9 @@ ${errorInfo.componentStack}`);
       const result = yield applyCartLinesChange(change);
       console.log("applyCartLinesChange result", result);
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { border: "dotted", padding: "tight", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { border: "base", padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Checkbox2, { onChange: onCheckboxChange, checked: isChecked, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: "Yes, add custom embroidery for small fee." }) }) }),
-      isChecked && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(View2, { border: "base", padding: "base", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { padding: "base", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Checkbox2, { onChange: onCheckboxChange, checked: isChecked, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: "Yes, add custom embroidery for small fee." }) }) }),
+      isChecked && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(View2, { padding: "base", children: [
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           TextField2,
           {
@@ -19667,7 +19675,7 @@ ${errorInfo.componentStack}`);
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(TextBlock2, { size: "small", emphasis: "italic", appearance: "subdued", inlineAlignment: "end", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(TextBlock2, { size: "small", emphasis: "italic", appearance: textAppearance, inlineAlignment: "end", children: [
           customText.length,
           "/25"
         ] }),

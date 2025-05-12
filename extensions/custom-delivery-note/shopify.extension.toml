@@ -23,9 +23,61 @@ api_access = true
 network_access = true
 block_progress = true
 
-# [extensions.settings]
-#   [[extensions.settings.fields]]
-#   key = "banner_title"
-#   type = "single_line_text_field"
-#   name = "Banner title"
-#   description = "Enter a title for the banner"
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "title"
+type = "single_line_text_field"
+name = "Title"
+description = "Enter a title for the banner"
+default = "Add Delivery Instructions?"
+
+[[extensions.settings.fields]]
+key = "description"
+type = "single_line_text_field"
+name = "Description"
+description = "Enter a description for the banner"
+default = "Provide special instructions for delivery"
+
+[[extensions.settings.fields]]
+key = "checkbox_text"
+type = "single_line_text_field"
+name = "Checkbox Text"
+description = "Text to display next to the checkbox"
+default = "Yes, please see details:"
+
+[[extensions.settings.fields]]
+key = "text_field_label"
+type = "single_line_text_field"
+name = "Text Field Label"
+description = "Label for the text field"
+default = "Add Your Delivery Instructions"
+
+[[extensions.settings.fields]]
+key = "background_appearance"
+type = "single_line_text_field"
+name = "Background Appearance"
+description = "Choose the background appearance"
+default = "subdued"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"transparent\", \"base\", \"subdued\"]"
+
+[[extensions.settings.fields]]
+key = "icon_appearance"
+type = "single_line_text_field"
+name = "Icon Appearance"
+description = "Choose the icon appearance"
+default = "monochrome"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
+
+[[extensions.settings.fields]]
+key = "text_appearance"
+type = "single_line_text_field"
+name = "Text Appearance"
+description = "Choose the text appearance"
+default = "accent"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"

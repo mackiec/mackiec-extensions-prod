@@ -13,6 +13,7 @@ import {
   useInstructions,
   useTranslate,
   useCartLineTarget,
+  useSettings,
 } from "@shopify/ui-extensions-react/checkout";
 import { useEffect, useState } from "react";
 
@@ -27,6 +28,10 @@ function Extension() {
   const instructions = useInstructions();
   const applyCartLinesChange = useApplyCartLinesChange();
   const cartLine = useCartLineTarget();
+  const { text_appearance: merchantTextAppearance } = useSettings();
+  
+  // Set default value
+  const textAppearance = merchantTextAppearance ?? "subdued";
 
   // 2. Check instructions for feature availability, see https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions for details
   if (!instructions.attributes.canUpdateAttributes) {
@@ -93,14 +98,14 @@ function Extension() {
 
   // 8. Render a UI
   return (
-    <BlockStack border={"dotted"} padding={"tight"}>
-      <View border="base" padding="base">
+    <BlockStack padding={"base"}>
+      <View>
         <Checkbox onChange={onCheckboxChange} checked={isChecked}>
           <Text>Yes, add custom embroidery for small fee.</Text>
         </Checkbox>
       </View>
       {isChecked && (
-        <View border="base" padding="base">
+        <View padding="base">
           <TextField
             label="Your Custom Text"
             value={customText}
@@ -109,7 +114,7 @@ function Extension() {
             error={error}
           />
           <BlockSpacer spacing="loose" />
-          <TextBlock size="small" emphasis="italic" appearance="subdued" inlineAlignment="end">{customText.length}/25</TextBlock> {/* Display character count */}
+          <TextBlock size="small" emphasis="italic" appearance={textAppearance} inlineAlignment="end">{customText.length}/25</TextBlock> {/* Display character count */}
         </View>
       )}
     </BlockStack>

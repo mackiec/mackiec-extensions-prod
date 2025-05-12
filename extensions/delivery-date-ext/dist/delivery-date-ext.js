@@ -19653,12 +19653,18 @@ ${errorInfo.componentStack}`);
       title: merchantTitle,
       description: merchantDescription,
       banner_status: merchantBannerStatus,
-      icon: merchantIcon
+      icon: merchantIcon,
+      background_appearance: merchantBackgroundAppearance,
+      icon_appearance: merchantIconAppearance,
+      text_appearance: merchantTextAppearance
     } = useSettings();
     const title = merchantTitle != null ? merchantTitle : "Not going to be at home?";
     const description = merchantDescription != null ? merchantDescription : "Yes - I'll choose a delivery date.";
     const bannerStatus = merchantBannerStatus != null ? merchantBannerStatus : "info";
     const iconSource = merchantIcon != null ? merchantIcon : "truck";
+    const backgroundAppearance = merchantBackgroundAppearance != null ? merchantBackgroundAppearance : "subdued";
+    const iconAppearance = merchantIconAppearance != null ? merchantIconAppearance : "monochrome";
+    const textAppearance = merchantTextAppearance != null ? merchantTextAppearance : "accent";
     const METAFIELD_NAMESPACE = "custom";
     const METAFIELD_KEY = "delivery_date";
     const currentDate = /* @__PURE__ */ new Date();
@@ -19730,10 +19736,10 @@ ${errorInfo.componentStack}`);
       return expressHandle === ((_b = deliveryGroups[0].selectedDeliveryOption) == null ? void 0 : _b.handle) ? true : false;
     };
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-      hasShowDatePickerMetafield === "true" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, background: bannerStatus === "info" ? "subdued" : void 0, padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "loose", children: [
+      hasShowDatePickerMetafield === "true" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, background: bannerStatus === "info" ? backgroundAppearance : void 0, padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "loose", children: [
         /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { blockAlignment: "center", spacing: "small100", columns: ["auto", "fill"], children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: iconSource, appearance: "monochrome" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: title })
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: iconSource, appearance: iconAppearance }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: textAppearance, emphasis: "bold", children: title })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           Checkbox2,

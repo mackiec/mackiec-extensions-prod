@@ -21,17 +21,20 @@ function App() {
   // Use the merchant-defined settings to retrieve the extension's content
   const { 
     title: merchantTitle, 
-    description: merchantDescription, 
+    content: merchantContent, 
     image: merchantImage, 
     icon: merchantIcon, 
     is_collapsible,
-    title_size,
+    title_size: merchantTitleSize,
+    icon_appearance: merchantIconAppearance,
   } = useSettings();
 
   // Set default values
-  const title = merchantTitle ?? 'Custom Title';
-  const description = merchantDescription ?? 'Add an additional description';
-  const icon = merchantIcon ?? 'note'; // Default icon
+  const title = merchantTitle ?? 'Important Information';
+  const description = merchantContent ?? 'This is some important information about your order.';
+  const icon = merchantIcon ?? 'info'; // Default icon
+  const titleSize = merchantTitleSize ?? 'medium';
+  const iconAppearance = merchantIconAppearance ?? 'accent';
 
   // State to control the open state of the disclosure
   const [openIds, setOpenIds] = useState([]);
@@ -46,11 +49,11 @@ function App() {
         <Disclosure onToggle={(open) => setOpenIds(open)}>
           <Pressable toggles="content" padding="base">
             <InlineLayout blockAlignment="start" spacing="base" columns={['auto', 'fill', 'auto']}>
-              <Icon source={icon} appearance="accent"/> {/* Use the selected icon */}
-              <Text size={title_size} emphasis="bold">
+              <Icon source={icon} appearance={iconAppearance}/> {/* Use the selected icon */}
+              <Text size={titleSize} emphasis="bold">
                 {title}
               </Text>
-              <Icon source={openIds.includes('content') ? "chevronUp" : "chevronDown"} appearance="accent" />
+              <Icon source={openIds.includes('content') ? "chevronUp" : "chevronDown"} appearance={iconAppearance} />
             </InlineLayout>
           </Pressable>
           <View id="content" padding="base">
@@ -68,7 +71,7 @@ function App() {
       {!is_collapsible && ( // Render content directly if not collapsible
         <View padding="base">
           <BlockStack spacing="loose">
-            <Text size={title_size} emphasis="bold">
+            <Text size={titleSize} emphasis="bold">
               {title}
             </Text>
             {descriptionLines.map((line, index) => (

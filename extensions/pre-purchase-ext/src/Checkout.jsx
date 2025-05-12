@@ -14,6 +14,7 @@ import {
   useAppMetafields,
   useApplyCartLinesChange,
   useCartLines,
+  useSettings,
 } from "@shopify/ui-extensions-react/checkout";
 import { useEffect, useState } from "react";
 
@@ -25,6 +26,11 @@ function Extension() {
   const { query, i18n } = useApi();
   // Get a reference to the function that will apply changes to the cart lines from the imported hook
   const applyCartLinesChange = useApplyCartLinesChange();
+  // Get the text appearance setting
+  const { text_appearance: merchantTextAppearance } = useSettings();
+  
+  // Set default value
+  const textAppearance = merchantTextAppearance ?? "subdued";
 
   // get passed in metafield
   const [prePurchaseProduct] = useAppMetafields();
@@ -153,7 +159,7 @@ function Extension() {
             <Text size="medium" emphasis="strong">
               {title}
             </Text>
-            <Text appearance="subdued">{renderPrice}</Text>
+            <Text appearance={textAppearance}>{renderPrice}</Text>
           </BlockStack>
           <Button
             kind="secondary"

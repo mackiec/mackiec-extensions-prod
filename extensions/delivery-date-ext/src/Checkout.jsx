@@ -49,6 +49,9 @@ export default function Extension() {
     description: merchantDescription,
     banner_status: merchantBannerStatus,
     icon: merchantIcon,
+    background_appearance: merchantBackgroundAppearance,
+    icon_appearance: merchantIconAppearance,
+    text_appearance: merchantTextAppearance,
   } = useSettings();
 
   // Set default values
@@ -56,6 +59,9 @@ export default function Extension() {
   const description = merchantDescription ?? "Yes - I'll choose a delivery date.";
   const bannerStatus = merchantBannerStatus ?? "info";
   const iconSource = merchantIcon ?? "truck";
+  const backgroundAppearance = merchantBackgroundAppearance ?? "subdued";
+  const iconAppearance = merchantIconAppearance ?? "monochrome";
+  const textAppearance = merchantTextAppearance ?? "accent";
 
   // Set the metafield namespace and key you want to store data to on the order
   const METAFIELD_NAMESPACE = "custom";
@@ -163,11 +169,11 @@ export default function Extension() {
       {hasShowDatePickerMetafield === "true" && (
         <>
           <BlockStack>
-            <View maxInlineSize={700} background={bannerStatus === "info" ? "subdued" : undefined} padding="base">
+            <View maxInlineSize={700} background={bannerStatus === "info" ? backgroundAppearance : undefined} padding="base">
               <BlockStack spacing="loose">
                 <InlineLayout blockAlignment="center" spacing="small100" columns={['auto', 'fill']}> 
-                  <Icon source={iconSource} appearance="monochrome"></Icon>
-                  <Text size="medium" appearance="accent" emphasis="bold">
+                  <Icon source={iconSource} appearance={iconAppearance}></Icon>
+                  <Text size="medium" appearance={textAppearance} emphasis="bold">
                     {title}
                   </Text>
                 </InlineLayout>

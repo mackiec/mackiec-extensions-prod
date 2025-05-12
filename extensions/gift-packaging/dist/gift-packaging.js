@@ -19641,7 +19641,11 @@ ${errorInfo.componentStack}`);
       choice_title: merchantChoiceTitle,
       section_title: merchantSectionTitle,
       section_prompt: merchantSectionPrompt,
-      text_field_desc: merchantTextFieldDescription
+      text_field_desc: merchantTextFieldDescription,
+      background_appearance: merchantBackgroundAppearance,
+      icon_appearance: merchantIconAppearance,
+      text_appearance: merchantTextAppearance,
+      choice_text_appearance: merchantChoiceTextAppearance
     } = useSettings();
     const OptionOne = merchantOptionOne != null ? merchantOptionOne : "Option One";
     const OptionTwo = merchantOptionTwo != null ? merchantOptionTwo : "Option Two";
@@ -19649,6 +19653,10 @@ ${errorInfo.componentStack}`);
     const section_title = merchantSectionTitle != null ? merchantSectionTitle : "Section Title";
     const section_prompt = merchantSectionPrompt != null ? merchantSectionPrompt : "Section Prompt";
     const text_field_desc = merchantTextFieldDescription != null ? merchantTextFieldDescription : "Text Field Description";
+    const backgroundAppearance = merchantBackgroundAppearance != null ? merchantBackgroundAppearance : "subdued";
+    const iconAppearance = merchantIconAppearance != null ? merchantIconAppearance : "monochrome";
+    const textAppearance = merchantTextAppearance != null ? merchantTextAppearance : "accent";
+    const choiceTextAppearance = merchantChoiceTextAppearance != null ? merchantChoiceTextAppearance : "accent";
     const placeholderImageSilver = "https://cdn.shopify.com/s/files/1/0669/6809/2894/files/360_F_655298366_WfWIlJ1VKXesygLrYluFbDL6EdbdpuE1.png?v=1743699033";
     const placeholderImageGold = "https://cdn.shopify.com/s/files/1/0669/6809/2894/files/photo-1545873509-33e944ca7655.png?v=1743699027";
     const [checked, setChecked] = (0, import_react23.useState)(false);
@@ -19716,10 +19724,10 @@ ${errorInfo.componentStack}`);
         value: packagingOption
       });
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(View2, { maxInlineSize: 700, background: "subdued", padding: "loose", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(View2, { maxInlineSize: 700, background: backgroundAppearance, padding: "loose", children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { blockAlignment: "center", spacing: "small100", columns: ["auto", "fill"], children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: "note", appearance: "monochrome" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: section_title })
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: "note", appearance: iconAppearance }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: textAppearance, emphasis: "bold", children: section_title })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Checkbox2, { checked, onChange: handleCheckboxChange, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: section_prompt }) }),
@@ -19772,7 +19780,7 @@ ${errorInfo.componentStack}`);
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: choice_title }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: choiceTextAppearance, emphasis: "bold", children: choice_title }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(InlineStack2, { spacing: "loose", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
           ChoiceList2,

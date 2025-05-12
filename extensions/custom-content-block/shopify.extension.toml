@@ -6,86 +6,52 @@
 api_version = "2024-07"
 
 [[extensions]]
-type = "ui_extension"
 name = "Custom Content Block"
 handle = "custom-content-block"
+type = "ui_extension"
 
-# Controls where in Shopify your extension will be injected,
-# and the file that contains your extension’s source code. Learn more:
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/targets-overview
 [[extensions.targeting]]
+module = "./src/Checkout.jsx"
 target = "purchase.checkout.block.render"
-module = "./src/Checkout.jsx"
-export = "checkoutBlock"
-[[extensions.targeting]]
-target = "purchase.checkout.cart-line-item.render-after"
-module = "./src/Checkout.jsx"
-export = "checkoutBlock"
-
-[extensions.capabilities]
-# Gives your extension access to directly query Shopify’s storefront API.
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
-api_access = true
-
-# Gives your extension access to make external network calls, using the
-# JavaScript `fetch()` API. Learn more:
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
-network_access = false
-
-# Loads metafields on checkout resources, including the cart,
-# products, customers, and more. Learn more:
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
-
-# [[extensions.metafields]]
-# namespace = "custom"
-# key = "defintion"
-
-# Defines settings that will be collected from merchants installing
-# your extension. Learn more:
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
 
 [extensions.settings]
-
-[[extensions.settings.fields]]
-key = "is_collapsible"
-type = "boolean"
-name = "Is Collapsible"
-description = "Determine if the component can be collapsed."
-
 [[extensions.settings.fields]]
 key = "title"
 type = "single_line_text_field"
-name = "Section Title"
-description = "Enter a title for the section."
+name = "Title"
+description = "Enter a title for the content block"
+default = "Important Information"
 
 [[extensions.settings.fields]]
-key = "title_size"
-type = "single_line_text_field"
-name = "Title Sizing"
-description = "Choose a size for the title."
-
-[[extensions.settings.fields.validations]]
-name = "choices"
-value = '["extraSmall", "small", "base", "large", "extraLarge", "medium"]'
-
-[[extensions.settings.fields]]
-key = "description"
+key = "content"
 type = "multi_line_text_field"
-name = "Section Content"
-description = "Provide your text content."
-
-[[extensions.settings.fields]]
-key = "image"
-type = "single_line_text_field"
-name = "Image to Display"
-description = "Provide an image URL to display."
+name = "Content"
+description = "Enter the content for the block"
+default = "This is some important information about your order."
 
 [[extensions.settings.fields]]
 key = "icon"
 type = "single_line_text_field"
-name = "Icon Selection"
-description = "Select an icon to display."
+name = "Icon"
+description = "Choose an icon for the content block"
+default = "info"
 
-[[extensions.settings.fields.validations]]
-name = "choices"
-value = '["arrowLeft", "arrowRight", "arrowUp", "arrowUpRight", "arrowDown", "bag", "bullet", "calendar", "camera", "caretDown", "cart", "cashDollar", "categories", "checkmark", "chevronLeft", "chevronRight", "chevronUp", "chevronDown", "clock", "close", "creditCard", "critical", "delete", "delivered", "delivery", "disabled", "discount", "email", "error", "errorFill", "external", "filter", "geolocation", "gift", "giftFill", "grid", "hamburger", "hollowCircle", "horizontalDots", "image", "info", "infoFill", "list", "lock", "magnify", "map", "marker", "minus", "mobile", "note", "orderBox", "pen", "plus", "profile", "question", "questionFill", "reorder", "return", "savings", "settings", "star", "starFill", "starHalf", "store", "success", "truck", "upload", "verticalDots", "warning", "warningFill"]'
+[[extensions.settings.fields]]
+key = "title_size"
+type = "single_line_text_field"
+name = "Title Size"
+description = "Choose the title size"
+default = "medium"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"small\", \"medium\", \"large\"]"
+
+[[extensions.settings.fields]]
+key = "icon_appearance"
+type = "single_line_text_field"
+name = "Icon Appearance"
+description = "Choose the icon appearance"
+default = "accent"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"

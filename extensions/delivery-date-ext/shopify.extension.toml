@@ -44,9 +44,47 @@ key = "delivery_date"
 # your extension. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
 
-# [extensions.settings]
-# [[extensions.settings.fields]]
-# key = "banner_title"
-# type = "single_line_text_field"
-# name = "Banner title"
-# description = "Enter a title for the banner"
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "title"
+type = "single_line_text_field"
+name = "Title"
+description = "Enter a title for the banner"
+default = "Not going to be at home?"
+
+[[extensions.settings.fields]]
+key = "description"
+type = "single_line_text_field"
+name = "Description"
+description = "Enter a description for the banner"
+default = "Yes - I'll choose a delivery date."
+
+[[extensions.settings.fields]]
+key = "background_appearance"
+type = "single_line_text_field"
+name = "Background Appearance"
+description = "Choose the background appearance"
+default = "subdued"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"transparent\", \"base\", \"subdued\"]"
+
+[[extensions.settings.fields]]
+key = "icon_appearance"
+type = "single_line_text_field"
+name = "Icon Appearance"
+description = "Choose the icon appearance"
+default = "monochrome"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
+
+[[extensions.settings.fields]]
+key = "text_appearance"
+type = "single_line_text_field"
+name = "Text Appearance"
+description = "Choose the text appearance"
+default = "accent"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"

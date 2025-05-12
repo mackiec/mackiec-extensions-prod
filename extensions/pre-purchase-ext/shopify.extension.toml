@@ -6,43 +6,21 @@
 api_version = "2024-07"
 
 [[extensions]]
-type = "ui_extension"
-name = "Pre-Purchase Upsell"
+name = "Pre-Purchase Extension"
 handle = "pre-purchase-ext"
-
-# Controls where in Shopify your extension will be injected,
-# and the file that contains your extension's source code. Learn more:
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/targets-overview
+type = "ui_extension"
 
 [[extensions.targeting]]
 module = "./src/Checkout.jsx"
 target = "purchase.checkout.block.render"
 
-[extensions.capabilities]
-# Gives your extension access to directly query Shopify's storefront API.
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
-api_access = true
-
-# Loads metafields on checkout resources, including the cart,
-# products, customers, and more. Learn more:
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
-
-[[extensions.metafields]]
-namespace = "checkout-ext"
-key = "pre-purchase-product"
-
-# Defines settings that will be collected from merchants installing
-# your extension. Learn more:
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
-
-# [extensions.settings]
-# [[extensions.settings.fields]]
-# key = "banner_title"
-# type = "single_line_text_field"
-# name = "Banner title"
-# description = "Enter a title for the banner"
-
-# Gives your extension access to make external network calls, using the
-# JavaScript `fetch()` API. Learn more:
-# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
-# network_access = true
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "text_appearance"
+type = "single_line_text_field"
+name = "Text Appearance"
+description = "Choose the text appearance"
+default = "subdued"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
