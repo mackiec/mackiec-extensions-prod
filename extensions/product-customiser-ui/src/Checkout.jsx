@@ -101,7 +101,7 @@ function Extension() {
     <BlockStack padding={"base"}>
       <View>
         <Checkbox onChange={onCheckboxChange} checked={isChecked}>
-          <Text>Yes, add custom embroidery for small fee.</Text>
+          <Text size="small">Yes, add custom embroidery for small fee.</Text>
         </Checkbox>
       </View>
       {isChecked && (
