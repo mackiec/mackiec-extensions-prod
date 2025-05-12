@@ -78,40 +78,36 @@ function App() {
   return (
     <BlockStack>
       {hasAddress2 && (
-        <View maxInlineSize={700}>
-          <Banner status={bannerStatus}>
+        <View maxInlineSize={700} background={bannerStatus === "info" ? "subdued" : undefined} padding="base">
+          <BlockStack spacing="loose">
             <InlineLayout blockAlignment="center" spacing="small100" columns={['auto', 'fill']}> 
               <Icon source={iconSource} appearance="monochrome"></Icon>
               <Text size="medium" appearance="accent" emphasis="bold">
                 {title}
               </Text>
             </InlineLayout>
-            <BlockSpacer spacing="loose" />
             <Checkbox checked={checked} onChange={handleCheckboxChange}>
               <Text>{checkboxText}</Text>
             </Checkbox>
             
             {checked && (
-              <>
-                <BlockSpacer spacing="loose" />
-                <TextField
-                  label={textFieldLabel}
-                  multiline={3}
-                  onChange={(value) => {
-                    // Apply the change to the metafield
-                    applyMetafieldsChange({
-                      type: "updateMetafield",
-                      namespace: metafieldNamespace,
-                      key: metafieldKey,
-                      valueType: "string",
-                      value,
-                    });
-                  }}
-                  value={deliveryInstructions?.value}
-                />
-              </>
+              <TextField
+                label={textFieldLabel}
+                multiline={3}
+                onChange={(value) => {
+                  // Apply the change to the metafield
+                  applyMetafieldsChange({
+                    type: "updateMetafield",
+                    namespace: metafieldNamespace,
+                    key: metafieldKey,
+                    valueType: "string",
+                    value,
+                  });
+                }}
+                value={deliveryInstructions?.value}
+              />
             )}
-          </Banner>
+          </BlockStack>
         </View>
       )}
     </BlockStack>

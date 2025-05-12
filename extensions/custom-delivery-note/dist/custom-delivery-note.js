@@ -19616,12 +19616,32 @@ ${errorInfo.componentStack}`);
     return useSubscription(shippingAddress);
   }
 
+  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
+  function useSettings() {
+    const settings = useSubscription(useApi().settings);
+    return settings;
+  }
+
   // extensions/custom-delivery-note/src/Checkout.jsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   var Checkout_default = reactExtension("purchase.checkout.shipping-option-list.render-after", () => {
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(App, {});
   });
   function App() {
+    const {
+      title: merchantTitle,
+      description: merchantDescription,
+      banner_status: merchantBannerStatus,
+      icon: merchantIcon,
+      checkbox_text: merchantCheckboxText,
+      text_field_label: merchantTextFieldLabel
+    } = useSettings();
+    const title = merchantTitle != null ? merchantTitle : "Add Delivery Instructions?";
+    const description = merchantDescription != null ? merchantDescription : "Provide special instructions for delivery";
+    const bannerStatus = merchantBannerStatus != null ? merchantBannerStatus : "info";
+    const iconSource = merchantIcon != null ? merchantIcon : "note";
+    const checkboxText = merchantCheckboxText != null ? merchantCheckboxText : "Yes, please see details:";
+    const textFieldLabel = merchantTextFieldLabel != null ? merchantTextFieldLabel : "Add Your Delivery Instructions";
     const [checked, setChecked] = (0, import_react20.useState)(false);
     const metafieldNamespace = "custom";
     const metafieldKey = "delivery_instructions";
@@ -19635,26 +19655,26 @@ ${errorInfo.componentStack}`);
     const handleCheckboxChange = (isChecked) => {
       setChecked(isChecked);
       if (!isChecked) {
-        updateMetafield({
+        applyMetafieldsChange({
           type: "removeMetafield",
-          namespace: METAFIELD_NAMESPACE,
-          key: METAFIELD_KEY
+          namespace: metafieldNamespace,
+          key: metafieldKey
         });
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: hasAddress2 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Banner2, { status: "info", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: hasAddress2 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Banner2, { status: bannerStatus, children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { blockAlignment: "center", spacing: "small100", columns: ["auto", "fill"], children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: "note", appearance: "monochrome" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: "Add Delivery Instructions?" })
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: iconSource, appearance: "monochrome" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: title })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Checkbox2, { checked, onChange: handleCheckboxChange, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: "Yes, please see details:" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Checkbox2, { checked, onChange: handleCheckboxChange, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: checkboxText }) }),
       checked && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           TextField2,
           {
-            label: "Add Your Delivery Instructions",
+            label: textFieldLabel,
             multiline: 3,
             onChange: (value) => {
               applyMetafieldsChange({

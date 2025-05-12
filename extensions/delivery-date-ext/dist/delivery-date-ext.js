@@ -19624,6 +19624,12 @@ ${errorInfo.componentStack}`);
     }, [filters, appMetafields]);
   }
 
+  // extensions/delivery-date-ext/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
+  function useSettings() {
+    const settings = useSubscription(useApi().settings);
+    return settings;
+  }
+
   // extensions/delivery-date-ext/src/Checkout.jsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   reactExtension("purchase.checkout.shipping-option-list.render-after", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {}));
@@ -19643,6 +19649,16 @@ ${errorInfo.componentStack}`);
     return formatDate(nextAvailableDate);
   }
   function Extension() {
+    const {
+      title: merchantTitle,
+      description: merchantDescription,
+      banner_status: merchantBannerStatus,
+      icon: merchantIcon
+    } = useSettings();
+    const title = merchantTitle != null ? merchantTitle : "Not going to be at home?";
+    const description = merchantDescription != null ? merchantDescription : "Yes - I'll choose a delivery date.";
+    const bannerStatus = merchantBannerStatus != null ? merchantBannerStatus : "info";
+    const iconSource = merchantIcon != null ? merchantIcon : "truck";
     const METAFIELD_NAMESPACE = "custom";
     const METAFIELD_KEY = "delivery_date";
     const currentDate = /* @__PURE__ */ new Date();
@@ -19714,10 +19730,10 @@ ${errorInfo.componentStack}`);
       return expressHandle === ((_b = deliveryGroups[0].selectedDeliveryOption) == null ? void 0 : _b.handle) ? true : false;
     };
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-      hasShowDatePickerMetafield === "true" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Banner2, { status: "info", children: [
+      hasShowDatePickerMetafield === "true" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Banner2, { status: bannerStatus, children: [
         /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { blockAlignment: "center", spacing: "small100", columns: ["auto", "fill"], children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: "truck", appearance: "monochrome" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: "Not going to be at home?" })
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: iconSource, appearance: "monochrome" }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: "accent", emphasis: "bold", children: title })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
@@ -19726,7 +19742,7 @@ ${errorInfo.componentStack}`);
             id: "showDatePicker",
             name: "showDatePicker",
             onChange: handleCheckboxChange,
-            children: "Yes - I'll choose a delivery date."
+            children: description
           }
         )
       ] }) }) }),

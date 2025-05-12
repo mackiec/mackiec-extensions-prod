@@ -161,25 +161,25 @@ export default function Extension() {
     <>
       {hasShowDatePickerMetafield === "true" && (
         <>
-          <View maxInlineSize={700}>
-          <Banner status={bannerStatus}>
-          <InlineLayout blockAlignment="center" spacing="small100" columns={['auto', 'fill']}> 
-          <Icon source={iconSource} appearance="monochrome"></Icon>
-          <Text size="medium" appearance="accent" emphasis="bold">
-            {title}
-          </Text>
-          </InlineLayout>
-          <BlockSpacer spacing="loose" />
-          <Checkbox
-            id="showDatePicker"
-            name="showDatePicker"
-            onChange={handleCheckboxChange}
-          >
-            {description}
-          </Checkbox>
-          </Banner>
-          </View>
-          
+          <BlockStack>
+            <View maxInlineSize={700} background={bannerStatus === "info" ? "subdued" : undefined} padding="base">
+              <BlockStack spacing="loose">
+                <InlineLayout blockAlignment="center" spacing="small100" columns={['auto', 'fill']}> 
+                  <Icon source={iconSource} appearance="monochrome"></Icon>
+                  <Text size="medium" appearance="accent" emphasis="bold">
+                    {title}
+                  </Text>
+                </InlineLayout>
+                <Checkbox
+                  id="showDatePicker"
+                  name="showDatePicker"
+                  onChange={handleCheckboxChange}
+                >
+                  {description}
+                </Checkbox>
+              </BlockStack>
+            </View>
+          </BlockStack>
         </>
       )}
       <BlockSpacer spacing="loose" />
@@ -189,7 +189,6 @@ export default function Extension() {
           disabled={disableDateRanges}
           onChange={handleDateChange}
         />
-        
       )}
     </>
   );
