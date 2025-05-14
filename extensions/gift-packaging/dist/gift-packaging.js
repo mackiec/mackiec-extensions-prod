@@ -1145,7 +1145,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect2(create, deps) {
+          function useEffect3(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1928,7 +1928,7 @@
           exports.useContext = useContext3;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect2;
+          exports.useEffect = useEffect3;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -19663,6 +19663,9 @@ ${errorInfo.componentStack}`);
     const [senderName, setSenderName] = (0, import_react23.useState)("");
     const [recipientName, setRecipientName] = (0, import_react23.useState)("");
     const [packagingOption, setPackagingOption] = (0, import_react23.useState)("gold");
+    const [senderHasContent, setSenderHasContent] = (0, import_react23.useState)(false);
+    const [recipientHasContent, setRecipientHasContent] = (0, import_react23.useState)(false);
+    const [messageHasContent, setMessageHasContent] = (0, import_react23.useState)(false);
     const metafieldNamespace = "custom";
     const giftMessageKey = "gift_message";
     const senderNameKey = "sender_name";
@@ -19672,7 +19675,31 @@ ${errorInfo.componentStack}`);
       namespace: metafieldNamespace,
       key: giftMessageKey
     });
+    const senderNameMetafield = useMetafield({
+      namespace: metafieldNamespace,
+      key: senderNameKey
+    });
+    const recipientNameMetafield = useMetafield({
+      namespace: metafieldNamespace,
+      key: recipientNameKey
+    });
     const applyMetafieldsChange = useApplyMetafieldsChange();
+    (0, import_react23.useEffect)(() => {
+      if (giftMessage == null ? void 0 : giftMessage.value) {
+        setMessageHasContent(giftMessage.value.length > 0);
+      }
+      if (senderNameMetafield == null ? void 0 : senderNameMetafield.value) {
+        setSenderName(senderNameMetafield.value);
+        setSenderHasContent(senderNameMetafield.value.length > 0);
+      }
+      if (recipientNameMetafield == null ? void 0 : recipientNameMetafield.value) {
+        setRecipientName(recipientNameMetafield.value);
+        setRecipientHasContent(recipientNameMetafield.value.length > 0);
+      }
+      if ((giftMessage == null ? void 0 : giftMessage.value) || (senderNameMetafield == null ? void 0 : senderNameMetafield.value) || (recipientNameMetafield == null ? void 0 : recipientNameMetafield.value)) {
+        setChecked(true);
+      }
+    }, [giftMessage, senderNameMetafield, recipientNameMetafield]);
     const handleCheckboxChange = (isChecked) => {
       setChecked(isChecked);
       if (!isChecked) {
@@ -19699,6 +19726,9 @@ ${errorInfo.componentStack}`);
         setSenderName("");
         setRecipientName("");
         setPackagingOption("gold");
+        setSenderHasContent(false);
+        setRecipientHasContent(false);
+        setMessageHasContent(false);
       }
     };
     const updateMetafields = () => {
@@ -19737,27 +19767,45 @@ ${errorInfo.componentStack}`);
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
             TextField2,
             {
-              label: "Sender's Name",
-              placeholder: "Enter sender's name",
+              label: senderHasContent ? "" : "Sender's Name",
               maxLength: 25,
               onChange: (value) => {
                 setSenderName(value);
-                updateMetafields();
+                applyMetafieldsChange({
+                  type: "updateMetafield",
+                  namespace: metafieldNamespace,
+                  key: senderNameKey,
+                  valueType: "string",
+                  value
+                });
+                setSenderHasContent(value !== "" && value.length > 0);
               },
-              value: senderName
+              value: senderName,
+              onInput: (value) => {
+                setSenderHasContent(value !== "" && value.length > 0);
+              }
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
             TextField2,
             {
-              label: "Recipient's Name",
-              placeholder: "Enter recipient's name",
+              label: recipientHasContent ? "" : "Recipient's Name",
               maxLength: 25,
               onChange: (value) => {
                 setRecipientName(value);
-                updateMetafields();
+                applyMetafieldsChange({
+                  type: "updateMetafield",
+                  namespace: metafieldNamespace,
+                  key: recipientNameKey,
+                  valueType: "string",
+                  value
+                });
+                setRecipientHasContent(value !== "" && value.length > 0);
               },
-              value: recipientName
+              value: recipientName,
+              onInput: (value) => {
+                setRecipientHasContent(value !== "" && value.length > 0);
+              }
             }
           )
         ] }),
@@ -19765,8 +19813,9 @@ ${errorInfo.componentStack}`);
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           TextField2,
           {
-            label: text_field_desc,
+            label: messageHasContent ? "" : text_field_desc,
             multiline: 3,
+            maxLength: 100,
             onChange: (value) => {
               applyMetafieldsChange({
                 type: "updateMetafield",
@@ -19775,8 +19824,12 @@ ${errorInfo.componentStack}`);
                 valueType: "string",
                 value
               });
+              setMessageHasContent(value !== "" && value.length > 0);
             },
-            value: giftMessage == null ? void 0 : giftMessage.value
+            value: giftMessage == null ? void 0 : giftMessage.value,
+            onInput: (value) => {
+              setMessageHasContent(value !== "" && value.length > 0);
+            }
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockSpacer2, { spacing: "loose" }),

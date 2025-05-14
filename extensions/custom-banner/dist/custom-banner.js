@@ -2430,9 +2430,9 @@
         module.exports = function $$$reconciler($$$hostConfig) {
           var exports2 = {};
           "use strict";
-          var React2 = require_react();
+          var React = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -6228,7 +6228,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React2.Component().refs;
+          var emptyRefsObject = new React.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -17537,7 +17537,7 @@
       if (true) {
         (function() {
           "use strict";
-          var React2 = require_react();
+          var React = require_react();
           var REACT_ELEMENT_TYPE = Symbol.for("react.element");
           var REACT_PORTAL_TYPE = Symbol.for("react.portal");
           var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -17563,7 +17563,7 @@
             }
             return null;
           }
-          var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function error(format) {
             {
               {
@@ -18435,9 +18435,6 @@
     }
   });
 
-  // extensions/custom-banner/src/Checkout.jsx
-  var import_react12 = __toESM(require_react());
-
   // node_modules/@remote-ui/rpc/build/esm/memory.mjs
   function isBasicObject(value) {
     if (value == null || typeof value !== "object") return false;
@@ -19132,6 +19129,9 @@
   // extensions/custom-banner/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/TextBlock/TextBlock.mjs
   var TextBlock = createRemoteComponent("TextBlock");
 
+  // extensions/custom-banner/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
+  var View = createRemoteComponent("View");
+
   // extensions/custom-banner/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react6 = __toESM(require_react(), 1);
 
@@ -19519,12 +19519,19 @@ ${errorInfo.componentStack}`);
   var checkoutBlock = reactExtension("purchase.checkout.block.render", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(App, {}));
   var deliveryAddress = reactExtension("purchase.checkout.delivery-address.render-before", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(App, {}));
   function App() {
-    const { title: merchantTitle, description: merchantDescription, collapsible: setCollapsible, status: merchantStatus } = useSettings();
+    const {
+      title: merchantTitle,
+      description: merchantDescription,
+      collapsible: setCollapsible,
+      status: merchantStatus,
+      description_size: merchantDescriptionSize
+    } = useSettings();
     const status = merchantStatus != null ? merchantStatus : "info";
-    const title = merchantTitle != null ? merchantTitle : "Demo Custom Banner";
-    const description = merchantDescription != null ? merchantDescription : null;
+    const title = merchantTitle != null ? merchantTitle : "Banner Title";
+    const description = merchantDescription != null ? merchantDescription : "Your custom description goes here.";
     const collapsible = setCollapsible != null ? setCollapsible : true;
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Banner2, { title, status, collapsible, children: description && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextBlock2, { children: description }) });
+    const descriptionSize = merchantDescriptionSize != null ? merchantDescriptionSize : "base";
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Banner2, { status, collapsible, title, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View, { padding: "none", children: description && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextBlock2, { size: descriptionSize, children: description }) }) });
   }
 })();
 //# sourceMappingURL=custom-banner.js.map

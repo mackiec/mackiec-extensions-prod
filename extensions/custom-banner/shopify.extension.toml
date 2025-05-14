@@ -54,11 +54,13 @@ network_access = false
   type = "single_line_text_field"
   name = "Banner title"
   description = "Enter a title for the banner."
+
   [[extensions.settings.fields]]
   key = "description"
   type = "multi_line_text_field"
   name = "Banner description"
   description = "Enter a description for the banner."
+
   [[extensions.settings.fields]]
   key = "status"
   type = "single_line_text_field"
@@ -66,21 +68,12 @@ network_access = false
     [[extensions.settings.fields.validations]]
     name = "choices"
     value = "[\"info\", \"success\", \"warning\", \"critical\"]"
+
   [[extensions.settings.fields]]
   key = "collapsible"
   type = "boolean"
   name = "Show collapsible description."
   description = "Display controls to expand or collapse the banner description."
-
-  [[extensions.settings.fields]]
-  key = "title_size"
-  type = "single_line_text_field"
-  name = "Title Size"
-  description = "Choose the size for the banner title"
-  default = "medium"
-    [[extensions.settings.fields.validations]]
-    name = "choices"
-    value = "[\"small\", \"medium\", \"large\", \"extraLarge\"]"
 
   [[extensions.settings.fields]]
   key = "description_size"
@@ -90,4 +83,4 @@ network_access = false
   default = "base"
     [[extensions.settings.fields.validations]]
     name = "choices"
-    value = "[\"small\", \"base\", \"medium\", \"large\"]"
+    value = "[\"base\", \"small\", \"medium\", \"large\"]"

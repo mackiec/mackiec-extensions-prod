@@ -152,7 +152,6 @@ function App() {
             <InlineLayout spacing="tight">
               <TextField
                 label="Sender's Name"
-                placeholder="Enter sender's name"
                 maxLength={25}
                 onChange={(value) => {
                   setSenderName(value);
@@ -162,7 +161,6 @@ function App() {
               />
               <TextField
                 label="Recipient's Name"
-                placeholder="Enter recipient's name"
                 maxLength={25}
                 onChange={(value) => {
                   setRecipientName(value);
@@ -175,6 +173,7 @@ function App() {
             <TextField
               label={text_field_desc}
               multiline={3}
+              maxLength={100}
               onChange={(value) => {
                 // Apply the change to the metafield
                 applyMetafieldsChange({

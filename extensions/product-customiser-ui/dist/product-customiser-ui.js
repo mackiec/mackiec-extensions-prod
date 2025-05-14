@@ -19617,8 +19617,12 @@ ${errorInfo.componentStack}`);
     const instructions = useInstructions();
     const applyCartLinesChange = useApplyCartLinesChange();
     const cartLine = useCartLineTarget();
-    const { text_appearance: merchantTextAppearance } = useSettings();
+    const {
+      text_appearance: merchantTextAppearance,
+      checkbox_text: merchantCheckboxText
+    } = useSettings();
     const textAppearance = merchantTextAppearance != null ? merchantTextAppearance : "subdued";
+    const checkboxText = merchantCheckboxText != null ? merchantCheckboxText : "Yes, add custom embroidery for small fee.";
     if (!instructions.attributes.canUpdateAttributes) {
       return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Banner2, { title: "product-customiser-ui", status: "warning", children: translate("attributeChangesAreNotSupported") });
     }
@@ -19662,7 +19666,7 @@ ${errorInfo.componentStack}`);
       console.log("applyCartLinesChange result", result);
     });
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { padding: "base", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Checkbox2, { onChange: onCheckboxChange, checked: isChecked, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: "Yes, add custom embroidery for small fee." }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Checkbox2, { onChange: onCheckboxChange, checked: isChecked, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "small", children: checkboxText }) }) }),
       isChecked && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(View2, { padding: "base", children: [
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           TextField2,

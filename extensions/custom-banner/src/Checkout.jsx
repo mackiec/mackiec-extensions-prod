@@ -1,10 +1,14 @@
-import React from "react";
 import {
   reactExtension,
   Banner,
+  Text,
   TextBlock,
   useSettings,
+  BlockSpacer,
+  Heading,
+  InlineLayout,
 } from "@shopify/ui-extensions-react/checkout";
+import { View } from "@shopify/ui-extensions/checkout";
 
 // Set the entry points for the extension
 const checkoutBlock = reactExtension("purchase.checkout.block.render", () => <App />);
@@ -20,22 +24,22 @@ function App() {
     description: merchantDescription, 
     collapsible: setCollapsible, 
     status: merchantStatus,
-    title_size: merchantTitleSize,
     description_size: merchantDescriptionSize
   } = useSettings();
 
   // Set default values if a merchant didn't configure the banner in the checkout editor
   const status = merchantStatus ?? 'info';
-  const title = merchantTitle ?? 'Demo Custom Banner';
-  const description = merchantDescription ?? null;
+  const title = merchantTitle ?? 'Banner Title';
+  const description = merchantDescription ?? 'Your custom description goes here.';
   const collapsible = setCollapsible ?? true;
-  const titleSize = merchantTitleSize ?? 'medium';
   const descriptionSize = merchantDescriptionSize ?? 'base';
 
   // Render the banner
   return (
-    <Banner title={title} status={status} collapsible={collapsible} size={titleSize}>
-      {description && <TextBlock size={descriptionSize}>{description}</TextBlock>}
+    <Banner status={status} collapsible={collapsible} title={title}>
+      <View padding="none">
+          {description && <TextBlock size={descriptionSize}>{description}</TextBlock>}
+        </View>
     </Banner>
   );
 }
