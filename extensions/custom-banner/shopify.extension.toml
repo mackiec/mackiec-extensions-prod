@@ -72,3 +72,22 @@ network_access = false
   name = "Show collapsible description."
   description = "Display controls to expand or collapse the banner description."
 
+  [[extensions.settings.fields]]
+  key = "title_size"
+  type = "single_line_text_field"
+  name = "Title Size"
+  description = "Choose the size for the banner title"
+  default = "medium"
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+    value = "[\"small\", \"medium\", \"large\", \"extraLarge\"]"
+
+  [[extensions.settings.fields]]
+  key = "description_size"
+  type = "single_line_text_field"
+  name = "Description Size"
+  description = "Choose the size for the banner description"
+  default = "base"
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+    value = "[\"small\", \"base\", \"medium\", \"large\"]"

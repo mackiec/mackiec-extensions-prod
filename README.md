@@ -101,6 +101,38 @@ These extensions modify the behavior of the checkout without changing the UI:
    - Applies markups for customized products
    - Handles currency conversion
 
+## 🎨 Styling and Customization Options
+
+Many extensions in this collection support customization of appearance through their settings files. These options allow you to adjust text sizes, colors, and styles to match your store's branding.
+
+### Text Sizing Options
+
+- **title_size**: Adjust the size of titles in components
+  - Available options: "small", "medium", "large", "extraLarge" (varies by extension)
+  - Example extensions: Custom Banner, Custom Content Block
+
+- **description_size**: Adjust the size of description text
+  - Available options: "small", "base", "medium", "large"
+  - Example extension: Custom Banner
+
+### Appearance and Color Options
+
+- **background_appearance**: Change the background style of components
+  - Available options: "transparent", "base", "subdued"
+  - Example extensions: Gift Packaging, Custom Delivery Note, Delivery Date Extension
+
+- **icon_appearance**: Style icons within components
+  - Available options: "base", "accent", "decorative", "interactive", "subdued", "info", "success", "warning", "critical", "monochrome"
+  - Example extensions: Custom Content Block, Gift Packaging, Custom Delivery Note
+
+- **text_appearance**: Adjust the color and style of text
+  - Available options: "base", "accent", "decorative", "interactive", "subdued", "info", "success", "warning", "critical", "monochrome"
+  - Example extensions: Gift Packaging, Custom Delivery Note, Delivery Date Extension
+
+- **status**: Set the overall style/status of a component (primarily for banners)
+  - Available options: "info", "success", "warning", "critical"
+  - Example extension: Custom Banner
+
 ## 📚 Detailed Extension Documentation
 
 ### 🏷️ Custom Banner
@@ -113,6 +145,8 @@ A simple extension that displays a customizable banner in the checkout flow. The
 - `description`: The description text
 - `collapsible`: Whether the banner can be collapsed
 - `status`: The status/style of the banner (info, warning, error, success)
+- `title_size`: The size of the title text (small, medium, large, extraLarge)
+- `description_size`: The size of the description text (small, base, medium, large)
 
 **Usage:**
 The banner can be displayed at various points in the checkout flow. By default, it targets `purchase.checkout.block.render` and `purchase.checkout.delivery-address.render-before`.
@@ -128,7 +162,8 @@ Creates a customizable content block that can display text, images, and icons. T
 - `image`: An optional image to display
 - `icon`: An optional icon to display
 - `is_collapsible`: Whether the block can be collapsed
-- `title_size`: The size of the title text
+- `title_size`: The size of the title text (small, medium, large)
+- `icon_appearance`: The appearance style of the icon (base, accent, decorative, interactive, subdued, info, success, warning, critical, monochrome)
 
 **Usage:**
 The content block can be added to the checkout flow to provide additional information or instructions to customers.
@@ -146,13 +181,34 @@ Adds custom validation fields to the checkout process. It can validate age requi
 **Usage:**
 This extension can be used to enforce age restrictions for certain products or to collect and validate VAT numbers for business customers.
 
+### 📦 Custom Delivery Note
+
+**Description:**
+Adds delivery note functionality to the checkout. It allows customers to add special delivery instructions and is conditionally shown only when Address 2 field is populated.
+
+**Configuration Options:**
+- `title`: The title for the delivery note section
+- `description`: The description text
+- `checkbox_text`: Text to display next to the checkbox
+- `text_field_label`: Label for the text field
+- `background_appearance`: The background style (transparent, base, subdued)
+- `icon_appearance`: The appearance style of the icon (base, accent, decorative, interactive, subdued, info, success, warning, critical, monochrome)
+- `text_appearance`: The appearance style of the text (base, accent, decorative, interactive, subdued, info, success, warning, critical, monochrome)
+
+**Usage:**
+This extension adds a delivery note section to the checkout, allowing customers to provide special instructions for delivery.
+
 ### 📅 Delivery Date Extension
 
 **Description:**
 Adds a date picker to the checkout process, allowing customers to select a preferred delivery date. It checks if products have a specific metafield to determine whether to show the date picker.
 
-**Configuration:**
-The extension looks for products with the metafield `custom.show_date_picker` set to "true" to determine if the date picker should be shown.
+**Configuration Options:**
+- `title`: The title for the date picker section
+- `description`: The description text
+- `background_appearance`: The background style (transparent, base, subdued)
+- `icon_appearance`: The appearance style of the icon (base, accent, decorative, interactive, subdued, info, success, warning, critical, monochrome)
+- `text_appearance`: The appearance style of the text (base, accent, decorative, interactive, subdued, info, success, warning, critical, monochrome)
 
 **Usage:**
 This extension is rendered after the shipping options list and allows customers to select a delivery date if they won't be at home for the default delivery.
@@ -169,6 +225,10 @@ Adds gift packaging options to the checkout process. It allows customers to add 
 - `section_title`: Title for the overall section
 - `section_prompt`: Prompt text for enabling gift packaging
 - `text_field_desc`: Description for the gift message field
+- `background_appearance`: The background style (transparent, base, subdued)
+- `icon_appearance`: The appearance style of the icon (base, accent, decorative, interactive, subdued, info, success, warning, critical, monochrome)
+- `text_appearance`: The appearance style of the text (base, accent, decorative, interactive, subdued, info, success, warning, critical, monochrome)
+- `choice_text_appearance`: The appearance style for the choice title text (base, accent, decorative, interactive, subdued, info, success, warning, critical, monochrome)
 
 **Usage:**
 This extension adds a gift packaging section to the checkout, allowing customers to add gift information and select packaging preferences.
