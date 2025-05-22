@@ -32,13 +32,6 @@ description = "Enter a title for the banner"
 default = "Add Delivery Instructions?"
 
 [[extensions.settings.fields]]
-key = "description"
-type = "single_line_text_field"
-name = "Description"
-description = "Enter a description for the banner"
-default = "Provide special instructions for delivery"
-
-[[extensions.settings.fields]]
 key = "checkbox_text"
 type = "single_line_text_field"
 name = "Checkbox Text"

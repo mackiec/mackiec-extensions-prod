@@ -60,6 +60,26 @@ description = "Enter a description for the banner"
 default = "Yes - I'll choose a delivery date."
 
 [[extensions.settings.fields]]
+key = "banner_status"
+type = "single_line_text_field"
+name = "Banner Status"
+description = "Choose the banner status"
+default = "info"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"info\", \"success\", \"warning\", \"critical\"]"
+
+[[extensions.settings.fields]]
+key = "icon"
+type = "single_line_text_field"
+name = "Icon"
+description = "Choose an icon for the banner"
+default = "truck"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"arrowLeft\", \"arrowRight\", \"arrowUp\", \"arrowUpRight\", \"arrowDown\", \"bag\", \"bullet\", \"calendar\", \"camera\", \"caretDown\", \"cart\", \"cashDollar\", \"categories\", \"checkmark\", \"chevronLeft\", \"chevronRight\", \"chevronUp\", \"chevronDown\", \"clock\", \"close\", \"creditCard\", \"critical\", \"delete\", \"delivered\", \"delivery\", \"disabled\", \"discount\", \"email\", \"error\", \"errorFill\", \"external\", \"filter\", \"geolocation\", \"gift\", \"giftFill\", \"grid\", \"hamburger\", \"hollowCircle\", \"horizontalDots\", \"image\", \"info\", \"infoFill\", \"list\", \"lock\", \"magnify\", \"map\", \"marker\", \"minus\", \"mobile\", \"note\", \"orderBox\", \"pen\", \"plus\", \"profile\", \"question\", \"questionFill\", \"reorder\", \"return\", \"savings\", \"settings\", \"star\", \"starFill\", \"starHalf\", \"store\", \"success\", \"truck\", \"upload\", \"verticalDots\", \"warning\", \"warningFill\"]"
+
+[[extensions.settings.fields]]
 key = "background_appearance"
 type = "single_line_text_field"
 name = "Background Appearance"

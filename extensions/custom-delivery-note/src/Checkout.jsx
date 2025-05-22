@@ -25,7 +25,6 @@ function App() {
   // Use the merchant-defined settings to retrieve the extension's content
   const {
     title: merchantTitle,
-    description: merchantDescription,
     banner_status: merchantBannerStatus,
     icon: merchantIcon,
     checkbox_text: merchantCheckboxText,
@@ -37,7 +36,6 @@ function App() {
 
   // Set default values
   const title = merchantTitle ?? "Add Delivery Instructions?";
-  const description = merchantDescription ?? "Provide special instructions for delivery";
   const bannerStatus = merchantBannerStatus ?? "info";
   const iconSource = merchantIcon ?? "note";
   const checkboxText = merchantCheckboxText ?? "Yes, please see details:";

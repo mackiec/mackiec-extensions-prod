@@ -24,7 +24,7 @@ function App() {
     content: merchantContent, 
     image: merchantImage, 
     icon: merchantIcon, 
-    is_collapsible,
+    is_collapsible: merchantIsCollapsible,
     title_size: merchantTitleSize,
     icon_appearance: merchantIconAppearance,
   } = useSettings();
@@ -35,6 +35,7 @@ function App() {
   const icon = merchantIcon ?? 'info'; // Default icon
   const titleSize = merchantTitleSize ?? 'medium';
   const iconAppearance = merchantIconAppearance ?? 'accent';
+  const isCollapsible = merchantIsCollapsible ?? false;
 
   // State to control the open state of the disclosure
   const [openIds, setOpenIds] = useState([]);
@@ -45,7 +46,7 @@ function App() {
   // Render the block stack with text blocks inside a Disclosure
   return (
     <View border="base" padding="base" cornerRadius="base">
-      {is_collapsible && ( // Only render Disclosure if collapsible
+      {isCollapsible && ( // Only render Disclosure if collapsible
         <Disclosure onToggle={(open) => setOpenIds(open)}>
           <Pressable toggles="content" padding="base">
             <InlineLayout blockAlignment="start" spacing="base" columns={['auto', 'fill', 'auto']}>
@@ -68,18 +69,25 @@ function App() {
           </View>
         </Disclosure>
       )}
-      {!is_collapsible && ( // Render content directly if not collapsible
+      {!isCollapsible && ( // Render content directly if not collapsible
         <View padding="base">
           <BlockStack spacing="loose">
-            <Text size={titleSize} emphasis="bold">
-              {title}
-            </Text>
+            <InlineLayout blockAlignment="start" spacing="base" columns={['auto', 'fill']}>
+              <Icon source={icon} appearance={iconAppearance}/> {/* Add icon to non-collapsible view */}
+              <Text size={titleSize} emphasis="bold">
+                {title}
+              </Text>
+            </InlineLayout>
             {descriptionLines.map((line, index) => (
               <TextBlock key={index} size="base">
                 {line}
               </TextBlock>
             ))}
-            {merchantImage && <Image source={merchantImage} />}
+            {merchantImage && (
+              <BlockStack spacing="tight">
+                <Image source={merchantImage} />
+              </BlockStack>
+            )}
           </BlockStack>
         </View>
       )}

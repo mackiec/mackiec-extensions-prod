@@ -35,6 +35,9 @@ type = "single_line_text_field"
 name = "Icon"
 description = "Choose an icon for the content block"
 default = "info"
+  [[extensions.settings.fields.validations]]
+  name = "choices"
+  value = "[\"arrowLeft\", \"arrowRight\", \"arrowUp\", \"arrowUpRight\", \"arrowDown\", \"bag\", \"bullet\", \"calendar\", \"camera\", \"caretDown\", \"cart\", \"cashDollar\", \"categories\", \"checkmark\", \"chevronLeft\", \"chevronRight\", \"chevronUp\", \"chevronDown\", \"clock\", \"close\", \"creditCard\", \"critical\", \"delete\", \"delivered\", \"delivery\", \"disabled\", \"discount\", \"email\", \"error\", \"errorFill\", \"external\", \"filter\", \"geolocation\", \"gift\", \"giftFill\", \"grid\", \"hamburger\", \"hollowCircle\", \"horizontalDots\", \"image\", \"info\", \"infoFill\", \"list\", \"lock\", \"magnify\", \"map\", \"marker\", \"minus\", \"mobile\", \"note\", \"orderBox\", \"pen\", \"plus\", \"profile\", \"question\", \"questionFill\", \"reorder\", \"return\", \"savings\", \"settings\", \"star\", \"starFill\", \"starHalf\", \"store\", \"success\", \"truck\", \"upload\", \"verticalDots\", \"warning\", \"warningFill\"]"
 
 [[extensions.settings.fields]]
 key = "title_size"
@@ -55,3 +58,16 @@ default = "accent"
   [[extensions.settings.fields.validations]]
   name = "choices"
   value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
+
+[[extensions.settings.fields]]
+key = "is_collapsible"
+type = "boolean"
+name = "Make Content Collapsible"
+description = "Enable collapsible content block"
+default = false
+
+[[extensions.settings.fields]]
+key = "image"
+type = "single_line_text_field"
+name = "Image URL"
+description = "Provide an image URL to display in the content block"
