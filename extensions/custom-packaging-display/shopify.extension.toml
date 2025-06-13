@@ -1,0 +1,121 @@
+api_version = "2024-07"
+
+[[extensions]]
+type = "ui_extension"
+name = "Custom Packaging Display"
+handle = "custom-packaging-display"
+
+[[extensions.targeting]]
+target = "purchase.checkout.block.render"
+module = "./src/Checkout.jsx"
+export = "CustomPackagingDisplay"
+
+[extensions.capabilities]
+api_access = true
+network_access = false
+
+[extensions.settings]
+  [[extensions.settings.fields]]
+  key = "title"
+  type = "single_line_text_field"
+  name = "Title"
+  description = "Enter a title for the packaging display (optional)."
+  
+  [[extensions.settings.fields]]
+  key = "text_size"
+  type = "single_line_text_field"
+  name = "Text Size"
+  description = "Choose the size for the text (e.g., small, base, medium, large)."
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+    value = "[\"small\", \"base\", \"medium\", \"large\"]"
+
+  [[extensions.settings.fields]]
+  key = "option1_name"
+  type = "single_line_text_field"
+  name = "Option 1 Name"
+  description = "Enter the name for packaging option 1 (must match cart attribute value)."
+
+  [[extensions.settings.fields]]
+  key = "option1_image"
+  type = "single_line_text_field"
+  name = "Option 1 Image URL"
+  description = "Enter the image URL for packaging option 1."
+
+  [[extensions.settings.fields]]
+  key = "option2_name"
+  type = "single_line_text_field"
+  name = "Option 2 Name"
+  description = "Enter the name for packaging option 2 (must match cart attribute value)."
+
+  [[extensions.settings.fields]]
+  key = "option2_image"
+  type = "single_line_text_field"
+  name = "Option 2 Image URL"
+  description = "Enter the image URL for packaging option 2."
+
+  [[extensions.settings.fields]]
+  key = "option3_name"
+  type = "single_line_text_field"
+  name = "Option 3 Name"
+  description = "Enter the name for packaging option 3 (must match cart attribute value)."
+
+  [[extensions.settings.fields]]
+  key = "option3_image"
+  type = "single_line_text_field"
+  name = "Option 3 Image URL"
+  description = "Enter the image URL for packaging option 3."
+
+  [[extensions.settings.fields]]
+  key = "packaging_section_title"
+  type = "single_line_text_field"
+  name = "Packaging Section Title"
+  description = "Title for the packaging section (default: 'Selected Packaging')"
+
+  [[extensions.settings.fields]]
+  key = "samples_section_title"
+  type = "single_line_text_field"
+  name = "Samples Section Title"
+  description = "Title for the sample products section (default: 'Sample Products')"
+
+  [[extensions.settings.fields]]
+  key = "section_title_size"
+  type = "single_line_text_field"
+  name = "Section Title Text Size"
+  description = "Text size for section titles (e.g., small, base, medium, large). Defaults to 'medium'."
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+    value = "[\"extraSmall\", \"small\", \"base\", \"medium\", \"large\"]"
+
+  [[extensions.settings.fields]]
+  key = "packaging_name_size"
+  type = "single_line_text_field"
+  name = "Packaging Name Text Size"
+  description = "Text size for the selected packaging name (e.g., small, base, medium, large). Defaults to 'medium'."
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+    value = "[\"extraSmall\", \"small\", \"base\", \"medium\", \"large\"]"
+
+  [[extensions.settings.fields]]
+  key = "product_title_size"
+  type = "single_line_text_field"
+  name = "Product Title Text Size"
+  description = "Text size for sample product titles (e.g., extraSmall, small, base). Defaults to 'extraSmall'."
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+    value = "[\"extraSmall\", \"small\", \"base\", \"medium\", \"large\"]"
+
+  [[extensions.settings.fields]]
+  key = "info_text_size"
+  type = "single_line_text_field"
+  name = "Informational Text Size"
+  description = "Text size for informational messages (e.g., loading, errors). Defaults to 'base'."
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+    value = "[\"extraSmall\", \"small\", \"base\", \"medium\", \"large\"]"
+
+  [[extensions.settings.fields]]
+  key = "gift_message_section_title"
+  type = "single_line_text_field"
+  name = "Gift Message Section Title"
+  description = "Title for the gift message section (default: 'Gift Message')"

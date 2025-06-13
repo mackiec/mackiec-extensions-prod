@@ -1,0 +1,66 @@
+{
+  "name": "Custom Packaging Display",
+  "description": "Displays the selected custom packaging option in checkout.",
+  "settings": {
+    "title": {
+      "label": "Title",
+      "description": "Enter a title for the packaging display (optional)."
+    },
+    "text_size": {
+      "label": "Text Size",
+      "description": "Choose the size for the text (e.g., small, base, medium, large)."
+    },
+    "option1_name": {
+      "label": "Option 1 Name",
+      "description": "Enter the name for packaging option 1 (must match cart attribute value)."
+    },
+    "option1_image": {
+      "label": "Option 1 Image URL",
+      "description": "Enter the image URL for packaging option 1."
+    },
+    "option2_name": {
+      "label": "Option 2 Name",
+      "description": "Enter the name for packaging option 2 (must match cart attribute value)."
+    },
+    "option2_image": {
+      "label": "Option 2 Image URL",
+      "description": "Enter the image URL for packaging option 2."
+    },
+    "option3_name": {
+      "label": "Option 3 Name",
+      "description": "Enter the name for packaging option 3 (must match cart attribute value)."
+    },
+    "option3_image": {
+      "label": "Option 3 Image URL",
+      "description": "Enter the image URL for packaging option 3."
+    },
+    "packaging_section_title": {
+      "label": "Packaging Section Title",
+      "description": "Title for the packaging section (default: 'Selected Packaging')"
+    },
+    "samples_section_title": {
+      "label": "Samples Section Title",
+      "description": "Title for the sample products section (default: 'Sample Products')"
+    },
+    "section_title_size": {
+      "label": "Section Title Text Size",
+      "description": "Text size for section titles (e.g., small, base, medium, large). Defaults to 'medium'."
+    },
+    "packaging_name_size": {
+      "label": "Packaging Name Text Size",
+      "description": "Text size for the selected packaging name (e.g., small, base, medium, large). Defaults to 'medium'."
+    },
+    "product_title_size": {
+      "label": "Product Title Text Size",
+      "description": "Text size for sample product titles (e.g., extraSmall, small, base). Defaults to 'extraSmall'."
+    },
+    "info_text_size": {
+      "label": "Informational Text Size",
+      "description": "Text size for informational messages (e.g., loading, errors). Defaults to 'base'."
+    },
+    "gift_message_section_title": {
+      "label": "Gift Message Section Title",
+      "description": "Title for the gift message section (default: 'Gift Message')"
+    }
+  }
+}
