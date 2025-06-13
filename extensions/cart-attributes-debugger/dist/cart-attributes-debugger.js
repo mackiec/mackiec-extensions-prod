@@ -1133,7 +1133,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState3(initialState) {
+          function useState2(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1161,7 +1161,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
-          function useMemo3(create, deps) {
+          function useMemo2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useMemo(create, deps);
           }
@@ -1933,10 +1933,10 @@
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
           exports.useLayoutEffect = useLayoutEffect;
-          exports.useMemo = useMemo3;
+          exports.useMemo = useMemo2;
           exports.useReducer = useReducer;
           exports.useRef = useRef2;
-          exports.useState = useState3;
+          exports.useState = useState2;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2430,9 +2430,9 @@
         module.exports = function $$$reconciler($$$hostConfig) {
           var exports2 = {};
           "use strict";
-          var React2 = require_react();
+          var React = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -6228,7 +6228,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React2.Component().refs;
+          var emptyRefsObject = new React.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -17537,7 +17537,7 @@
       if (true) {
         (function() {
           "use strict";
-          var React2 = require_react();
+          var React = require_react();
           var REACT_ELEMENT_TYPE = Symbol.for("react.element");
           var REACT_PORTAL_TYPE = Symbol.for("react.portal");
           var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -17563,7 +17563,7 @@
             }
             return null;
           }
-          var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function error(format) {
             {
               {
@@ -18435,9 +18435,6 @@
     }
   });
 
-  // extensions/custom-delivery-note/src/Checkout.jsx
-  var import_react18 = __toESM(require_react());
-
   // node_modules/@remote-ui/rpc/build/esm/memory.mjs
   function isBasicObject(value) {
     if (value == null || typeof value !== "object") return false;
@@ -19092,7 +19089,7 @@
     return [hasChanged ? normalizedNewValue : IGNORE, hotSwaps];
   }
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
+  // node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
   function createExtensionRegistrationFunction() {
     const extensionWrapper = (target, implementation) => {
       var _shopify;
@@ -19123,37 +19120,34 @@
     return extensionWrapper;
   }
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Banner/Banner.mjs
+  var Banner = createRemoteComponent("Banner");
+
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
   var BlockStack = createRemoteComponent("BlockStack");
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Checkbox/Checkbox.mjs
-  var Checkbox = createRemoteComponent("Checkbox");
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Divider/Divider.mjs
+  var Divider = createRemoteComponent("Divider");
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Icon/Icon.mjs
-  var Icon = createRemoteComponent("Icon");
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Heading/Heading.mjs
+  var Heading = createRemoteComponent("Heading");
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/InlineLayout/InlineLayout.mjs
-  var InlineLayout = createRemoteComponent("InlineLayout");
-
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
   var Text = createRemoteComponent("Text");
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/TextField/TextField.mjs
-  var TextField = createRemoteComponent("TextField");
-
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
   var View = createRemoteComponent("View");
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react6 = __toESM(require_react(), 1);
 
-  // extensions/custom-delivery-note/node_modules/@remote-ui/react/build/esm/render.mjs
+  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/render.mjs
   var import_react2 = __toESM(require_react(), 1);
 
-  // extensions/custom-delivery-note/node_modules/@remote-ui/react/build/esm/reconciler.mjs
+  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/reconciler.mjs
   var import_react_reconciler = __toESM(require_react_reconciler(), 1);
   var createReconciler = (options) => {
     var _options$primary;
@@ -19296,11 +19290,11 @@
     return hasOwnProperty.call(object, property);
   }
 
-  // extensions/custom-delivery-note/node_modules/@remote-ui/react/build/esm/context.mjs
+  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/context.mjs
   var import_react = __toESM(require_react(), 1);
   var RenderContext = /* @__PURE__ */ (0, import_react.createContext)(null);
 
-  // extensions/custom-delivery-note/node_modules/@remote-ui/react/build/esm/render.mjs
+  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/render.mjs
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var cache = /* @__PURE__ */ new WeakMap();
   var LEGACY_ROOT = 0;
@@ -19345,11 +19339,11 @@
     }), container, null, callback);
   }
 
-  // extensions/custom-delivery-note/node_modules/@remote-ui/react/build/esm/components.mjs
+  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/components.mjs
   var import_react4 = __toESM(require_react(), 1);
   var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
 
-  // extensions/custom-delivery-note/node_modules/@remote-ui/react/build/esm/hooks/render.mjs
+  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/hooks/render.mjs
   var import_react3 = __toESM(require_react(), 1);
   function useRender() {
     const render3 = (0, import_react3.useContext)(RenderContext);
@@ -19359,7 +19353,7 @@
     return render3;
   }
 
-  // extensions/custom-delivery-note/node_modules/@remote-ui/react/build/esm/components.mjs
+  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/components.mjs
   function createRemoteReactComponent(componentType, {
     fragmentProps
   } = {}) {
@@ -19422,11 +19416,11 @@
     });
   }
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
   var import_react5 = __toESM(require_react(), 1);
   var ExtensionApiContext = /* @__PURE__ */ (0, import_react5.createContext)(null);
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
   function reactExtension(target, render3) {
     return extension(target, (root, api) => __async(this, null, function* () {
@@ -19475,66 +19469,49 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Banner/Banner.mjs
+  var Banner2 = createRemoteReactComponent(Banner);
+
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
   var BlockStack2 = createRemoteReactComponent(BlockStack);
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Checkbox/Checkbox.mjs
-  var Checkbox2 = createRemoteReactComponent(Checkbox);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Divider/Divider.mjs
+  var Divider2 = createRemoteReactComponent(Divider);
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Icon/Icon.mjs
-  var Icon2 = createRemoteReactComponent(Icon);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Heading/Heading.mjs
+  var Heading2 = createRemoteReactComponent(Heading);
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/InlineLayout/InlineLayout.mjs
-  var InlineLayout2 = createRemoteReactComponent(InlineLayout);
-
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
   var Text2 = createRemoteReactComponent(Text);
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/TextField/TextField.mjs
-  var TextField2 = createRemoteReactComponent(TextField, {
-    fragmentProps: ["accessory"]
-  });
-
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/View/View.mjs
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/View/View.mjs
   var View2 = createRemoteReactComponent(View);
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
-  var import_react15 = __toESM(require_react(), 1);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
+  var import_react14 = __toESM(require_react(), 1);
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
   var CheckoutUIExtensionError = class extends Error {
     constructor(...args) {
       super(...args);
       this.name = "CheckoutUIExtensionError";
     }
   };
-  var ScopeNotGrantedError = class extends Error {
-    constructor(...args) {
-      super(...args);
-      this.name = "ScopeNotGrantedError";
-    }
-  };
-  var ExtensionHasNoMethodError = class extends Error {
-    constructor(method, target) {
-      super(`Cannot call '${method}()' on target '${target}'. The corresponding property was not found on the API.`);
-      this.name = "ExtensionHasNoMethodError";
-    }
-  };
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
   function useApi(_target) {
-    const api = (0, import_react15.useContext)(ExtensionApiContext);
+    const api = (0, import_react14.useContext)(ExtensionApiContext);
     if (api == null) {
       throw new CheckoutUIExtensionError("You can only call this hook when running as a checkout UI extension.");
     }
     return api;
   }
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/subscription.mjs
-  var import_react16 = __toESM(require_react(), 1);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/subscription.mjs
+  var import_react15 = __toESM(require_react(), 1);
   function useSubscription(subscription) {
-    const [, setValue] = (0, import_react16.useState)(subscription.current);
-    (0, import_react16.useEffect)(() => {
+    const [, setValue] = (0, import_react15.useState)(subscription.current);
+    (0, import_react15.useEffect)(() => {
       let didUnsubscribe = false;
       const checkForUpdates = (newValue) => {
         if (didUnsubscribe) {
@@ -19552,132 +19529,33 @@ ${errorInfo.componentStack}`);
     return subscription.current;
   }
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/metafields.mjs
-  var import_react17 = __toESM(require_react(), 1);
-  function useMetafields(filters) {
-    const metaFields = useSubscription(useApi().metafields);
-    return (0, import_react17.useMemo)(() => {
-      if (filters) {
-        const {
-          namespace,
-          key
-        } = filters;
-        if (!namespace) {
-          throw new CheckoutUIExtensionError("You must pass in a namespace with a key");
-        }
-        const filteredResults = metaFields.filter((metafield) => metafield.namespace === namespace && (!key || metafield.key === key));
-        return filteredResults;
-      }
-      return metaFields;
-    }, [filters, metaFields]);
-  }
-  function useApplyMetafieldsChange() {
-    const api = useApi();
-    if ("applyMetafieldChange" in api) {
-      return api.applyMetafieldChange;
-    }
-    throw new ExtensionHasNoMethodError("applyMetafieldChange", api.extension.target);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/attributes.mjs
+  function useAttributes() {
+    return useSubscription(useApi().attributes);
   }
 
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/metafield.mjs
-  function useMetafield(filters) {
-    const {
-      namespace,
-      key
-    } = filters;
-    if (!namespace || !key) {
-      throw new CheckoutUIExtensionError("You must pass in both a namespace and key");
-    }
-    const metafields = useMetafields({
-      namespace,
-      key
-    });
-    return metafields.length ? metafields[0] : void 0;
-  }
-
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/shipping-address.mjs
-  function useShippingAddress() {
-    const shippingAddress = useApi().shippingAddress;
-    if (!shippingAddress) {
-      throw new ScopeNotGrantedError("Using shipping address requires having shipping address permissions granted to your app.");
-    }
-    return useSubscription(shippingAddress);
-  }
-
-  // extensions/custom-delivery-note/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
-  function useSettings() {
-    const settings = useSubscription(useApi().settings);
-    return settings;
-  }
-
-  // extensions/custom-delivery-note/src/Checkout.jsx
+  // extensions/cart-attributes-debugger/src/Checkout.jsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  var Checkout_default = reactExtension("purchase.checkout.shipping-option-list.render-after", () => {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(App, {});
-  });
-  function App() {
-    const {
-      title: merchantTitle,
-      banner_status: merchantBannerStatus,
-      icon: merchantIcon,
-      checkbox_text: merchantCheckboxText,
-      text_field_label: merchantTextFieldLabel,
-      background_appearance: merchantBackgroundAppearance,
-      icon_appearance: merchantIconAppearance,
-      text_appearance: merchantTextAppearance
-    } = useSettings();
-    const title = merchantTitle != null ? merchantTitle : "Add Delivery Instructions?";
-    const bannerStatus = merchantBannerStatus != null ? merchantBannerStatus : "info";
-    const iconSource = merchantIcon != null ? merchantIcon : "note";
-    const checkboxText = merchantCheckboxText != null ? merchantCheckboxText : "Yes, please see details:";
-    const textFieldLabel = merchantTextFieldLabel != null ? merchantTextFieldLabel : "Add Your Delivery Instructions";
-    const backgroundAppearance = merchantBackgroundAppearance != null ? merchantBackgroundAppearance : "subdued";
-    const iconAppearance = merchantIconAppearance != null ? merchantIconAppearance : "monochrome";
-    const textAppearance = merchantTextAppearance != null ? merchantTextAppearance : "accent";
-    const [checked, setChecked] = (0, import_react18.useState)(false);
-    const metafieldNamespace = "custom";
-    const metafieldKey = "delivery_instructions";
-    const deliveryInstructions = useMetafield({
-      namespace: metafieldNamespace,
-      key: metafieldKey
-    });
-    const applyMetafieldsChange = useApplyMetafieldsChange();
-    const shippingAddress = useShippingAddress();
-    const hasAddress2 = shippingAddress && shippingAddress.address2;
-    const handleCheckboxChange = (isChecked) => {
-      setChecked(isChecked);
-      if (!isChecked) {
-        applyMetafieldsChange({
-          type: "removeMetafield",
-          namespace: metafieldNamespace,
-          key: metafieldKey
-        });
-      }
-    };
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { children: hasAddress2 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { maxInlineSize: 700, background: bannerStatus === "info" ? backgroundAppearance : void 0, padding: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "loose", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { blockAlignment: "center", spacing: "small100", columns: ["auto", "fill"], children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon2, { source: iconSource, appearance: iconAppearance }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: "medium", appearance: textAppearance, emphasis: "bold", children: title })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Checkbox2, { checked, onChange: handleCheckboxChange, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: checkboxText }) }),
-      checked && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-        TextField2,
-        {
-          label: textFieldLabel,
-          multiline: 3,
-          onChange: (value) => {
-            applyMetafieldsChange({
-              type: "updateMetafield",
-              namespace: metafieldNamespace,
-              key: metafieldKey,
-              valueType: "string",
-              value
-            });
-          },
-          value: deliveryInstructions == null ? void 0 : deliveryInstructions.value
-        }
-      )
-    ] }) }) });
+  var CartAttributesDebugger = reactExtension(
+    "purchase.checkout.block.render",
+    () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {})
+  );
+  function Extension() {
+    const attributes = useAttributes();
+    if (!attributes || attributes.length === 0) {
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Banner2, { status: "info", title: "Cart Attributes", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: "No cart attributes found." }) });
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { border: "base", padding: "base", cornerRadius: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "tight", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Heading2, { level: "2", children: "Cart Attributes Debugger" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Divider2, {}),
+      attributes.map((attribute) => /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "extraTight", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Text2, { emphasis: "bold", children: [
+          attribute.key,
+          ":"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { appearance: "subdued", children: attribute.value })
+      ] }, attribute.key))
+    ] }) });
   }
 })();
-//# sourceMappingURL=custom-delivery-note.js.map
+//# sourceMappingURL=cart-attributes-debugger.js.map
