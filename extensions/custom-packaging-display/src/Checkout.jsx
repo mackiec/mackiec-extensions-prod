@@ -235,7 +235,7 @@ function Extension() {
           {/* First grid item - No packaging selected message */}
           <View padding="base" border="base" cornerRadius="base">
             <BlockStack spacing="tight" alignment="center">
-              <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+              <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                 <Text size={info_text_size || text_size || "base"} appearance="subdued">
                   No packaging option selected
                 </Text>
@@ -247,17 +247,17 @@ function Extension() {
           <View padding="base" border="base" cornerRadius="base">
             <BlockStack spacing="tight" alignment="center">
               {isLoading ? (
-                <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                   <Text size={info_text_size || text_size || "base"} appearance="subdued">Loading sample products...</Text>
                 </BlockStack>
               ) : error ? (
-                <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                   <Text size={info_text_size || text_size || "base"} appearance="critical">{error}</Text>
                 </BlockStack>
               ) : sampleProductImages.length > 0 ? (
                 <>
                   {/* Section title */}
-                  <Text size={section_title_size || text_size || "medium"} emphasis="bold">
+                  <Text size={section_title_size || text_size || "medium"} emphasis="bold" alignment="start">
                     {samples_section_title || "Sample Products"}
                   </Text>
                   
@@ -266,7 +266,7 @@ function Extension() {
                     <Grid columns={["1fr", "1fr"]} spacing="base">
                       {sampleProductImages.slice(0, 2).map((product) => (
                         <View key={`title-${product.id}`} padding="none">
-                          <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                          <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                             <Text size={packaging_name_size || text_size || "medium"} emphasis="bold" truncate>
                               {product.title}
                             </Text>
@@ -304,11 +304,11 @@ function Extension() {
                   </Grid>
                 </>
               ) : (
-                <BlockStack spacing="none" alignment="center" inlineAlignment="center">
-                  <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                    No sample products selected
-                  </Text>
-                </BlockStack>
+                  <BlockStack spacing="none" alignment="center" inlineAlignment="start">
+                    <Text size={info_text_size || text_size || "base"} appearance="subdued">
+                      No sample products selected
+                    </Text>
+                  </BlockStack>
               )}
             </BlockStack>
           </View>
@@ -327,13 +327,13 @@ function Extension() {
               if (giftMessageAttribute && giftMessageAttribute.value) {
                 return (
                   <>
-                    <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                    <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                       <Text size={section_title_size || text_size || "medium"} emphasis="bold">
                         {gift_message_section_title || "Gift Message"}
                       </Text>
                     </BlockStack>
                     <View blockSize="50px" padding="none">
-                      <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                      <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                         <Text size={info_text_size || text_size || "base"}>
                           {giftMessageAttribute.value}
                         </Text>
@@ -343,7 +343,7 @@ function Extension() {
                 );
               } else {
                 return (
-                  <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                  <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                     <Text size={info_text_size || text_size || "base"} appearance="subdued">
                       No gift message provided
                     </Text>
@@ -379,7 +379,7 @@ function Extension() {
         <View padding="base" border="base" cornerRadius="base">
           <BlockStack spacing="tight" alignment="center">
             {/* Section title */}
-            <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+            <BlockStack spacing="none" alignment="center" inlineAlignment="start">
               <Text size={section_title_size || text_size || "medium"} emphasis="bold">
                 {packaging_section_title || "Selected Packaging"}
               </Text>
@@ -389,7 +389,7 @@ function Extension() {
               <>
                 {/* Fixed height container for product title */}
                 <View blockSize="50px" padding="none">
-                  <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                  <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                     <Text size={packaging_name_size || text_size || "medium"} emphasis="bold">
                       {selectedValue}
                     </Text>
@@ -425,7 +425,7 @@ function Extension() {
             ) : sampleProductImages.length > 0 ? (
               <>
                 {/* Section title */}
-                <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                   <Text size={section_title_size || text_size || "medium"} emphasis="bold">
                     {samples_section_title || "Sample Products"}
                   </Text>
@@ -436,7 +436,7 @@ function Extension() {
                   <Grid columns={["1fr", "1fr"]} spacing="base">
                     {sampleProductImages.slice(0, 2).map((product) => (
                       <View key={`title-${product.id}`} padding="none">
-                        <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                        <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                           <Text size={packaging_name_size || text_size || "medium"} emphasis="bold" truncate>
                             {product.title}
                           </Text>
@@ -496,7 +496,7 @@ function Extension() {
                 return (
                   <>
                     {/* Section title */}
-                    <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                    <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                       <Text size={section_title_size || text_size || "medium"} emphasis="bold">
                         {gift_message_section_title || "Gift Message"}
                       </Text>
@@ -504,7 +504,7 @@ function Extension() {
                     
                     {/* Fixed height container for message */}
                     <View blockSize="50px" padding="none">
-                      <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                      <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                         <Text size={info_text_size || text_size || "base"}>
                           {giftMessageAttribute.value}
                         </Text>
@@ -514,7 +514,7 @@ function Extension() {
                 );
               } else {
                 return (
-                  <BlockStack spacing="none" alignment="center" inlineAlignment="center">
+                  <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                     <Text size={info_text_size || text_size || "base"} appearance="subdued">
                       No gift message provided
                     </Text>
