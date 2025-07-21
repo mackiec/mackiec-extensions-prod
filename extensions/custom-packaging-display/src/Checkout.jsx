@@ -390,7 +390,7 @@ function Extension() {
                 {/* Fixed height container for product title */}
                 <View blockSize="50px" padding="none">
                   <BlockStack spacing="none" alignment="center" inlineAlignment="start">
-                    <Text size={packaging_name_size || text_size || "medium"} emphasis="bold">
+                    <Text size={packaging_name_size || text_size || "medium"} appearance="subdued">
                       {selectedValue}
                     </Text>
                   </BlockStack>
@@ -437,7 +437,7 @@ function Extension() {
                     {sampleProductImages.slice(0, 2).map((product) => (
                       <View key={`title-${product.id}`} padding="none">
                         <BlockStack spacing="none" alignment="center" inlineAlignment="start">
-                          <Text size={packaging_name_size || text_size || "medium"} emphasis="bold" truncate>
+                          <Text size={packaging_name_size || text_size || "medium"} appearance="subdued" truncate>
                             {product.title}
                           </Text>
                         </BlockStack>
