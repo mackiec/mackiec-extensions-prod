@@ -11,7 +11,6 @@ import {
   Text,
   reactExtension,
   useApi,
-  useAppMetafields,
   useApplyCartLinesChange,
   useCartLines,
   useSettings,
@@ -26,14 +25,11 @@ function Extension() {
   const { query, i18n } = useApi();
   // Get a reference to the function that will apply changes to the cart lines from the imported hook
   const applyCartLinesChange = useApplyCartLinesChange();
-  // Get the text appearance setting
-  const { text_appearance: merchantTextAppearance } = useSettings();
+  // Get the settings
+  const { product_id, text_appearance: merchantTextAppearance } = useSettings();
   
   // Set default value
   const textAppearance = merchantTextAppearance ?? "subdued";
-
-  // get passed in metafield
-  const [prePurchaseProduct] = useAppMetafields();
 
   // Set up the states
   const [product, setProduct] = useState(null);
@@ -43,42 +39,52 @@ function Extension() {
 
   // On initial load, fetch the product variants
   useEffect(() => {
-    if (prePurchaseProduct) {
-      // Set the loading state to show some UI if you're waiting
-      setLoading(true);
-      // Use `query` api method to send graphql queries to the Storefront API
-      query(
-        `query ($id: ID!) {
-        product(id: $id) {
-          id
-          title
-          images(first:1){
-            nodes {
-              url
-            }
-          }
-          variants(first: 1) {
-            nodes {
-              id
-              price {
-                amount
-              }
-            }
-          }
-        }
-      }`,
-        {
-          variables: { id: prePurchaseProduct.metafield.value },
-        }
-      )
-        .then(({ data }) => {
-          // Set the `product` so that you can reference it
-          setProduct(data.product);
-        })
-        .catch((error) => console.error(error))
-        .finally(() => setLoading(false));
+    if (!product_id) {
+      console.log("No product ID provided in settings");
+      setLoading(false);
+      return;
     }
-  }, [prePurchaseProduct]);
+    
+    // Set the loading state to show some UI if you're waiting
+    setLoading(true);
+    
+    // Convert to global ID if needed
+    const productGlobalId = product_id.startsWith('gid://') 
+      ? product_id 
+      : `gid://shopify/Product/${product_id}`;
+    
+    // Use `query` api method to send graphql queries to the Storefront API
+    query(
+      `query ($id: ID!) {
+      product(id: $id) {
+        id
+        title
+        images(first:1){
+          nodes {
+            url
+          }
+        }
+        variants(first: 1) {
+          nodes {
+            id
+            price {
+              amount
+            }
+          }
+        }
+      }
+    }`,
+      {
+        variables: { id: productGlobalId },
+      }
+    )
+      .then(({ data }) => {
+        // Set the `product` so that you can reference it
+        setProduct(data.product);
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, [product_id, query]);
 
   // If an offer is added and an error occurs, then show some error feedback using a banner
   useEffect(() => {

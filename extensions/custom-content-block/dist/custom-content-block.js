@@ -19156,10 +19156,10 @@
   // extensions/custom-content-block/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react6 = __toESM(require_react(), 1);
 
-  // extensions/custom-content-block/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/render.mjs
+  // node_modules/@remote-ui/react/build/esm/render.mjs
   var import_react2 = __toESM(require_react(), 1);
 
-  // extensions/custom-content-block/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/reconciler.mjs
+  // node_modules/@remote-ui/react/build/esm/reconciler.mjs
   var import_react_reconciler = __toESM(require_react_reconciler(), 1);
   var createReconciler = (options) => {
     var _options$primary;
@@ -19302,11 +19302,11 @@
     return hasOwnProperty.call(object, property);
   }
 
-  // extensions/custom-content-block/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/context.mjs
+  // node_modules/@remote-ui/react/build/esm/context.mjs
   var import_react = __toESM(require_react(), 1);
   var RenderContext = /* @__PURE__ */ (0, import_react.createContext)(null);
 
-  // extensions/custom-content-block/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/render.mjs
+  // node_modules/@remote-ui/react/build/esm/render.mjs
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var cache = /* @__PURE__ */ new WeakMap();
   var LEGACY_ROOT = 0;
@@ -19351,11 +19351,11 @@
     }), container, null, callback);
   }
 
-  // extensions/custom-content-block/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/components.mjs
+  // node_modules/@remote-ui/react/build/esm/components.mjs
   var import_react4 = __toESM(require_react(), 1);
   var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
 
-  // extensions/custom-content-block/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/hooks/render.mjs
+  // node_modules/@remote-ui/react/build/esm/hooks/render.mjs
   var import_react3 = __toESM(require_react(), 1);
   function useRender() {
     const render3 = (0, import_react3.useContext)(RenderContext);
@@ -19365,7 +19365,7 @@
     return render3;
   }
 
-  // extensions/custom-content-block/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/components.mjs
+  // node_modules/@remote-ui/react/build/esm/components.mjs
   function createRemoteReactComponent(componentType, {
     fragmentProps
   } = {}) {

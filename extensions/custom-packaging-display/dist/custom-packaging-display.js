@@ -19092,7 +19092,7 @@
     return [hasChanged ? normalizedNewValue : IGNORE, hotSwaps];
   }
 
-  // node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
   function createExtensionRegistrationFunction() {
     const extensionWrapper = (target, implementation) => {
       var _shopify;
@@ -19123,37 +19123,37 @@
     return extensionWrapper;
   }
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockSpacer/BlockSpacer.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockSpacer/BlockSpacer.mjs
   var BlockSpacer = createRemoteComponent("BlockSpacer");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
   var BlockStack = createRemoteComponent("BlockStack");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Grid/Grid.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Grid/Grid.mjs
   var Grid = createRemoteComponent("Grid");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Heading/Heading.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Heading/Heading.mjs
   var Heading = createRemoteComponent("Heading");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Image/Image.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Image/Image.mjs
   var Image = createRemoteComponent("Image");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
   var Text = createRemoteComponent("Text");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
   var View = createRemoteComponent("View");
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react6 = __toESM(require_react(), 1);
 
-  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/render.mjs
+  // node_modules/@remote-ui/react/build/esm/render.mjs
   var import_react2 = __toESM(require_react(), 1);
 
-  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/reconciler.mjs
+  // node_modules/@remote-ui/react/build/esm/reconciler.mjs
   var import_react_reconciler = __toESM(require_react_reconciler(), 1);
   var createReconciler = (options) => {
     var _options$primary;
@@ -19296,11 +19296,11 @@
     return hasOwnProperty.call(object, property);
   }
 
-  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/context.mjs
+  // node_modules/@remote-ui/react/build/esm/context.mjs
   var import_react = __toESM(require_react(), 1);
   var RenderContext = /* @__PURE__ */ (0, import_react.createContext)(null);
 
-  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/render.mjs
+  // node_modules/@remote-ui/react/build/esm/render.mjs
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var cache = /* @__PURE__ */ new WeakMap();
   var LEGACY_ROOT = 0;
@@ -19345,11 +19345,11 @@
     }), container, null, callback);
   }
 
-  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/components.mjs
+  // node_modules/@remote-ui/react/build/esm/components.mjs
   var import_react4 = __toESM(require_react(), 1);
   var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
 
-  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/hooks/render.mjs
+  // node_modules/@remote-ui/react/build/esm/hooks/render.mjs
   var import_react3 = __toESM(require_react(), 1);
   function useRender() {
     const render3 = (0, import_react3.useContext)(RenderContext);
@@ -19359,7 +19359,7 @@
     return render3;
   }
 
-  // node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/components.mjs
+  // node_modules/@remote-ui/react/build/esm/components.mjs
   function createRemoteReactComponent(componentType, {
     fragmentProps
   } = {}) {
@@ -19422,11 +19422,11 @@
     });
   }
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
   var import_react5 = __toESM(require_react(), 1);
   var ExtensionApiContext = /* @__PURE__ */ (0, import_react5.createContext)(null);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
   function reactExtension(target, render3) {
     return extension(target, (root, api) => __async(this, null, function* () {
@@ -19475,31 +19475,31 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockSpacer/BlockSpacer.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockSpacer/BlockSpacer.mjs
   var BlockSpacer2 = createRemoteReactComponent(BlockSpacer);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
   var BlockStack2 = createRemoteReactComponent(BlockStack);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Grid/Grid.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Grid/Grid.mjs
   var Grid2 = createRemoteReactComponent(Grid);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Heading/Heading.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Heading/Heading.mjs
   var Heading2 = createRemoteReactComponent(Heading);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Image/Image.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Image/Image.mjs
   var Image2 = createRemoteReactComponent(Image);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
   var Text2 = createRemoteReactComponent(Text);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/View/View.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/View/View.mjs
   var View2 = createRemoteReactComponent(View);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
   var import_react15 = __toESM(require_react(), 1);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
   var CheckoutUIExtensionError = class extends Error {
     constructor(...args) {
       super(...args);
@@ -19507,7 +19507,7 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
   function useApi(_target) {
     const api = (0, import_react15.useContext)(ExtensionApiContext);
     if (api == null) {
@@ -19516,7 +19516,7 @@ ${errorInfo.componentStack}`);
     return api;
   }
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/subscription.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/subscription.mjs
   var import_react16 = __toESM(require_react(), 1);
   function useSubscription(subscription) {
     const [, setValue] = (0, import_react16.useState)(subscription.current);
@@ -19538,12 +19538,12 @@ ${errorInfo.componentStack}`);
     return subscription.current;
   }
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/attributes.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/attributes.mjs
   function useAttributes() {
     return useSubscription(useApi().attributes);
   }
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
+  // extensions/custom-packaging-display/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
   function useSettings() {
     const settings = useSubscription(useApi().settings);
     return settings;
@@ -19710,7 +19710,7 @@ ${errorInfo.componentStack}`);
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "base", border: "base", cornerRadius: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "tight", alignment: "center", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: info_text_size || text_size || "base", appearance: "subdued", children: "No packaging option selected" }) }) }) }),
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "base", border: "base", cornerRadius: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "tight", alignment: "center", children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: info_text_size || text_size || "base", appearance: "subdued", children: "Loading sample products..." }) }) : error ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: info_text_size || text_size || "base", appearance: "critical", children: error }) }) : sampleProductImages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: section_title_size || text_size || "medium", emphasis: "bold", alignment: "start", children: samples_section_title || "Sample Products" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { blockSize: "50px", padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Grid2, { columns: ["1fr", "1fr"], spacing: "base", children: sampleProductImages.slice(0, 2).map((product) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: packaging_name_size || text_size || "medium", emphasis: "bold", truncate: true, children: product.title }) }) }, `title-${product.id}`)) }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { blockSize: "50px", padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Grid2, { columns: ["1fr", "1fr"], spacing: "base", children: sampleProductImages.slice(0, 2).map((product) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: packaging_name_size || text_size || "medium", appearance: "subdued", truncate: true, children: product.title }) }) }, `title-${product.id}`)) }) }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Grid2, { columns: ["1fr", "1fr"], spacing: "base", children: sampleProductImages.slice(0, 2).map((product) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "tight", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
               View2,
               {
@@ -19767,7 +19767,7 @@ ${errorInfo.componentStack}`);
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "base", border: "base", cornerRadius: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "tight", alignment: "center", children: [
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: section_title_size || text_size || "medium", emphasis: "bold", children: packaging_section_title || "Selected Packaging" }) }),
           selectedImage ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { blockSize: "50px", padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: packaging_name_size || text_size || "medium", emphasis: "bold", children: selectedValue }) }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { blockSize: "50px", padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: packaging_name_size || text_size || "medium", appearance: "subdued", children: selectedValue }) }) }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { inlineSize: "100px", blockSize: "100px", overflow: "hidden", padding: "small", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
               Image2,
               {
@@ -19786,7 +19786,7 @@ ${errorInfo.componentStack}`);
         ] }) }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "base", border: "base", cornerRadius: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "tight", alignment: "center", children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: info_text_size || text_size || "base", appearance: "subdued", children: "Loading sample products..." }) : error ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: info_text_size || text_size || "base", appearance: "critical", children: error }) : sampleProductImages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: section_title_size || text_size || "medium", emphasis: "bold", children: samples_section_title || "Sample Products" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { blockSize: "50px", padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Grid2, { columns: ["1fr", "1fr"], spacing: "base", children: sampleProductImages.slice(0, 2).map((product) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: packaging_name_size || text_size || "medium", emphasis: "bold", truncate: true, children: product.title }) }) }, `title-${product.id}`)) }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { blockSize: "50px", padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Grid2, { columns: ["1fr", "1fr"], spacing: "base", children: sampleProductImages.slice(0, 2).map((product) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", inlineAlignment: "start", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { size: packaging_name_size || text_size || "medium", appearance: "subdued", truncate: true, children: product.title }) }) }, `title-${product.id}`)) }) }),
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Grid2, { columns: ["1fr", "1fr"], spacing: "base", children: sampleProductImages.slice(0, 2).map((product) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "tight", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", alignment: "center", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
             View2,
             {

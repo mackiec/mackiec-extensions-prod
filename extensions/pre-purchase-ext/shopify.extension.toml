@@ -14,7 +14,16 @@ type = "ui_extension"
 module = "./src/Checkout.jsx"
 target = "purchase.checkout.block.render"
 
+[extensions.capabilities]
+api_access = true
+
 [extensions.settings]
+[[extensions.settings.fields]]
+key = "product_id"
+type = "single_line_text_field"
+name = "Product ID"
+description = "Enter the ID of the product to recommend (e.g., 123456789)"
+
 [[extensions.settings.fields]]
 key = "text_appearance"
 type = "single_line_text_field"

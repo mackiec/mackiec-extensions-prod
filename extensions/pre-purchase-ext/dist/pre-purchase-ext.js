@@ -1161,7 +1161,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
-          function useMemo3(create, deps) {
+          function useMemo2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useMemo(create, deps);
           }
@@ -1933,7 +1933,7 @@
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
           exports.useLayoutEffect = useLayoutEffect;
-          exports.useMemo = useMemo3;
+          exports.useMemo = useMemo2;
           exports.useReducer = useReducer;
           exports.useRef = useRef2;
           exports.useState = useState3;
@@ -19156,10 +19156,10 @@
   // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react6 = __toESM(require_react(), 1);
 
-  // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/render.mjs
+  // node_modules/@remote-ui/react/build/esm/render.mjs
   var import_react2 = __toESM(require_react(), 1);
 
-  // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/reconciler.mjs
+  // node_modules/@remote-ui/react/build/esm/reconciler.mjs
   var import_react_reconciler = __toESM(require_react_reconciler(), 1);
   var createReconciler = (options) => {
     var _options$primary;
@@ -19302,11 +19302,11 @@
     return hasOwnProperty.call(object, property);
   }
 
-  // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/context.mjs
+  // node_modules/@remote-ui/react/build/esm/context.mjs
   var import_react = __toESM(require_react(), 1);
   var RenderContext = /* @__PURE__ */ (0, import_react.createContext)(null);
 
-  // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/render.mjs
+  // node_modules/@remote-ui/react/build/esm/render.mjs
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var cache = /* @__PURE__ */ new WeakMap();
   var LEGACY_ROOT = 0;
@@ -19351,11 +19351,11 @@
     }), container, null, callback);
   }
 
-  // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/components.mjs
+  // node_modules/@remote-ui/react/build/esm/components.mjs
   var import_react4 = __toESM(require_react(), 1);
   var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
 
-  // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/hooks/render.mjs
+  // node_modules/@remote-ui/react/build/esm/hooks/render.mjs
   var import_react3 = __toESM(require_react(), 1);
   function useRender() {
     const render3 = (0, import_react3.useContext)(RenderContext);
@@ -19365,7 +19365,7 @@
     return render3;
   }
 
-  // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/node_modules/@remote-ui/react/build/esm/components.mjs
+  // node_modules/@remote-ui/react/build/esm/components.mjs
   function createRemoteReactComponent(componentType, {
     fragmentProps
   } = {}) {
@@ -19576,29 +19576,6 @@ ${errorInfo.componentStack}`);
     throw new ExtensionHasNoMethodError("applyCartLinesChange", api.extension.target);
   }
 
-  // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/app-metafields.mjs
-  var import_react20 = __toESM(require_react(), 1);
-  function useAppMetafields(filters = {}) {
-    const appMetafields = useSubscription(useApi().appMetafields);
-    return (0, import_react20.useMemo)(() => {
-      if (filters.key && !filters.namespace) {
-        throw new CheckoutUIExtensionError("You must pass in a namespace with a key");
-      }
-      const filterKeys = Object.keys(filters);
-      if (filterKeys.length) {
-        return appMetafields.filter((app) => {
-          return filterKeys.every((key) => {
-            if (key === "id" || key === "type") {
-              return app.target[key] === filters[key];
-            }
-            return app.metafield[key] === filters[key];
-          });
-        });
-      }
-      return appMetafields;
-    }, [filters, appMetafields]);
-  }
-
   // extensions/pre-purchase-ext/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
   function useSettings() {
     const settings = useSubscription(useApi().settings);
@@ -19606,52 +19583,55 @@ ${errorInfo.componentStack}`);
   }
 
   // extensions/pre-purchase-ext/src/Checkout.jsx
-  var import_react21 = __toESM(require_react());
+  var import_react20 = __toESM(require_react());
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   var Checkout_default = reactExtension("purchase.checkout.block.render", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {}));
   function Extension() {
     var _a, _b;
     const { query, i18n } = useApi();
     const applyCartLinesChange = useApplyCartLinesChange();
-    const { text_appearance: merchantTextAppearance } = useSettings();
+    const { product_id, text_appearance: merchantTextAppearance } = useSettings();
     const textAppearance = merchantTextAppearance != null ? merchantTextAppearance : "subdued";
-    const [prePurchaseProduct] = useAppMetafields();
-    const [product, setProduct] = (0, import_react21.useState)(null);
-    const [loading, setLoading] = (0, import_react21.useState)(false);
-    const [adding, setAdding] = (0, import_react21.useState)(false);
-    const [showError, setShowError] = (0, import_react21.useState)(false);
-    (0, import_react21.useEffect)(() => {
-      if (prePurchaseProduct) {
-        setLoading(true);
-        query(
-          `query ($id: ID!) {
-        product(id: $id) {
-          id
-          title
-          images(first:1){
-            nodes {
-              url
-            }
+    const [product, setProduct] = (0, import_react20.useState)(null);
+    const [loading, setLoading] = (0, import_react20.useState)(false);
+    const [adding, setAdding] = (0, import_react20.useState)(false);
+    const [showError, setShowError] = (0, import_react20.useState)(false);
+    (0, import_react20.useEffect)(() => {
+      if (!product_id) {
+        console.log("No product ID provided in settings");
+        setLoading(false);
+        return;
+      }
+      setLoading(true);
+      const productGlobalId = product_id.startsWith("gid://") ? product_id : `gid://shopify/Product/${product_id}`;
+      query(
+        `query ($id: ID!) {
+      product(id: $id) {
+        id
+        title
+        images(first:1){
+          nodes {
+            url
           }
-          variants(first: 1) {
-            nodes {
-              id
-              price {
-                amount
-              }
+        }
+        variants(first: 1) {
+          nodes {
+            id
+            price {
+              amount
             }
           }
         }
-      }`,
-          {
-            variables: { id: prePurchaseProduct.metafield.value }
-          }
-        ).then(({ data }) => {
-          setProduct(data.product);
-        }).catch((error) => console.error(error)).finally(() => setLoading(false));
       }
-    }, [prePurchaseProduct]);
-    (0, import_react21.useEffect)(() => {
+    }`,
+        {
+          variables: { id: productGlobalId }
+        }
+      ).then(({ data }) => {
+        setProduct(data.product);
+      }).catch((error) => console.error(error)).finally(() => setLoading(false));
+    }, [product_id, query]);
+    (0, import_react20.useEffect)(() => {
       if (showError) {
         const timer = setTimeout(() => setShowError(false), 3e3);
         return () => clearTimeout(timer);

@@ -1,0 +1,14 @@
+api_version = "2025-01"
+
+[[extensions]]
+type = "ui_extension"
+name = "Custom Discount Configuration"
+handle = "custom-discount-ui-extension"
+
+[[extensions.metafields]]
+namespace = "$app"
+key = "config"
+
+[[extensions.targeting]]
+target = "admin.discount-details.function-settings.render"
+module = "./src/DiscountConfiguration.tsx"

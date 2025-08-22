@@ -1,0 +1,29 @@
+api_version = "2025-04"
+
+[[extensions]]
+name = "Custom Discount Function"
+handle = "custom-discount-function"
+type = "function"
+uid = "custom-discount-function-uid"
+description = "A discount function that applies product, order, and shipping discounts with configurable parameters"
+
+  [[extensions.targeting]]
+  target = "cart.lines.discounts.generate.run"
+  input_query = "src/cart_lines_discounts_generate_run.graphql"
+  export = "cart-lines-discounts-generate-run"
+
+  [[extensions.targeting]]
+  target = "cart.delivery-options.discounts.generate.run"
+  input_query = "src/cart_delivery_options_discounts_generate_run.graphql"
+  export = "cart-delivery-options-discounts-generate-run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [[extensions.metafields]]
+  namespace = "$app"
+  key = "config"
+
+  [extensions.ui]
+  handle = "custom-discount-ui-extension"
