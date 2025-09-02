@@ -33,3 +33,25 @@ default = "subdued"
   [[extensions.settings.fields.validations]]
   name = "choices"
   value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
+
+# Text Configuration
+[[extensions.settings.fields]]
+key = "section_heading"
+type = "single_line_text_field"
+name = "Section Heading"
+description = "Heading text for the product recommendation section."
+default = "You might also like"
+
+[[extensions.settings.fields]]
+key = "add_button_text"
+type = "single_line_text_field"
+name = "Add Button Text"
+description = "Text for the add to cart button."
+default = "Add"
+
+[[extensions.settings.fields]]
+key = "error_message"
+type = "single_line_text_field"
+name = "Error Message"
+description = "Message shown when there's an issue adding the product."
+default = "There was an issue adding this product. Please try again."

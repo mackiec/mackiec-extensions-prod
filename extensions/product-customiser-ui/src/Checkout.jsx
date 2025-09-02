@@ -30,19 +30,27 @@ function Extension() {
   const cartLine = useCartLineTarget();
   const { 
     text_appearance: merchantTextAppearance,
-    checkbox_text: merchantCheckboxText
+    checkbox_text: merchantCheckboxText,
+    banner_title: merchantBannerTitle,
+    text_field_label: merchantTextFieldLabel,
+    max_characters_error: merchantMaxCharactersError,
+    character_counter_suffix: merchantCharacterCounterSuffix
   } = useSettings();
   
-  // Set default values
+  // Set default values with fallbacks
   const textAppearance = merchantTextAppearance ?? "subdued";
   const checkboxText = merchantCheckboxText ?? "Yes, add custom embroidery for small fee.";
+  const bannerTitle = merchantBannerTitle ?? "Product Customiser";
+  const textFieldLabel = merchantTextFieldLabel ?? "Your Custom Text";
+  const maxCharactersError = merchantMaxCharactersError ?? "Max 25 characters, please";
+  const characterCounterSuffix = merchantCharacterCounterSuffix ?? "/25";
 
   // 2. Check instructions for feature availability, see https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions for details
   if (!instructions.attributes.canUpdateAttributes) {
     // For checkouts such as draft order invoices, cart attributes may not be allowed
     // Consider rendering a fallback UI or nothing at all, if the feature is unavailable
     return (
-      <Banner title="product-customiser-ui" status="warning">
+      <Banner title={bannerTitle} status="warning">
         {translate("attributeChangesAreNotSupported")}
       </Banner>
     );
@@ -69,7 +77,7 @@ function Extension() {
   // 6. Handle TextField Change
   const onTextFieldChange = (value) => {
     if (value.length > 25) {
-      setError("Max 25 characters, please");
+      setError(maxCharactersError);
     } else {
       setError("");
       setCustomText(value);
@@ -111,14 +119,14 @@ function Extension() {
       {isChecked && (
         <View padding="base">
           <TextField
-            label="Your Custom Text"
+            label={textFieldLabel}
             value={customText}
             onChange={onTextFieldChange}
             required={isChecked}
             error={error}
           />
           <BlockSpacer spacing="loose" />
-          <TextBlock size="small" emphasis="italic" appearance={textAppearance} inlineAlignment="end">{customText.length}/25</TextBlock> {/* Display character count */}
+          <TextBlock size="small" emphasis="italic" appearance={textAppearance} inlineAlignment="end">{customText.length}{characterCounterSuffix}</TextBlock> {/* Display character count */}
         </View>
       )}
     </BlockStack>

@@ -25,11 +25,20 @@ function Extension() {
   const { query, i18n } = useApi();
   // Get a reference to the function that will apply changes to the cart lines from the imported hook
   const applyCartLinesChange = useApplyCartLinesChange();
-  // Get the settings
-  const { product_id, text_appearance: merchantTextAppearance } = useSettings();
+  // Use the merchant-defined settings to retrieve the extension's content
+  const { 
+    product_id, 
+    text_appearance: merchantTextAppearance,
+    section_heading: merchantSectionHeading,
+    add_button_text: merchantAddButtonText,
+    error_message: merchantErrorMessage
+  } = useSettings();
   
-  // Set default value
+  // Set default values with fallbacks
   const textAppearance = merchantTextAppearance ?? "subdued";
+  const sectionHeading = merchantSectionHeading ?? "You might also like";
+  const addButtonText = merchantAddButtonText ?? "Add";
+  const errorMessage = merchantErrorMessage ?? "There was an issue adding this product. Please try again.";
 
   // Set up the states
   const [product, setProduct] = useState(null);
@@ -103,7 +112,7 @@ function Extension() {
     return (
       <BlockStack spacing="loose">
         <Divider />
-        <Heading level={2}>You might also like</Heading>
+        <Heading level={2}>{sectionHeading}</Heading>
         <BlockStack spacing="loose">
           <InlineLayout spacing="base" columns={[64, "fill", "auto"]} blockAlignment="center">
             <SkeletonImage aspectRatio={1} />
@@ -112,7 +121,7 @@ function Extension() {
               <SkeletonText inlineSize="small" />
             </BlockStack>
             <Button kind="secondary" disabled={true}>
-              Add
+              {addButtonText}
             </Button>
           </InlineLayout>
         </BlockStack>
@@ -149,7 +158,7 @@ function Extension() {
   return (
     <BlockStack spacing="loose">
       <Divider />
-      <Heading level={2}>You might also like</Heading>
+      <Heading level={2}>{sectionHeading}</Heading>
       <BlockStack spacing="loose">
         <InlineLayout
           spacing="base"
@@ -170,7 +179,7 @@ function Extension() {
           <Button
             kind="secondary"
             loading={adding}
-            accessibilityLabel={`Add ${title} to cart`}
+            accessibilityLabel={`${addButtonText} ${title} to cart`}
             onPress={async () => {
               setAdding(true);
               // Apply the cart lines change
@@ -189,11 +198,11 @@ function Extension() {
               }
             }}
           >
-            Add
+            {addButtonText}
           </Button>
         </InlineLayout>
       </BlockStack>
-      {showError && <Banner status="critical">There was an issue adding this product. Please try again.</Banner>}
+      {showError && <Banner status="critical">{errorMessage}</Banner>}
     </BlockStack>
   );
 }

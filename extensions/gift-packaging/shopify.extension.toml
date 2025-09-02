@@ -131,3 +131,33 @@ default = "accent"
   [[extensions.settings.fields.validations]]
   name = "choices"
   value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
+
+# Field Labels
+[[extensions.settings.fields]]
+key = "sender_name_label"
+type = "single_line_text_field"
+name = "Sender Name Label"
+description = "Label for the sender's name input field."
+default = "Sender's Name"
+
+[[extensions.settings.fields]]
+key = "recipient_name_label"
+type = "single_line_text_field"
+name = "Recipient Name Label"
+description = "Label for the recipient's name input field."
+default = "Recipient's Name"
+
+# Placeholder Images
+[[extensions.settings.fields]]
+key = "placeholder_image_silver"
+type = "single_line_text_field"
+name = "Placeholder Image Silver"
+description = "URL for silver packaging placeholder image."
+default = "https://cdn.shopify.com/s/files/1/0669/6809/2894/files/360_F_655298366_WfWIlJ1VKXesygLrYluFbDL6EdbdpuE1.png?v=1743699033"
+
+[[extensions.settings.fields]]
+key = "placeholder_image_gold"
+type = "single_line_text_field"
+name = "Placeholder Image Gold"
+description = "URL for gold packaging placeholder image."
+default = "https://cdn.shopify.com/s/files/1/0669/6809/2894/files/photo-1545873509-33e944ca7655.png?v=1743699027"

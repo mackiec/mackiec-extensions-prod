@@ -119,3 +119,60 @@ network_access = false
   type = "single_line_text_field"
   name = "Gift Message Section Title"
   description = "Title for the gift message section (default: 'Gift Message')"
+
+# Error and Status Messages
+[[extensions.settings.fields]]
+key = "loading_timeout_error"
+type = "single_line_text_field"
+name = "Loading Timeout Error"
+description = "Error message when loading times out."
+default = "Loading timed out. Please refresh to try again."
+
+[[extensions.settings.fields]]
+key = "fetch_products_error"
+type = "single_line_text_field"
+name = "Fetch Products Error"
+description = "Error message when fetching product images fails."
+default = "Failed to fetch product images"
+
+[[extensions.settings.fields]]
+key = "invalid_response_error"
+type = "single_line_text_field"
+name = "Invalid Response Error"
+description = "Error message for invalid API response."
+default = "Invalid response from API"
+
+[[extensions.settings.fields]]
+key = "loading_sample_products_message"
+type = "single_line_text_field"
+name = "Loading Sample Products Message"
+description = "Message shown while loading sample products."
+default = "Loading sample products..."
+
+[[extensions.settings.fields]]
+key = "no_packaging_selected_message"
+type = "single_line_text_field"
+name = "No Packaging Selected Message"
+description = "Message when no packaging option is selected."
+default = "No packaging option selected"
+
+[[extensions.settings.fields]]
+key = "no_sample_products_message"
+type = "single_line_text_field"
+name = "No Sample Products Message"
+description = "Message when no sample products are selected."
+default = "No sample products selected"
+
+[[extensions.settings.fields]]
+key = "no_gift_message_message"
+type = "single_line_text_field"
+name = "No Gift Message Message"
+description = "Message when no gift message is provided."
+default = "No gift message provided"
+
+[[extensions.settings.fields]]
+key = "no_matching_packaging_error"
+type = "single_line_text_field"
+name = "No Matching Packaging Error"
+description = "Error message when no matching packaging option is found."
+default = "No matching packaging option found for"

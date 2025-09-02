@@ -37,6 +37,10 @@ function App() {
     icon_appearance: merchantIconAppearance,
     text_appearance: merchantTextAppearance,
     choice_text_appearance: merchantChoiceTextAppearance,
+    sender_name_label: merchantSenderNameLabel,
+    recipient_name_label: merchantRecipientNameLabel,
+    placeholder_image_silver: merchantPlaceholderImageSilver,
+    placeholder_image_gold: merchantPlaceholderImageGold,
   } = useSettings();
 
   const OptionOne = merchantOptionOne ?? 'Option One';
@@ -49,10 +53,12 @@ function App() {
   const iconAppearance = merchantIconAppearance ?? "monochrome";
   const textAppearance = merchantTextAppearance ?? "accent";
   const choiceTextAppearance = merchantChoiceTextAppearance ?? "accent";
-
-  // Define placeholder images
-  const placeholderImageSilver = "https://cdn.shopify.com/s/files/1/0669/6809/2894/files/360_F_655298366_WfWIlJ1VKXesygLrYluFbDL6EdbdpuE1.png?v=1743699033"; // Placeholder for silver packaging
-  const placeholderImageGold = "https://cdn.shopify.com/s/files/1/0669/6809/2894/files/photo-1545873509-33e944ca7655.png?v=1743699027"; // Placeholder for gold packaging
+  const senderNameLabel = merchantSenderNameLabel ?? "Sender's Name";
+  const recipientNameLabel = merchantRecipientNameLabel ?? "Recipient's Name";
+  
+  // Define placeholder images with configurable fallbacks
+  const placeholderImageSilver = merchantPlaceholderImageSilver ?? "https://cdn.shopify.com/s/files/1/0669/6809/2894/files/360_F_655298366_WfWIlJ1VKXesygLrYluFbDL6EdbdpuE1.png?v=1743699033";
+  const placeholderImageGold = merchantPlaceholderImageGold ?? "https://cdn.shopify.com/s/files/1/0669/6809/2894/files/photo-1545873509-33e944ca7655.png?v=1743699027";
 
   // Set up the checkbox state
   const [checked, setChecked] = useState(false);
@@ -151,7 +157,7 @@ function App() {
             <BlockSpacer spacing="loose" />
             <InlineLayout spacing="tight">
               <TextField
-                label="Sender's Name"
+                label={senderNameLabel}
                 maxLength={25}
                 onChange={(value) => {
                   setSenderName(value);
@@ -160,7 +166,7 @@ function App() {
                 value={senderName}
               />
               <TextField
-                label="Recipient's Name"
+                label={recipientNameLabel}
                 maxLength={25}
                 onChange={(value) => {
                   setRecipientName(value);

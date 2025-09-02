@@ -15,16 +15,34 @@ export default reactExtension("purchase.checkout.block.render", () => (
 ));
 
 function App() {
-  // Set the target age that a buyer must be to complete an order
-  const { ageTarget = 18, fieldTitle, showVatNumberField } = useSettings();
+  // Use the merchant-defined settings to retrieve the extension's content
+  const { 
+    ageTarget = 18, 
+    fieldTitle, 
+    showVatNumberField,
+    age_field_label: ageFieldLabel,
+    age_field_label_optional: ageFieldLabelOptional,
+    vat_field_label: vatFieldLabel,
+    vat_field_label_optional: vatFieldLabelOptional,
+    age_required_error: ageRequiredError,
+    age_too_young_error: ageTooYoungError,
+    vat_required_error: vatRequiredError,
+    vat_invalid_error: vatInvalidError
+  } = useSettings();
 
   // Set up the app state
   const [age, setAge] = useState("");
   const [vatNumber, setVatNumber] = useState("");
   const [validationError, setValidationError] = useState("");
   const canBlockProgress = useExtensionCapability("block_progress");
-  const ageLabel = canBlockProgress ? "Your age" : "Your age (optional)";
-  const vatNumberLabel = canBlockProgress ? "VAT Number" : "VAT Number (optional)";
+  
+  // Use configurable labels with fallbacks
+  const ageLabel = canBlockProgress 
+    ? (ageFieldLabel || "Your age")
+    : (ageFieldLabelOptional || "Your age (optional)");
+  const vatNumberLabel = canBlockProgress 
+    ? (vatFieldLabel || "VAT Number")
+    : (vatFieldLabelOptional || "VAT Number (optional)");
 
   // Use the `buyerJourney` intercept to conditionally block checkout progress
   useBuyerJourneyIntercept(({ canBlockProgress }) => {
@@ -32,11 +50,11 @@ function App() {
     if (canBlockProgress && !showVatNumberField && !isAgeSet()) {
       return {
         behavior: "block",
-        reason: "Age is required",
+        reason: ageRequiredError || "Age is required",
         perform: (result) => {
           // If progress can be blocked, then set a validation error on the custom field
           if (result.behavior === "block") {
-            setValidationError("Enter your age");
+            setValidationError(ageRequiredError || "Enter your age");
           }
         },
       };
@@ -49,8 +67,7 @@ function App() {
         errors: [
           {
             // Show a validation error on the page
-            message:
-              "You're not legally old enough to buy some of the items in your cart.",
+            message: ageTooYoungError || "You're not legally old enough to buy some of the items in your cart.",
           },
         ],
       };
@@ -60,10 +77,10 @@ function App() {
       if (!isVatNumberSet()) {
         return {
           behavior: "block",
-          reason: "VAT number is required",
+          reason: vatRequiredError || "VAT number is required",
           perform: (result) => {
             if (result.behavior === "block") {
-              setValidationError("VAT number is required");
+              setValidationError(vatRequiredError || "VAT number is required");
             }
           },
         };
@@ -72,10 +89,10 @@ function App() {
       if (!isVatNumberValid()) {
         return {
           behavior: "block",
-          reason: "Invalid VAT number",
+          reason: vatInvalidError || "Invalid VAT number",
           errors: [
             {
-              message: "Invalid VAT number",
+              message: vatInvalidError || "Invalid VAT number",
             },
           ],
         };

@@ -25,5 +25,25 @@ network_access = false
 # Defines settings that will be collected from merchants installing
 # your extension. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
-# No settings are needed for this simple debugger.
-# [extensions.settings]
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "main_heading"
+type = "single_line_text_field"
+name = "Main Heading"
+description = "Heading text for the cart attributes debugger."
+default = "Cart Attributes Debugger"
+
+[[extensions.settings.fields]]
+key = "banner_title"
+type = "single_line_text_field"
+name = "Banner Title"
+description = "Title for the attributes banner."
+default = "Cart Attributes"
+
+[[extensions.settings.fields]]
+key = "no_attributes_message"
+type = "single_line_text_field"
+name = "No Attributes Message"
+description = "Message shown when no cart attributes are found."
+default = "No cart attributes found."

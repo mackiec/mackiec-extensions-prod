@@ -1,6 +1,7 @@
 import {
   reactExtension,
   useAttributes,
+  useSettings,
   View,
   BlockStack,
   Heading,
@@ -19,11 +20,23 @@ function Extension() {
   // Get all cart attributes
   const attributes = useAttributes();
   
+  // Use the merchant-defined settings to retrieve the extension's content
+  const {
+    main_heading: merchantMainHeading,
+    banner_title: merchantBannerTitle,
+    no_attributes_message: merchantNoAttributesMessage
+  } = useSettings();
+  
+  // Set default values with fallbacks
+  const mainHeading = merchantMainHeading ?? "Cart Attributes Debugger";
+  const bannerTitle = merchantBannerTitle ?? "Cart Attributes";
+  const noAttributesMessage = merchantNoAttributesMessage ?? "No cart attributes found.";
+  
   // If no attributes, show a message
   if (!attributes || attributes.length === 0) {
     return (
-      <Banner status="info" title="Cart Attributes">
-        <Text>No cart attributes found.</Text>
+      <Banner status="info" title={bannerTitle}>
+        <Text>{noAttributesMessage}</Text>
       </Banner>
     );
   }
@@ -32,7 +45,7 @@ function Extension() {
   return (
     <View border="base" padding="base" cornerRadius="base">
       <BlockStack spacing="tight">
-        <Heading level="2">Cart Attributes Debugger</Heading>
+        <Heading level="2">{mainHeading}</Heading>
         <Divider />
         {attributes.map((attribute) => (
           <BlockStack key={attribute.key} spacing="extraTight">

@@ -31,3 +31,32 @@ default = "subdued"
   [[extensions.settings.fields.validations]]
   name = "choices"
   value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
+
+# Additional Text Configuration
+[[extensions.settings.fields]]
+key = "banner_title"
+type = "single_line_text_field"
+name = "Banner Title"
+description = "Title for the warning banner when attributes cannot be updated."
+default = "Product Customiser"
+
+[[extensions.settings.fields]]
+key = "text_field_label"
+type = "single_line_text_field"
+name = "Text Field Label"
+description = "Label for the custom text input field."
+default = "Your Custom Text"
+
+[[extensions.settings.fields]]
+key = "max_characters_error"
+type = "single_line_text_field"
+name = "Max Characters Error"
+description = "Error message when character limit is exceeded."
+default = "Max 25 characters, please"
+
+[[extensions.settings.fields]]
+key = "character_counter_suffix"
+type = "single_line_text_field"
+name = "Character Counter Suffix"
+description = "Suffix text for the character counter (e.g., '/25')."
+default = "/25"

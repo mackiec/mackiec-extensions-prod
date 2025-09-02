@@ -55,3 +55,61 @@ key = "ageTarget"
 type = "single_line_text_field"
 name = "Target Age"
 description = "Optional: Enter an Age at which to block checkout progress. Default state is 18."
+
+# Field Labels
+[[extensions.settings.fields]]
+key = "age_field_label"
+type = "single_line_text_field"
+name = "Age Field Label"
+description = "Label for the age input field."
+default = "Your age"
+
+[[extensions.settings.fields]]
+key = "age_field_label_optional"
+type = "single_line_text_field"
+name = "Age Field Label (Optional)"
+description = "Label when age field is optional."
+default = "Your age (optional)"
+
+[[extensions.settings.fields]]
+key = "vat_field_label"
+type = "single_line_text_field"
+name = "VAT Field Label"
+description = "Label for the VAT number input field."
+default = "VAT Number"
+
+[[extensions.settings.fields]]
+key = "vat_field_label_optional"
+type = "single_line_text_field"
+name = "VAT Field Label (Optional)"
+description = "Label when VAT field is optional."
+default = "VAT Number (optional)"
+
+# Validation Error Messages
+[[extensions.settings.fields]]
+key = "age_required_error"
+type = "single_line_text_field"
+name = "Age Required Error"
+description = "Error message when age is required but not entered."
+default = "Enter your age"
+
+[[extensions.settings.fields]]
+key = "age_too_young_error"
+type = "multi_line_text_field"
+name = "Age Too Young Error"
+description = "Error message when customer is too young to purchase."
+default = "You're not legally old enough to buy some of the items in your cart."
+
+[[extensions.settings.fields]]
+key = "vat_required_error"
+type = "single_line_text_field"
+name = "VAT Required Error"
+description = "Error message when VAT number is required but not entered."
+default = "VAT number is required"
+
+[[extensions.settings.fields]]
+key = "vat_invalid_error"
+type = "single_line_text_field"
+name = "VAT Invalid Error"
+description = "Error message when VAT number format is invalid."
+default = "Invalid VAT number"

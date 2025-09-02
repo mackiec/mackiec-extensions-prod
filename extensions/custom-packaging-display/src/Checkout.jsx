@@ -38,6 +38,14 @@ function Extension() {
     product_title_size,
     info_text_size,
     gift_message_section_title,
+    loading_timeout_error,
+    fetch_products_error,
+    invalid_response_error,
+    loading_sample_products_message,
+    no_packaging_selected_message,
+    no_sample_products_message,
+    no_gift_message_message,
+    no_matching_packaging_error,
   } = useSettings();
 
   const attributes = useAttributes();
@@ -69,7 +77,7 @@ function Extension() {
       if (isLoading) {
         console.log("Loading timeout reached");
         setIsLoading(false);
-        setError("Loading timed out. Please refresh to try again.");
+        setError(loading_timeout_error || "Loading timed out. Please refresh to try again.");
       }
     }, 10000); // 10 seconds timeout
     
@@ -114,7 +122,7 @@ function Extension() {
 
       if (errors) {
         console.error('GraphQL errors:', errors);
-        setError('Failed to fetch product images');
+        setError(fetch_products_error || 'Failed to fetch product images');
         setIsLoading(false);
         return;
       }
@@ -122,7 +130,7 @@ function Extension() {
       // Validate the response structure
       if (!data) {
         console.error('Invalid response structure - no data:', data);
-        setError('Invalid response from API');
+        setError(invalid_response_error || 'Invalid response from API');
         setIsLoading(false);
         return;
       }
@@ -187,7 +195,7 @@ function Extension() {
       setIsLoading(false);
     } catch (err) {
       console.error('Error fetching product images:', err);
-      setError('Failed to fetch product images');
+      setError(fetch_products_error || 'Failed to fetch product images');
       setIsLoading(false);
     }
   };
@@ -237,7 +245,7 @@ function Extension() {
             <BlockStack spacing="tight" alignment="center">
               <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                 <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                  No packaging option selected
+                  {no_packaging_selected_message || "No packaging option selected"}
                 </Text>
               </BlockStack>
             </BlockStack>
@@ -248,7 +256,7 @@ function Extension() {
             <BlockStack spacing="tight" alignment="center">
               {isLoading ? (
                 <BlockStack spacing="none" alignment="center" inlineAlignment="start">
-                  <Text size={info_text_size || text_size || "base"} appearance="subdued">Loading sample products...</Text>
+                  <Text size={info_text_size || text_size || "base"} appearance="subdued">{loading_sample_products_message || "Loading sample products..."}</Text>
                 </BlockStack>
               ) : error ? (
                 <BlockStack spacing="none" alignment="center" inlineAlignment="start">
@@ -306,7 +314,7 @@ function Extension() {
               ) : (
                   <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                     <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                      No sample products selected
+                      {no_sample_products_message || "No sample products selected"}
                     </Text>
                   </BlockStack>
               )}
@@ -345,7 +353,7 @@ function Extension() {
                 return (
                   <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                     <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                      No gift message provided
+                      {no_gift_message_message || "No gift message provided"}
                     </Text>
                   </BlockStack>
                 );
@@ -409,7 +417,7 @@ function Extension() {
               </>
             ) : (
               <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                No matching packaging option found for "{selectedValue}"
+                {no_matching_packaging_error || "No matching packaging option found for"} "{selectedValue}"
               </Text>
             )}
           </BlockStack>
@@ -419,7 +427,7 @@ function Extension() {
         <View padding="base" border="base" cornerRadius="base">
           <BlockStack spacing="tight" alignment="center">
             {isLoading ? (
-              <Text size={info_text_size || text_size || "base"} appearance="subdued">Loading sample products...</Text>
+              <Text size={info_text_size || text_size || "base"} appearance="subdued">{loading_sample_products_message || "Loading sample products..."}</Text>
             ) : error ? (
               <Text size={info_text_size || text_size || "base"} appearance="critical">{error}</Text>
             ) : sampleProductImages.length > 0 ? (
@@ -475,7 +483,7 @@ function Extension() {
               </>
             ) : (
               <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                No sample products selected
+                {no_sample_products_message || "No sample products selected"}
               </Text>
             )}
           </BlockStack>
@@ -516,7 +524,7 @@ function Extension() {
                 return (
                   <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                     <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                      No gift message provided
+                      {no_gift_message_message || "No gift message provided"}
                     </Text>
                   </BlockStack>
                 );
