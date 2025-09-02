@@ -38,14 +38,11 @@ function Extension() {
     product_title_size,
     info_text_size,
     gift_message_section_title,
-    loading_timeout_error,
-    fetch_products_error,
-    invalid_response_error,
+    general_error_message,
     loading_sample_products_message,
     no_packaging_selected_message,
     no_sample_products_message,
-    no_gift_message_message,
-    no_matching_packaging_error,
+    no_content_message,
   } = useSettings();
 
   const attributes = useAttributes();
@@ -77,7 +74,7 @@ function Extension() {
       if (isLoading) {
         console.log("Loading timeout reached");
         setIsLoading(false);
-        setError(loading_timeout_error || "Loading timed out. Please refresh to try again.");
+        setError(general_error_message || "Unable to load content. Please refresh to try again.");
       }
     }, 10000); // 10 seconds timeout
     
@@ -122,7 +119,7 @@ function Extension() {
 
       if (errors) {
         console.error('GraphQL errors:', errors);
-        setError(fetch_products_error || 'Failed to fetch product images');
+        setError(general_error_message || 'Unable to load content. Please refresh to try again.');
         setIsLoading(false);
         return;
       }
@@ -130,7 +127,7 @@ function Extension() {
       // Validate the response structure
       if (!data) {
         console.error('Invalid response structure - no data:', data);
-        setError(invalid_response_error || 'Invalid response from API');
+        setError(general_error_message || 'Unable to load content. Please refresh to try again.');
         setIsLoading(false);
         return;
       }
@@ -195,7 +192,7 @@ function Extension() {
       setIsLoading(false);
     } catch (err) {
       console.error('Error fetching product images:', err);
-      setError(fetch_products_error || 'Failed to fetch product images');
+      setError(general_error_message || 'Unable to load content. Please refresh to try again.');
       setIsLoading(false);
     }
   };
@@ -353,7 +350,7 @@ function Extension() {
                 return (
                   <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                     <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                      {no_gift_message_message || "No gift message provided"}
+                      {no_content_message || "No content available"}
                     </Text>
                   </BlockStack>
                 );
@@ -417,7 +414,7 @@ function Extension() {
               </>
             ) : (
               <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                {no_matching_packaging_error || "No matching packaging option found for"} "{selectedValue}"
+                {no_content_message || "No content available"} for "{selectedValue}"
               </Text>
             )}
           </BlockStack>
@@ -524,7 +521,7 @@ function Extension() {
                 return (
                   <BlockStack spacing="none" alignment="center" inlineAlignment="start">
                     <Text size={info_text_size || text_size || "base"} appearance="subdued">
-                      {no_gift_message_message || "No gift message provided"}
+                      {no_content_message || "No content available"}
                     </Text>
                   </BlockStack>
                 );
