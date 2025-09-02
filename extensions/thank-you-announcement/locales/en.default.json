@@ -1,0 +1,23 @@
+{
+  "announcement": {
+    "title": "Thank you for your purchase!",
+    "message": "Your order has been successfully placed and will be processed shortly.",
+    "order_details": "Order Details",
+    "order_number": "Order #",
+    "total": "Total",
+    "survey": {
+      "title": "How did you hear about us?",
+      "description": "Help us improve by letting us know how you discovered our store.",
+      "options": {
+        "search": "Search engine (Google, Bing, etc.)",
+        "social": "Social media",
+        "friend": "Friend or family recommendation",
+        "ad": "Online advertisement",
+        "email": "Email newsletter",
+        "other": "Other"
+      },
+      "thank_you": "Thank you for your feedback!",
+      "response_message": "You selected: \"{response}\". We appreciate you taking the time to help us improve!"
+    }
+  }
+}

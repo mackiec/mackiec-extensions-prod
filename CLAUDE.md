@@ -25,13 +25,14 @@ This is a Shopify app containing multiple checkout extensions organized as a mon
 **UI Extensions** (React-based):
 - Modify the checkout interface using `@shopify/ui-extensions-react`
 - Main source file: `src/Checkout.jsx`
-- Use Shopify's UI components and extension points
+- Inform yourself of the proper use of Shopify's UI components and extension points by using the connected shopify-dev MCP tool to search Shopify's developer documentation.
 - Examples: custom-banner, gift-packaging, delivery-date-ext
 
 **Function Extensions** (TypeScript/JavaScript):
 - Serverless functions that run during checkout
 - Main source files: `src/*.ts` for logic, `src/*.graphql` for queries
 - Use `@shopify/shopify_function` library
+- Inform yourself of the proper use of Shopify's Functions APIs by using the connected shopify-dev MCP tool to search Shopify's developer documentation.
 - Examples: update-line-item-js, custom-discount-function
 
 ## Development Commands

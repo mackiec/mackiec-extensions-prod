@@ -1,0 +1,129 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/api/checkout-extensions/checkout/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2025-07"
+
+[[extensions]]
+type = "ui_extension"
+name = "Thank You Announcement"
+handle = "thank-you-announcement"
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension's source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/targets-overview
+[[extensions.targeting]]
+target = "purchase.thank-you.announcement.render"
+module = "./src/Checkout.jsx"
+export = "thankYouAnnouncement"
+
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify's storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+network_access = true
+
+# Loads metafields on checkout resources, including the cart,
+# products, customers, and more. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
+
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_other_key"
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
+
+[extensions.settings]
+  [[extensions.settings.fields]]
+  key = "show_heading"
+  type = "boolean"
+  name = "Show Heading"
+  description = "Display the announcement heading."
+  default = true
+
+  [[extensions.settings.fields]]
+  key = "title"
+  type = "single_line_text_field"
+  name = "Announcement Heading"
+  description = "Enter a heading for the thank you announcement."
+  default = "We Appreciate Your Support!"
+
+  [[extensions.settings.fields]]
+  key = "show_message"
+  type = "boolean"
+  name = "Show Message"
+  description = "Display the thank you message."
+  default = true
+
+  [[extensions.settings.fields]]
+  key = "message"
+  type = "multi_line_text_field"
+  name = "Thank You Message"
+  description = "Enter a personalized thank you message for customers."
+  default = "Thanks so much for purchasing from our store."
+
+  [[extensions.settings.fields]]
+  key = "enable_survey_prompt"
+  type = "boolean"
+  name = "Enable Customer Survey"
+  description = "Show a survey link asking customers for feedback."
+  default = false
+
+  [[extensions.settings.fields]]
+  key = "survey_text"
+  type = "single_line_text_field"
+  name = "Survey Link Text"
+  description = "Text displayed before the survey link."
+  default = "Help us improve {shop_name}"
+
+  [[extensions.settings.fields]]
+  key = "survey_link_text"
+  type = "single_line_text_field"
+  name = "Survey Button Text"
+  description = "Text for the survey button/link."
+  default = "Fill out our survey"
+
+  [[extensions.settings.fields]]
+  key = "survey_modal_title"
+  type = "single_line_text_field"
+  name = "Survey Modal Title"
+  description = "Title for the survey modal window."
+  default = "Tell us about your shopping experience"
+
+  [[extensions.settings.fields]]
+  key = "survey_modal_description"
+  type = "multi_line_text_field"
+  name = "Survey Modal Description"
+  description = "Description text inside the survey modal."
+  default = "We'd love to hear about your shopping experience at {shop_name}"
+
+  [[extensions.settings.fields]]
+  key = "survey_field_label"
+  type = "single_line_text_field"
+  name = "Survey Field Label"
+  description = "Label for the survey text input field."
+  default = "How did you hear about us?"
+
+  [[extensions.settings.fields]]
+  key = "survey_submit_text"
+  type = "single_line_text_field"
+  name = "Survey Submit Button"
+  description = "Text for the survey submit button."
+  default = "Submit"
+
+  [[extensions.settings.fields]]
+  key = "survey_thank_you_message"
+  type = "multi_line_text_field"
+  name = "Survey Thank You Message"
+  description = "Message shown after survey submission."
+  default = "We appreciate you taking the time to help us improve {shop_name}!"

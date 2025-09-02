@@ -1,0 +1,23 @@
+{
+  "announcement": {
+    "title": "Merci pour votre achat !",
+    "message": "Votre commande a été passée avec succès et sera traitée sous peu.",
+    "order_details": "Détails de la commande",
+    "order_number": "Commande #",
+    "total": "Total",
+    "survey": {
+      "title": "Comment avez-vous entendu parler de nous ?",
+      "description": "Aidez-nous à nous améliorer en nous faisant savoir comment vous avez découvert notre boutique.",
+      "options": {
+        "search": "Moteur de recherche (Google, Bing, etc.)",
+        "social": "Réseaux sociaux",
+        "friend": "Recommandation d'un ami ou de la famille",
+        "ad": "Publicité en ligne",
+        "email": "Newsletter email",
+        "other": "Autre"
+      },
+      "thank_you": "Merci pour vos commentaires !",
+      "response_message": "Vous avez sélectionné : \"{response}\". Nous vous remercions d'avoir pris le temps de nous aider à nous améliorer !"
+    }
+  }
+}
